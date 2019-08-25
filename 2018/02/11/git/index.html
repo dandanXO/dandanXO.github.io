@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    
+    <title>GIT 使用筆記 | Dandan Rhapsody | 紀錄一些技術/瑣事</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="github,git">
+    <link rel="shortcut icon" href="/img/favicons.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="/css/style.css?v=1.4.1">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":true,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":true,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"dandanXO","repo":"gitment","oauth":{"client_id":"03d79e26c1ae2b6081a3","client_secret":"bbcc8d0e56be3034b326e92235ef2ca69928b229"},"perPage":2}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatars.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Dandan</h5>
+          <a href="mailto:dandanxo.1996@gmail.com" title="dandanxo.1996@gmail.com" class="mail">
+            
+              <span>d</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>d</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>x</span>
+            
+              <span>o</span>
+            
+              <span>.</span>
+            
+              <span>1</span>
+            
+              <span>9</span>
+            
+              <span>9</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>g</span>
+            
+              <span>m</span>
+            
+              <span>a</span>
+            
+              <span>i</span>
+            
+              <span>l</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/dandanXO" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                ABOUT
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="https://www.cakeresume.com/91daf4" target="_blank" >
+                <i class="icon icon-lg icon-plus-square"></i>
+                Resume
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="https://github.com/dandanXO" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>GIT 使用筆記</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="https://i.imgur.com/OLJxbaR.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">GIT 使用筆記</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-02-11T03:10:02.000Z" itemprop="datePublished" class="page-time">
+  2018-02-11
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/git/">git</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-git"
+    class="post-article article-type-post" itemprop="blogPost">
+      <div class="post-card">
+          <h1 class="post-card-title">GIT 使用筆記</h1>
+          <div class="post-meta">
+              <time class="post-time" title="2018-02-11 11:10:02" datetime="2018-02-11T03:10:02.000Z"  itemprop="datePublished">2018-02-11</time>
+
+              
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/git/">git</a></li></ul>
+
+
+
+              
+	<span id="/2018/02/11/git/" class="leancloud_visitors" data-flag-title="GIT 使用筆記" title="GIT 使用筆記">
+		
+			<i class="icon icon-eye"></i>
+		
+		<span class="leancloud-visitors-count"></span>
+	</span>
+ 
+
+              
+    <span class="leancloud-comment">
+        <i class="icon icon-comment-o"></i>
+        <a href="/2018/02/11/git/#comment">
+            <span class="valine-comment-count" data-xid="/2018/02/11/git/"></span>
+        </a>
+    </span>
+
+
+
+              
+          </div>
+          <div class="post-content" id="post-content" itemprop="postContent">
+              
+              <h1 id="GIT-基本筆記"><a href="#GIT-基本筆記" class="headerlink" title="GIT 基本筆記"></a>GIT 基本筆記</h1><h2 id="1-進入暫存區-ADD-、提交版本-COMMIT"><a href="#1-進入暫存區-ADD-、提交版本-COMMIT" class="headerlink" title="1. 進入暫存區(ADD)、提交版本(COMMIT)"></a>1. 進入暫存區(ADD)、提交版本(COMMIT)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">git clone   </span><br><span class="line">clone下來別人的專案到local端</span><br><span class="line"> </span><br><span class="line">git init  </span><br><span class="line">創建一個新的Repository (打開任何一個專案資料夾打上git init)</span><br><span class="line"> </span><br><span class="line">add add 主檔名.副檔名   </span><br><span class="line">將檔案提交入Staging Areagit add 整個資料夾提交入Staging Area </span><br><span class="line"> </span><br><span class="line">git commit -m &apos;一行解說文字&apos;  </span><br><span class="line">將檔案提交入Repository git commit -e 能用編輯器撰寫多行解說文字</span><br><span class="line"> </span><br><span class="line">git rm --cached 檔案名稱 </span><br><span class="line">將不在Repository的檔案移出Staging Area</span><br><span class="line"> </span><br><span class="line">git reset HEAD </span><br><span class="line">將已經在Repository的檔案移出Staging Area</span><br><span class="line"> </span><br><span class="line">git status</span><br><span class="line">查看目前檔案的狀態</span><br><span class="line"> </span><br><span class="line">git log</span><br><span class="line">查看目前所有commit的歷史紀錄</span><br></pre></td></tr></table></figure>
+<p><em>如果已經被加入repository過的檔案，絕對不行用git rm –cached，因為這行指令是把檔案從Repository中幹掉：</em></p>
+<ol>
+<li>若檔案不在Repository內 : git rm –cached幫我們從stage刪除，且檔案本來就是untracked，執行完還是untracked，還在預期之內。</li>
+<li>若檔案已經在repository內 : git rm –cached會幫我們從repository刪除，並且從stage刪除，因為已經從repository刪除檔案，檔案會從tracked變成untracked。</li>
+</ol>
+<p>因此要移除Staing Area中的檔案，我們必須根據檔案狀態採用不同的指令： __</p>
+<ol>
+<li>若該檔案不在repository內 : git rm –cached 檔案名稱</li>
+<li>若檔案已經在repository內 : git reset HEAD 檔案名稱</li>
+</ol>
+<h2 id="2-查看目前狀態的常用指令-DIFF-LOG-SHOW"><a href="#2-查看目前狀態的常用指令-DIFF-LOG-SHOW" class="headerlink" title="2. 查看目前狀態的常用指令 (DIFF, LOG, SHOW)"></a>2. 查看目前狀態的常用指令 (DIFF, LOG, SHOW)</h2><h3 id="從Git命令列鍵入git-diff就可以看到修改過後的紀錄。"><a href="#從Git命令列鍵入git-diff就可以看到修改過後的紀錄。" class="headerlink" title="從Git命令列鍵入git diff就可以看到修改過後的紀錄。"></a>從Git命令列鍵入git diff就可以看到修改過後的紀錄。</h3><figure class="highlight plain"><figcaption><span>git diff</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">diff --git a/hello.txt b/hello.txt</span><br><span class="line">index e69de29..1029def 100644</span><br><span class="line">--- a/hello.txt</span><br><span class="line">+++ b/hello.txt</span><br><span class="line">@@ -0,0 +1,2 @@</span><br><span class="line">+print (&apos;hello world&apos;)^M</span><br><span class="line">+print (&apos;I wanna fly&apos;)</span><br><span class="line">\ No newline at end of file</span><br></pre></td></tr></table></figure>
+<h3 id="要怎麼知道每一項commit確切到底改了什麼"><a href="#要怎麼知道每一項commit確切到底改了什麼" class="headerlink" title="要怎麼知道每一項commit確切到底改了什麼"></a>要怎麼知道每一項commit確切到底改了什麼</h3><p>git show來查看某項特定commit的修改內容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ git log</span><br><span class="line">commit 8a85094b22edf4184e7228c3f849807dd7eed2c9</span><br><span class="line">Author: Lynn19931205 </span><br><span class="line">Date:   Wed Sep 7 19:07:21 2016 +0800</span><br><span class="line"> </span><br><span class="line">    Add new line I wanna fly</span><br><span class="line"> </span><br><span class="line">commit 0dc97a8057e1f30139729ce2316f5be966a65ef2</span><br><span class="line">Author: Lynn19931205 </span><br><span class="line">Date:   Wed Sep 7 18:32:32 2016 +0800</span><br><span class="line"> </span><br><span class="line">    Add a line.</span><br></pre></td></tr></table></figure>
+<p>然後我們把上面第一欄的commit代碼複製起來 (複製六碼或以上)後輸入在git show後面，就會顯示該次詳細的修改內容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git show 8a8509</span><br><span class="line">commit 8a85094b22edf4184e7228c3f849807dd7eed2c9</span><br><span class="line">Author: Lynn19931205 </span><br><span class="line">Date:   Wed Sep 7 19:07:21 2016 +0800</span><br><span class="line"> </span><br><span class="line">    Add new line I wanna fly</span><br><span class="line">diff --git a/hello.txt b/hello.txtindex e69de29..1029def 100644--- a/hello.txt+++ b/hello.t</span><br></pre></td></tr></table></figure></p>
+<p>在git diff後面輸入commit代碼，也可以比較兩次commit間修改的差異:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git diff 8a8509 0dc97a</span><br><span class="line">diff --git a/hello.txt b/hello.txt</span><br><span class="line">index 1029def..e69de29 100644</span><br><span class="line">--- a/hello.txt</span><br><span class="line">+++ b/hello.txt</span><br><span class="line">@@ -1,2 +0,0 @@</span><br><span class="line">-print (&apos;hello world&apos;)</span><br><span class="line">-print (&apos;I wanna fly&apos;)</span><br><span class="line">\ No newline at end of file</span><br></pre></td></tr></table></figure></p>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">git log </span><br><span class="line">列出所有commit的歷史紀錄</span><br><span class="line"> </span><br><span class="line">git diff </span><br><span class="line">比較文件或commit間修改的差異</span><br><span class="line"> </span><br><span class="line">git show </span><br><span class="line">詳細列出該次commit的修改內容</span><br><span class="line"> </span><br><span class="line">git status </span><br><span class="line">列出目前的檔案狀態</span><br></pre></td></tr></table></figure>
+<h1 id="3-推送程式碼至REMOTE端-PUSH-PULL"><a href="#3-推送程式碼至REMOTE端-PUSH-PULL" class="headerlink" title="3. 推送程式碼至REMOTE端 (PUSH/PULL)"></a>3. 推送程式碼至REMOTE端 (PUSH/PULL)</h1><p>在GitHub上創建一個和本地端名稱相同的資料夾，專案描述可寫可不寫、權限設為開放、README不用勾選，最後按下 ：<br><figure class="image-box">
+                <a rel=GIT 使用筆記 href="https://i.imgur.com/bw1tFiX.png" title="Imgur" data-fancybox="images"><img src="https://i.imgur.com/bw1tFiX.png" alt="Imgur" title="" class=""></a>
+                <p>Imgur</p>
+            </figure></p>
+<p>將hello.txt檔案打開，在Remote端的第三行加入一排的驚嘆號「!!!!!!」、再打開Local端加入一排的問號「?????」。</p>
+<figure class="image-box">
+                <a rel=GIT 使用筆記 href="https://i.imgur.com/5jY9uwe.jpg" title="Imgur" data-fancybox="images"><img src="https://i.imgur.com/5jY9uwe.jpg" alt="Imgur" title="" class=""></a>
+                <p>Imgur</p>
+            </figure>
+<p>接下來一樣透過和git commit -m，將Local端的程式碼送進Repository。有趣的來了，當我們將輸入 git pull 將程式碼從Remote端拉下來到Local端這邊時：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> git pull</span><br><span class="line">remote: Counting objects: 3, done.</span><br><span class="line">remote: Compressing objects: 100% (2/2), done.</span><br><span class="line">remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0</span><br><span class="line">Unpacking objects: 100% (3/3), done.</span><br><span class="line">From https://github.com/Lynn19931205/project_1</span><br><span class="line">   260b7de..957b721  master     -&gt; origin/master</span><br><span class="line">Auto-merging hello.txt</span><br><span class="line">CONFLICT (content): Merge conflict in hello.txt</span><br><span class="line">Automatic merge failed; fix conflicts and then commit the result.</span><br></pre></td></tr></table></figure>
+<p>Git表示：你們有一些衝突(conflicts)，待解決完我才會幫你們成功把Remote端的東西融合到Local端這邊噢。先來打開Local端的hello.txt檔案：</p>
+<figure class="image-box">
+                <a rel=GIT 使用筆記 href="https://i.imgur.com/rIMxLem.jpg" title="Imgur" data-fancybox="images"><img src="https://i.imgur.com/rIMxLem.jpg" alt="Imgur" title="" class=""></a>
+                <p>Imgur</p>
+            </figure>
+<p>最後再一次git commit、git add，最後用git push將目前這個版本「推送」到Remote端 (一樣須輸入GitHub帳號密碼)。</p>
+<p>這時回到GitHub網站重新整理，可以發現…Remote端的程式碼從驚嘆號變成最新修改完成的問號了！</p>
+<h1 id="4-切換-CHECKOUT-開分支-BRANCH-與融合-MERGE"><a href="#4-切換-CHECKOUT-開分支-BRANCH-與融合-MERGE" class="headerlink" title="4. 切換(CHECKOUT), 開分支(BRANCH)與融合(MERGE)"></a>4. 切換(CHECKOUT), 開分支(BRANCH)與融合(MERGE)</h1><h2 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h2><p>Git作為分散式版本管理系統的好處是不需仰賴中央單一一條主幹道開發，可根據開發需求、隨時在某一時間點開分支(branch)獨立開發某一項功能，待開發完成後再融合(merge)回去主幹道。</p>
+<p>概念圖:<br><figure class="image-box">
+                <a rel=GIT 使用筆記 href="https://i.imgur.com/uIJvSBk.jpg" title="Imgur" data-fancybox="images"><img src="https://i.imgur.com/uIJvSBk.jpg" alt="Imgur" title="" class=""></a>
+                <p>Imgur</p>
+            </figure><br>主幹(master)與分支(branch)是稱呼專案的主要版本和分支版本。在Git第一個建立的專案版本會被稱為master版本。</p>
+<p>然而實際上master也僅是其中一條branch，所有branch間的關係都是平等的、彼此間無主從關係。一般習慣將穩定版本稱主幹，其餘的變動、開發中版本則都稱作分支。</p>
+<p>開branch的方式非常簡單，直接輸入git branch 即可。<br><code>git branch branch_a</code></p>
+<p>是意圖:<br><figure class="image-box">
+                <a rel=GIT 使用筆記 href="https://i.imgur.com/qG3EX6X.jpg" title="Imgur" data-fancybox="images"><img src="https://i.imgur.com/qG3EX6X.jpg" alt="Imgur" title="" class=""></a>
+                <p>Imgur</p>
+            </figure></p>
+<h2 id="checkout"><a href="#checkout" class="headerlink" title="checkout"></a>checkout</h2><p>目前master幹道上有五個commit的版本；若沒有指定要回溯至哪一個歷史版本，branch就會採用最新一次commit的版本。 但若我們想切到某一個commit版本開一條branch時</p>
+<figure class="image-box">
+                <a rel=GIT 使用筆記 href="https://i.imgur.com/V7zjHi9.jpg" title="Imgur" data-fancybox="images"><img src="https://i.imgur.com/V7zjHi9.jpg" alt="Imgur" title="" class=""></a>
+                <p>Imgur</p>
+            </figure>
+<p>我們可以先輸入git log查看所有commit的歷史紀錄：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">git log </span><br><span class="line">commit 372466ead9e54fd3a464cb85d78cd5304f335bc4 Merge: 6183031 957b721 </span><br><span class="line"> Author: Lynn19931205  </span><br><span class="line"> Date: Wed Sep 7 23:35:26 2016 +0800 </span><br><span class="line"> </span><br><span class="line">   Final Edit   </span><br><span class="line"> </span><br><span class="line">commit 957b721541d834fb7a71157f0401bdd013ea6e08</span><br><span class="line"> Author: Lynn </span><br><span class="line"> Date: Wed Sep 7 23:23:16 2016 +0800 </span><br><span class="line"> </span><br><span class="line">   Update hello.txt </span><br><span class="line"> </span><br><span class="line">commit adb3238e29668c95130c1e6e82b5bab3faef5489</span><br><span class="line"> Author: Lynn19931205 </span><br><span class="line"> Date: Wed Sep 7 20:30:07 2016 +0800 </span><br><span class="line"> </span><br><span class="line">   Add a if statement </span><br><span class="line"> </span><br><span class="line">commit 8a85094b22edf4184e7228c3f849807dd7eed2c9</span><br><span class="line"> Author: Lynn19931205 </span><br><span class="line"> Date: Wed Sep 7 19:07:21 2016 +0800 </span><br><span class="line"> </span><br><span class="line">   Add new line I wanna fly </span><br><span class="line"> </span><br><span class="line">commit 0dc97a8057e1f30139729ce2316f5be966a65ef2</span><br><span class="line"> Author: Lynn19931205 </span><br><span class="line"> Date: Wed Sep 7 18:32:32 2016 +0800 </span><br><span class="line"> </span><br><span class="line">   Add a line.</span><br></pre></td></tr></table></figure></p>
+<p>選好回溯的時間點後使用 <code>git checkout</code> (checkout後面輸入commit代碼至少6碼)；待checkout過去之後，就可以開一條branch了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout adb3238</span><br><span class="line"> </span><br><span class="line">$ git branch branch_a</span><br></pre></td></tr></table></figure>
+<p>但這邊我們只是先建立了一個branch噢，實際上我們人還待在master這條幹道上。</p>
+<p>因此我們必須利用checkout的另外一個功能、也就是切換各條branch的功能! (別忘了master也只是其中一條branch)。輸入git checkout ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git  ckeckout branch_a</span><br><span class="line">Switched to branch &apos;branch_a&apos;</span><br></pre></td></tr></table></figure>
+<p>輸入git branch -a可以查看目前我們開的所有branch：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -a      </span><br><span class="line">branch_a* master  remotes/origin/master</span><br></pre></td></tr></table></figure>
+<p>輸入git branch -a可以查看目前我們開的所有branch(*代表當前所在位置)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -a      </span><br><span class="line">branch_a* master  remotes/origin/master</span><br><span class="line">$ git branch -a      </span><br><span class="line">branch_a* master  remotes/origin/master</span><br></pre></td></tr></table></figure>
+<p>當我們不想要這條branch時，可以用git branch -d 刪除：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d branch_a</span><br></pre></td></tr></table></figure></p>
+<h2 id="MERGE"><a href="#MERGE" class="headerlink" title="MERGE"></a>MERGE</h2><p> 首先必須利用checkout回到想要merge過去的主幹道上；比如在此例中我們用git checkout回到master線上之後，再輸入要merge過去的branch名稱git merge 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master </span><br><span class="line">Switched to branch &apos;master&apos; </span><br><span class="line"> </span><br><span class="line">$ git merge branch_a</span><br></pre></td></tr></table></figure>
+<h1 id="進階-Git-reset-取消上一次的操作"><a href="#進階-Git-reset-取消上一次的操作" class="headerlink" title="進階 Git reset 取消上一次的操作"></a>進階 Git reset 取消上一次的操作</h1><h2 id="取消-merge"><a href="#取消-merge" class="headerlink" title="取消 merge"></a>取消 merge</h2><p>版本控制最大的好處之一就是讓你永遠可以後悔，因此我們常會希望把已暫存的檔案、已提交的 commit 或是已合併的 branch 取消修改，這時候我們可以使用 <code>git reset</code> 這個指令來幫助我們，像現在我若是想要取消剛剛的 merge 動作，我只要下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard ORIG_HEAD</span><br><span class="line">HEAD is now at c126ff9 Config initialze</span><br></pre></td></tr></table></figure>
+<h2 id="取消已暫存的檔案"><a href="#取消已暫存的檔案" class="headerlink" title="取消已暫存的檔案"></a>取消已暫存的檔案</h2><p>有時候手殘不小心將還沒修改完的檔案使用 <code>git add</code>加入了 <code>stage</code> ，這時候可以使用 <code>git reset HEAD &lt;file&gt;</code> 來將這支檔案取消 stage：</p>
+<figure class="image-box">
+                <a rel=GIT 使用筆記 href="https://i.imgur.com/Cv42Atm.jpg" title="Imgur" data-fancybox="images"><img src="https://i.imgur.com/Cv42Atm.jpg" alt="Imgur" title="" class=""></a>
+                <p>Imgur</p>
+            </figure>
+<p>你可以看到我使用 <code>git add</code> 將檔案加入 stage 後，在我的 status 狀態顯示 lib/cat.rb 這支檔案現在已經準備好被 commit ，但這時我使用了 <code>git reset HEAD</code> 將這支檔案取消 stage，再使用 status 查看時它就變回一支還沒加入 stage 的檔案了。</p>
+<h2 id="取消修改過的檔案"><a href="#取消修改過的檔案" class="headerlink" title="取消修改過的檔案"></a>取消修改過的檔案</h2><p>連續剛剛的情況，若是我想完全放棄這次修改 (將檔案狀態回復到最新的一次 commit 時的狀態)，我可以使用 <code>git checkout -- &lt;file&gt;</code> 來回復這支檔案：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- lib/cat.rb</span><br><span class="line">取消變更不會有任何訊息，但這時你去看檔案會發現他已經回復成沒修改過時的模樣了。</span><br></pre></td></tr></table></figure></p>
+<h2 id="修改上一次的commit"><a href="#修改上一次的commit" class="headerlink" title="修改上一次的commit"></a>修改上一次的commit</h2><p>手誤打太快， commit 訊息打錯時，我們可以使用 git commit –amend 來幫助我們重新修改：<br><figure class="image-box">
+                <a rel=GIT 使用筆記 href="https://i.imgur.com/a43BX1h.jpg" title="Imgur" data-fancybox="images"><img src="https://i.imgur.com/a43BX1h.jpg" alt="Imgur" title="" class=""></a>
+                <p>Imgur</p>
+            </figure>.</p>
+<figure class="image-box">
+                <a rel=GIT 使用筆記 href="https://i.imgur.com/m8F0w9k.jpg" title="Imgur" data-fancybox="images"><img src="https://i.imgur.com/m8F0w9k.jpg" alt="Imgur" title="" class=""></a>
+                <p>Imgur</p>
+            </figure>
+<p>在上面我想要修改打錯字的 commit 訊息 “Cat initiae”，因此我使用 git commit –amend 來修改成正確的訊息。</p>
+<h2 id="強制回復到上一次-commit-的版本"><a href="#強制回復到上一次-commit-的版本" class="headerlink" title="強制回復到上一次 commit 的版本"></a>強制回復到上一次 commit 的版本</h2><p>有時候我們想要放棄所有修改回到 commit 時的狀態，這時候我們可以下 git <code>reset --hard HEAD</code> 來回復，HEAD 參數可以加上一些變化，例如 HEAD^ 表示目前版本的上一個版本 HEAD~2 則是再上一個，因此你可以自由的跳回去之前的狀態。</p>
+<p><em>如果您想要保存修改過的檔案，請勿下此指令，請用上面的方式去解決。!!</em></p>
+
+          </div>
+          
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最後更新時間：<time datetime="2018-02-21T04:01:52.937Z" itemprop="dateUpdated">2018-02-21 12:01:52</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2018/02/11/git/" target="_blank" rel="external">https://blog.dandan.tw/2018/02/11/git/</a>
+        
+    </div>
+    <footer>
+        <a href="https://blog.dandan.tw">
+            <img src="/img/avatars.jpg" alt="Dandan">
+            Dandan
+        </a>
+    </footer>
+</blockquote>
+
+          
+          <div class="post-footer">
+              
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li></ul>
+
+              <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.dandan.tw/2018/02/11/git/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《GIT 使用筆記》 — Dandan Rhapsody&url=https://blog.dandan.tw/2018/02/11/git/&via=https://blog.dandan.tw" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.dandan.tw/2018/02/11/git/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+          </div>
+          
+              
+    <div id="comment"></div>
+
+
+
+          
+      </div>
+      
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2018/03/17/fb-clwaer/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">fb clwaer</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2018/01/23/RESTfulAPIbynodejsexpress實戰/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">RESTful API by node jsexpress 紀錄</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+      
+      
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目錄</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#GIT-基本筆記"><span class="post-toc-number">1.</span> <span class="post-toc-text">GIT 基本筆記</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-進入暫存區-ADD-、提交版本-COMMIT"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1. 進入暫存區(ADD)、提交版本(COMMIT)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-查看目前狀態的常用指令-DIFF-LOG-SHOW"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2. 查看目前狀態的常用指令 (DIFF, LOG, SHOW)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#從Git命令列鍵入git-diff就可以看到修改過後的紀錄。"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">從Git命令列鍵入git diff就可以看到修改過後的紀錄。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#要怎麼知道每一項commit確切到底改了什麼"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">要怎麼知道每一項commit確切到底改了什麼</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#總結"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">總結</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-推送程式碼至REMOTE端-PUSH-PULL"><span class="post-toc-number">2.</span> <span class="post-toc-text">3. 推送程式碼至REMOTE端 (PUSH/PULL)</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#4-切換-CHECKOUT-開分支-BRANCH-與融合-MERGE"><span class="post-toc-number">3.</span> <span class="post-toc-text">4. 切換(CHECKOUT), 開分支(BRANCH)與融合(MERGE)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#branch"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">branch</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#checkout"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">checkout</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#MERGE"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">MERGE</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#進階-Git-reset-取消上一次的操作"><span class="post-toc-number">4.</span> <span class="post-toc-text">進階 Git reset 取消上一次的操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#取消-merge"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">取消 merge</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#取消已暫存的檔案"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">取消已暫存的檔案</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#取消修改過的檔案"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">取消修改過的檔案</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#修改上一次的commit"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">修改上一次的commit</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#強制回復到上一次-commit-的版本"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">強制回復到上一次 commit 的版本</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+  </article>
+  
+  
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Dandan &copy; 2015 - 2019
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+            <span>
+	            Hosted by <a href="https://coding.net/pages" target="_blank">Coding Pages</a>
+            </span>
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.dandan.tw/2018/02/11/git/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《GIT 使用筆記》 — Dandan Rhapsody&url=https://blog.dandan.tw/2018/02/11/git/&via=https://blog.dandan.tw" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.dandan.tw/2018/02/11/git/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxUlEQVR42u3aSW7DMAwF0Nz/0u62QBr5kxqcAk8rw3Gs5w3BQa9XvK5f69Od9/uf/vV+vXjh4uJOc6/hyl89fj6hjw24uLjnuau2HyPy93+8j4uL+5XcXpgbfwAuLu7/5faefCyQ4eLiTnOT4idvcIy3T5KhBbUaLi7uBDdPTfZdb+nv4uLitrhXcSWNzl4RFe2Oi4t7hNsbpfTSoDz1uSmBcHFxN3Oro9P5kxLVIxq4uLjnucmr54uW6ti12cvBxcVdxE0Si3yDXlpTCIK4uLhHuKsSl97QJQ9kC3q9uLi4Mbe3WRWaH8i4+RUXF/cIt1rY5B+TFz95aMPFxX2WW21e9EYsvVIKFxd3N7faBp05hNHr4/7RxcHFxd3M7R2cyqPKjkYqLi7uGW4ejHpJTw8UNUdwcXG3cavDzh1N1ULqg4uLe5Dbe2kvPE09g4uLu5l7FVcze4qbs4VzZLi4uNu4vcNYyfZJeMrLJFxc3PPcvLxZe9CqOqzFxcU9z83TkeqYpBw1ew1TXFzcR7k5pRcib2y4uLhfyZ0vh6qhLZr84OLibuD2wk0S2vLPLgQyXFzczdxqKJkfe+TF0lR/FxcXt8P9AZ9B4jHAqkfVAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.1"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.1"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.1"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+        <script type="text/javascript" src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script type="text/javascript" src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script type="text/javascript" src="/js/plugins/valine.js?v=1.4.1"></script>
+    
+    
+
+
+
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script type="text/javascript" src="/js/plugins/leancloud_visitors.js?v=1.4.1"></script>
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+    <script>
+    (function() {
+        var OriginTitile = document.title, titleTime;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.title = '回來繼續看啦！';
+                clearTimeout(titleTime);
+            } else {
+                document.title = '(つェ⊂)咦!又好了!';
+                titleTime = setTimeout(function() {
+                    document.title = OriginTitile;
+                },2000);
+            }
+        });
+    })();
+</script>
+
+
+
+
+
+    
+</body>
+</html>

@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    
+    <title>Intersection Observer | Dandan Rhapsody | 紀錄一些技術/瑣事</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="JavaScript,webApi">
+    <link rel="shortcut icon" href="/img/favicons.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="/css/style.css?v=1.4.1">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":true,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":true,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"dandanXO","repo":"gitment","oauth":{"client_id":"03d79e26c1ae2b6081a3","client_secret":"bbcc8d0e56be3034b326e92235ef2ca69928b229"},"perPage":2}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatars.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Dandan</h5>
+          <a href="mailto:dandanxo.1996@gmail.com" title="dandanxo.1996@gmail.com" class="mail">
+            
+              <span>d</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>d</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>x</span>
+            
+              <span>o</span>
+            
+              <span>.</span>
+            
+              <span>1</span>
+            
+              <span>9</span>
+            
+              <span>9</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>g</span>
+            
+              <span>m</span>
+            
+              <span>a</span>
+            
+              <span>i</span>
+            
+              <span>l</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/dandanXO" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                ABOUT
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="https://www.cakeresume.com/91daf4" target="_blank" >
+                <i class="icon icon-lg icon-plus-square"></i>
+                Resume
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="https://github.com/dandanXO" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>Intersection Observer</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="https://i.imgur.com/OLJxbaR.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">Intersection Observer</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-25T06:43:25.000Z" itemprop="datePublished" class="page-time">
+  2019-08-25
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-Intersection-Observer"
+    class="post-article article-type-post" itemprop="blogPost">
+      <div class="post-card">
+          <h1 class="post-card-title">Intersection Observer</h1>
+          <div class="post-meta">
+              <time class="post-time" title="2019-08-25 14:43:25" datetime="2019-08-25T06:43:25.000Z"  itemprop="datePublished">2019-08-25</time>
+
+              
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
+
+
+
+              
+	<span id="/2019/08/25/Intersection-Observer/" class="leancloud_visitors" data-flag-title="Intersection Observer" title="Intersection Observer">
+		
+			<i class="icon icon-eye"></i>
+		
+		<span class="leancloud-visitors-count"></span>
+	</span>
+ 
+
+              
+    <span class="leancloud-comment">
+        <i class="icon icon-comment-o"></i>
+        <a href="/2019/08/25/Intersection-Observer/#comment">
+            <span class="valine-comment-count" data-xid="/2019/08/25/Intersection-Observer/"></span>
+        </a>
+    </span>
+
+
+
+              
+          </div>
+          <div class="post-content" id="post-content" itemprop="postContent">
+              
+              <h1 id="Intersection-Observer-for-Infinite-Scroll-in-Vue-Applications"><a href="#Intersection-Observer-for-Infinite-Scroll-in-Vue-Applications" class="headerlink" title="Intersection Observer for Infinite Scroll in Vue Applications"></a>Intersection Observer for Infinite Scroll in Vue Applications</h1><p>Infinite scrolling 在現代化網站中是一個非常常用的技巧，當觸發某些條件時而再去loading資料，可以給網站的效能帶來大幅的提升。</p>
+<p>然而對於前端工程來說，不是一件簡單的事。第一，需要去監聽並控制 scrolling 的事件、行為與屬性。.</p>
+<p>有個比較簡單且原生的方式就是<code>Intersection Observer API</code> ，這個api提供了<code>asynchronously observe changes</code> 在 <code>intersection</code>元素中或是最高層級的 <a href="https://developer.mozilla.org/en-US/docs/Glossary/viewport" target="_blank" rel="noopener">viewport</a>的位置所佔的比重，說那麼多一定聽不懂，下面就直接用vue開始吧。</p>
+<h2 id="The-Intersection-and-observation-process"><a href="#The-Intersection-and-observation-process" class="headerlink" title="The Intersection and observation process"></a>The Intersection and observation process</h2><p>被監聽的目標是一種與跟(<code>root</code>)相對位置的概念，當目標碰到root教會觸發回調函數(<a href="https://developer.mozilla.org/zh-TW/docs/Glossary/Callback_function" target="_blank" rel="noopener">callbaock</a>)，可以用下面的突來解釋會比較清楚。</p>
+<figure class="image-box">
+                <a rel=Intersection Observer href="https://i.imgur.com/Sb52iTw.png" title="root" data-fancybox="images"><img src="https://i.imgur.com/Sb52iTw.png" alt="root" title="" class=""></a>
+                <p>root</p>
+            </figure>
+<h2 id="Create-an-Intersection-Observer"><a href="#Create-an-Intersection-Observer" class="headerlink" title="Create an Intersection Observer"></a>Create an Intersection Observer</h2><p>因此我們把<code>app.vue</code>當成我們的 <code>root</code> </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> options = &#123;</span><br><span class="line">  root: <span class="literal">null</span>, <span class="comment">/* uses the page as root */</span></span><br><span class="line">  threshold: <span class="number">0</span> </span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> observer = <span class="keyword">new</span> IntersectionObserver(callback, options);</span><br></pre></td></tr></table></figure>
+<p>以上為主要的宣告方式</p>
+<h3 id="root"><a href="#root" class="headerlink" title="root"></a>root</h3><p>可以選擇根的元素<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> options = &#123;</span><br><span class="line">  root: <span class="built_in">document</span>.querySelector(<span class="string">'#divAsRoot'</span>), <span class="comment">/* uses the Div element as root */</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="threshold"><a href="#threshold" class="headerlink" title="threshold"></a>threshold</h3><p>可以指定閥值的表示型式</p>
+<figure class="image-box">
+                <a rel=Intersection Observer href="https://i.imgur.com/XQkLf8h.png" title="threshold" data-fancybox="images"><img src="https://i.imgur.com/XQkLf8h.png" alt="threshold" title="" class=""></a>
+                <p>threshold</p>
+            </figure>
+<p>您可能希望觀察者僅在目標進入視圖中途（50％），完全在視圖中（100％）或第二次進入視圖（0％）時執行回調。閾值是你決定的方式。它默認為0意味著即使一個像素在視圖中，觀察者也將執行回調。值為1.0表示在每個像素都在視圖中之前，回調將不會運行。0.5也是如此。僅當目標位於視圖的一半時才會觸發回調。</p>
+<h2 id="What-should-we-build"><a href="#What-should-we-build" class="headerlink" title="What should we build?"></a>What should we build?</h2><p>用 <a href="https://randomuser.me/" target="_blank" rel="noopener"> Random Users API.</a>來取得資料，當scroll滑到最底觸發我們的目標，然後處發回調函數在一次取的我們要的資料。</p>
+<h2 id="Create-a-Vue-project"><a href="#Create-a-Vue-project" class="headerlink" title="Create a Vue project"></a>Create a Vue project</h2><blockquote>
+<p>創建<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vue create scrolling-demo</span><br><span class="line">cd scrolling-demo</span><br><span class="line">npm install --save axios</span><br><span class="line">npm run serve</span><br></pre></td></tr></table></figure></p>
+<p>建立一個 fetchUsers 的function 在beforeMount之前執行他</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- src/App.vue --&gt; </span><br><span class="line">    </span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">"axios"</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">"app"</span>,</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      users: [],</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    fetchUsers() &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        axios.get(<span class="string">`https://randomuser.me/api/`</span>).then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">this</span>.users.push(response.data.results[<span class="number">0</span>]);</span><br><span class="line">          <span class="built_in">console</span>.log(response)</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    beforeMount() &#123;</span><br><span class="line">      <span class="keyword">this</span>.fetchUsers();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>你會看到下面的情形。</p>
+<figure class="image-box">
+                <a rel=Intersection Observer href="https://i.imgur.com/FZSRk9h.png" title="demo" data-fancybox="images"><img src="https://i.imgur.com/FZSRk9h.png" alt="demo" title="" class=""></a>
+                <p>demo</p>
+            </figure>
+<p>把畫面與api資料用<code>v-for</code>帶出</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- src/App.vue --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"user"</span> <span class="attr">:key</span>=<span class="string">"user.id.value"</span> <span class="attr">v-for</span>=<span class="string">"user in users"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"img"</span> <span class="attr">:src</span>=<span class="string">"user.picture.large"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123; user.name.first &#125;&#125; &#123;&#123; user.name.last &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">ref</span>=<span class="string">"target"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>像這樣<br><figure class="image-box">
+                <a rel=Intersection Observer href="https://i.imgur.com/VPnazHL.jpg" title="demo" data-fancybox="images"><img src="https://i.imgur.com/VPnazHL.jpg" alt="demo" title="" class=""></a>
+                <p>demo</p>
+            </figure></p>
+<p>接下來加入我們的loadin目標<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ref</span>=<span class="string">"divAsTarget"</span>&gt;</span><span class="tag">&lt;<span class="name">h3</span>&gt;</span>Loading ... <span class="tag">&lt;/<span class="name">h3</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> /* below the user's list */</span><br></pre></td></tr></table></figure></p>
+<p>之後再加入<code>intersection</code>監聽事件，綁訂於上述的taqrget<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mounted() &#123;</span><br><span class="line"><span class="keyword">this</span>.observer = <span class="keyword">new</span> IntersectionObserver(<span class="keyword">this</span>.callback, options);</span><br><span class="line"><span class="keyword">this</span>.observer.observe(<span class="keyword">this</span>.$refs.divAsTarget);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>最後在回掉函數中檢查是否觸發目標</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">callback(entries, observer) &#123;</span><br><span class="line">  entries.forEach(<span class="function"><span class="params">entry</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (entry.isIntersecting) &#123;</span><br><span class="line">       <span class="keyword">this</span>.fetchUsers();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最後的demo<br><figure class="image-box">
+                <a rel=Intersection Observer href="https://d2mxuefqeaa7sj.cloudfront.net/s_B8F443BB34687E4E41FAC225AEB7751E88C3233AB4506AA668D0CCE979F5CBDF_1550865275193_ezgif.com-video-to-gif+73.gif" title="demo" data-fancybox="images"><img src="https://d2mxuefqeaa7sj.cloudfront.net/s_B8F443BB34687E4E41FAC225AEB7751E88C3233AB4506AA668D0CCE979F5CBDF_1550865275193_ezgif.com-video-to-gif+73.gif" alt="demo" title="" class=""></a>
+                <p>demo</p>
+            </figure></p>
+<h1 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h1><p>我把程式碼都放上去了，方便大家使用。</p>
+<blockquote>
+<p><a href="https://github.com/dandanXO/Intersection-Observer-" target="_blank" rel="noopener">Repositories on GITHUB</a></p>
+</blockquote>
+
+          </div>
+          
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最後更新時間：<time datetime="2019-08-25T09:30:43.668Z" itemprop="dateUpdated">2019-08-25 17:30:43</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2019/08/25/Intersection-Observer/" target="_blank" rel="external">https://blog.dandan.tw/2019/08/25/Intersection-Observer/</a>
+        
+    </div>
+    <footer>
+        <a href="https://blog.dandan.tw">
+            <img src="/img/avatars.jpg" alt="Dandan">
+            Dandan
+        </a>
+    </footer>
+</blockquote>
+
+          
+          <div class="post-footer">
+              
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webApi/">webApi</a></li></ul>
+
+              <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.dandan.tw/2019/08/25/Intersection-Observer/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Intersection Observer》 — Dandan Rhapsody&url=https://blog.dandan.tw/2019/08/25/Intersection-Observer/&via=https://blog.dandan.tw" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.dandan.tw/2019/08/25/Intersection-Observer/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+          </div>
+          
+              
+    <div id="comment"></div>
+
+
+
+          
+      </div>
+      
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2019/08/18/電獺三個月回顧/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">電獺三個月回顧</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+      
+      
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目錄</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Intersection-Observer-for-Infinite-Scroll-in-Vue-Applications"><span class="post-toc-number">1.</span> <span class="post-toc-text">Intersection Observer for Infinite Scroll in Vue Applications</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#The-Intersection-and-observation-process"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">The Intersection and observation process</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Create-an-Intersection-Observer"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Create an Intersection Observer</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#root"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">root</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#threshold"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">threshold</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#What-should-we-build"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">What should we build?</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Create-a-Vue-project"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Create a Vue project</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#最後"><span class="post-toc-number">2.</span> <span class="post-toc-text">最後</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+  </article>
+  
+  
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Dandan &copy; 2015 - 2019
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+            <span>
+	            Hosted by <a href="https://coding.net/pages" target="_blank">Coding Pages</a>
+            </span>
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.dandan.tw/2019/08/25/Intersection-Observer/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Intersection Observer》 — Dandan Rhapsody&url=https://blog.dandan.tw/2019/08/25/Intersection-Observer/&via=https://blog.dandan.tw" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.dandan.tw/2019/08/25/Intersection-Observer/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLUlEQVR42u3aS47CMBBFUfa/6fQYIcx9VU5LKV+PEAqODwOrfq8XXtfH+vx+/fz6mfVu25YMGTIey7iWix/3284Etv5M/hQZMmScwCCHWD+/PgT/LXlehgwZMtKj33dEGTJkyOhfuN+CRZ6U1i5oGTJknMngSWatWMZLb7fn4jJkyHggg1fd///zLf0NGTJkPIpxhWsdnJHrkoeDwalkyJAxmpGW0vjR04ubl+2+nkeGDBnHMPrpK08406s8qBrKkCFjHIOXw9LLNy3npaNjqHYoQ4aMoQx+2fHPvFFaCzRlyJBxDoMX1PjF2t8tSINlyJAxmpGmi0FiWRo+q13BMmTImMfgARwPE0maSi5WwnjrxMqQIWMoo9Z05EV/EgL2S3gyZMiYzegPcqUltjTFRUGkDBkyDmB0SmadfdLwMc68ZciQMYhRK8rz3ToDGaiqJkOGjAMYtUYmH5VAHQneu+ChoQwZMkYwyLF2jWL025k/3iJDhoxjGLXGwN72JH9jcFvLkCFjBIO/kryY/ynbynwyZMg4gHHH0XnhDJXVajMjMmTIGMfgw15p4poOWwTpqwwZMkYzrnDtDe9qoxjIJ0OGjEEMvvovq6WmvF0qQ4aM2YzaJct/hcr6jXBThgwZ5zA6RXyeEvNhjnh0TIYMGTKWx+VtgLR5EOwmQ4YMGeE1ytufKelHe0CGDBmjGWk6WgsHeaAZg2XIkDGa0UodG4NiZM9dqa8MGTIey/gDmioi4OG8q2wAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.1"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.1"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.1"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+        <script type="text/javascript" src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script type="text/javascript" src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script type="text/javascript" src="/js/plugins/valine.js?v=1.4.1"></script>
+    
+    
+
+
+
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script type="text/javascript" src="/js/plugins/leancloud_visitors.js?v=1.4.1"></script>
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+    <script>
+    (function() {
+        var OriginTitile = document.title, titleTime;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.title = '回來繼續看啦！';
+                clearTimeout(titleTime);
+            } else {
+                document.title = '(つェ⊂)咦!又好了!';
+                titleTime = setTimeout(function() {
+                    document.title = OriginTitile;
+                },2000);
+            }
+        });
+    })();
+</script>
+
+
+
+
+
+    
+</body>
+</html>

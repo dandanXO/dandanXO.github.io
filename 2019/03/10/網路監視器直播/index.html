@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    
+    <title>網路監視器直播 | Dandan Rhapsody | 紀錄一些技術/瑣事</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="nodejs,node-rtsp-stream,FFmpeg">
+    <link rel="shortcut icon" href="/img/favicons.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="/css/style.css?v=1.4.1">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":true,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":true,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"dandanXO","repo":"gitment","oauth":{"client_id":"03d79e26c1ae2b6081a3","client_secret":"bbcc8d0e56be3034b326e92235ef2ca69928b229"},"perPage":2}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatars.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Dandan</h5>
+          <a href="mailto:dandanxo.1996@gmail.com" title="dandanxo.1996@gmail.com" class="mail">
+            
+              <span>d</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>d</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>x</span>
+            
+              <span>o</span>
+            
+              <span>.</span>
+            
+              <span>1</span>
+            
+              <span>9</span>
+            
+              <span>9</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>g</span>
+            
+              <span>m</span>
+            
+              <span>a</span>
+            
+              <span>i</span>
+            
+              <span>l</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/dandanXO" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                ABOUT
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="https://www.cakeresume.com/91daf4" target="_blank" >
+                <i class="icon icon-lg icon-plus-square"></i>
+                Resume
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="https://github.com/dandanXO" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>網路監視器直播</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="https://i.imgur.com/OLJxbaR.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">網路監視器直播</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-10T13:03:44.000Z" itemprop="datePublished" class="page-time">
+  2019-03-10
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/nodejs/">nodejs</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-網路監視器直播"
+    class="post-article article-type-post" itemprop="blogPost">
+      <div class="post-card">
+          <h1 class="post-card-title">網路監視器直播</h1>
+          <div class="post-meta">
+              <time class="post-time" title="2019-03-10 21:03:44" datetime="2019-03-10T13:03:44.000Z"  itemprop="datePublished">2019-03-10</time>
+
+              
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/nodejs/">nodejs</a></li></ul>
+
+
+
+              
+	<span id="/2019/03/10/網路監視器直播/" class="leancloud_visitors" data-flag-title="網路監視器直播" title="網路監視器直播">
+		
+			<i class="icon icon-eye"></i>
+		
+		<span class="leancloud-visitors-count"></span>
+	</span>
+ 
+
+              
+    <span class="leancloud-comment">
+        <i class="icon icon-comment-o"></i>
+        <a href="/2019/03/10/網路監視器直播/#comment">
+            <span class="valine-comment-count" data-xid="/2019/03/10/網路監視器直播/"></span>
+        </a>
+    </span>
+
+
+
+              
+          </div>
+          <div class="post-content" id="post-content" itemprop="postContent">
+              
+              <h1 id="網路監視器直播"><a href="#網路監視器直播" class="headerlink" title="網路監視器直播"></a>網路監視器直播</h1><p>對於網絡攝像機做視頻預覽這塊, 本身其實是非常陌生的, 當時接到這個需求也是相當的頭疼(對於當時一年經驗不到的我來說).當時我們的應用場景是: 多路網絡攝像機通過局域網連接, PC 端能夠實時預覽監控畫面並且畫質達到720p, 延遲不能超過10秒, 多個攝像機能夠切換查看. 由於後端只提供一個RTSP 的直播協議, 所以所有的方案都是圍繞著RTSP這個關鍵詞.</p>
+<h1 id="整體想法"><a href="#整體想法" class="headerlink" title="整體想法"></a>整體想法</h1><p>經過一波調研(google)之後, 知道瀏覽器對RTSP 協議並不友善, 也就是說我們必須要自己轉碼再提供給瀏覽器使用, 找到的解決思路大概是:</p>
+<ol>
+<li>轉碼: FFmpeg是一個老牌的轉碼工具,非常強大</li>
+<li>Node.js 用作中轉站接收客戶端發來的攝像機信息及控制FFmpeg 推流</li>
+<li>最終客戶端接收視頻流</li>
+</ol>
+<h1 id="準備"><a href="#準備" class="headerlink" title="準備"></a>準備</h1><h2 id="安裝FFmpeg-轉碼工具"><a href="#安裝FFmpeg-轉碼工具" class="headerlink" title="安裝FFmpeg 轉碼工具"></a>安裝FFmpeg 轉碼工具</h2><ul>
+<li><p>window 平台<br>下載FFmpeg解壓後應該是已經編譯好的文件</p>
+<ol>
+<li>將解壓好的文件放入C 盤根目錄(也可以自行放入其他盤符)下重命名為ffmpeg(方便以後找)</li>
+<li>設置環境變量, 我的電腦-&gt; 屬性-&gt; 高級系統設置-&gt; 環境變量-&gt; 系統變量-&gt; 新增, 路徑選擇剛剛C 盤下的ffmpeg文件夾中的bin 文件夾</li>
+<li>註銷或重啟電腦讓環境變量生效</li>
+<li>測試,在cmd中輸入ffmpeg -version,如果出現版本號之類的東西則成功.</li>
+</ol>
+</li>
+<li><p>Mac平台</p>
+<ol>
+<li>Mac下可以直接通過Homebrew安裝最為簡單.</li>
+<li>安裝Homebrew,在終端中輸入ruby -e “$(curl -fsSL <a href="https://raw.githubusercontent.com/Homebrew/install/master/install" target="_blank" rel="noopener">https://raw.githubusercontent.com/Homebrew/install/master/install</a>)”</li>
+<li>安裝FFmpeg,直接在終端中輸入brew install ffmpeg即可</li>
+<li>測試,同樣在終端中輸入ffmpeg -version查看版本號</li>
+</ol>
+</li>
+</ul>
+<h2 id="安裝Node-js"><a href="#安裝Node-js" class="headerlink" title="安裝Node.js"></a>安裝Node.js</h2><p>這個就不展開詳細說了,每個有在工作都會吧…</p>
+<h1 id="jsmpeg"><a href="#jsmpeg" class="headerlink" title="jsmpeg"></a>jsmpeg</h1><p>這個庫還算比較不錯的了,也是通過websocket來轉發,看官方的例子是在終端中啟動ffmpeg -&gt; websocket -&gt;客戶端通過jsmpeg.min.js解碼在canvas中播放.因為這裡只是實現了播放,然後又去找了一個基於jsmpeg的庫node-rtsp-stream .這個庫只是做了一些封裝讓我們不用自己在終端中手動啟用ffmpeg,在此之上我再加上重啟就能滿足現在的需求.</p>
+<h2 id="改造-node-rtsp-stream"><a href="#改造-node-rtsp-stream" class="headerlink" title="改造 node-rtsp-stream"></a>改造 <code>node-rtsp-stream</code></h2><ol>
+<li><p><code>node-rtsp-stream/mpeg1muxer.js</code></p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// Generated by CoffeeScript 2.3.2</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> Mpeg1Muxer, child_process, events, util;</span><br><span class="line"></span><br><span class="line">  child_process = <span class="built_in">require</span>(<span class="string">'child_process'</span>);</span><br><span class="line"></span><br><span class="line">  util = <span class="built_in">require</span>(<span class="string">'util'</span>);</span><br><span class="line"></span><br><span class="line">  events = <span class="built_in">require</span>(<span class="string">'events'</span>);</span><br><span class="line"></span><br><span class="line">  Mpeg1Muxer = <span class="function"><span class="keyword">function</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> key, self;</span><br><span class="line">    self = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">this</span>.url = options.url;</span><br><span class="line">    <span class="keyword">this</span>.ffmpegOptions = options.ffmpegOptions;</span><br><span class="line">    <span class="keyword">this</span>.additionalFlags = [];</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.ffmpegOptions) &#123;</span><br><span class="line">      <span class="keyword">for</span> (key <span class="keyword">in</span> <span class="keyword">this</span>.ffmpegOptions) &#123;</span><br><span class="line">        <span class="keyword">this</span>.additionalFlags.push(key, <span class="built_in">String</span>(<span class="keyword">this</span>.ffmpegOptions[key]));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.spawnOptions = [</span><br><span class="line">      <span class="string">"-rtsp_transport"</span>,</span><br><span class="line">      <span class="string">"tcp"</span>,</span><br><span class="line">      <span class="string">"-i"</span>,</span><br><span class="line">      <span class="keyword">this</span>.url,</span><br><span class="line">      <span class="string">'-f'</span>,</span><br><span class="line">      <span class="string">'mpeg1video'</span>,</span><br><span class="line">      <span class="comment">// additional ffmpeg options go here</span></span><br><span class="line">      ...this.additionalFlags,</span><br><span class="line">      <span class="string">'-'</span></span><br><span class="line">    ];</span><br><span class="line">    <span class="keyword">this</span>.stream = child_process.spawn(<span class="string">"ffmpeg"</span>, <span class="keyword">this</span>.spawnOptions, &#123;</span><br><span class="line">      detached: <span class="literal">false</span></span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">this</span>.inputStreamStarted = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">this</span>.stream.stdout.on(<span class="string">'data'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> self.emit(<span class="string">'mpeg1data'</span>, data);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">this</span>.stream.stderr.on(<span class="string">'data'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> self.emit(<span class="string">'ffmpegError'</span>, data);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">this</span>.stream.stop = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// console.log(self.stream.pid)</span></span><br><span class="line">      self.stream.stdin.pause();</span><br><span class="line">      self.stream.kill()</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'ffmpeg is be kill'</span>)</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">this</span>.stream.on(<span class="string">'exit'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">code</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> self.emit(<span class="string">'ffmpegClose'</span>, code)</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  util.inherits(Mpeg1Muxer, events.EventEmitter);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">module</span>.exports = Mpeg1Muxer;</span><br><span class="line"></span><br><span class="line">&#125;).call(<span class="keyword">this</span>);</span><br></pre></td></tr></table></figure>
+<p>2.<code>node-rtsp-stream/videoStream.js</code></p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br></pre></td><td class="code"><pre><span class="line">      </span><br><span class="line">        <span class="comment">// Generated by CoffeeScript 2.3.2</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> Mpeg1Muxer, STREAM_MAGIC_BYTES, VideoStream, events, util, ws;</span><br><span class="line"></span><br><span class="line">  ws = <span class="built_in">require</span>(<span class="string">'ws'</span>);</span><br><span class="line"></span><br><span class="line">  util = <span class="built_in">require</span>(<span class="string">'util'</span>);</span><br><span class="line"></span><br><span class="line">  events = <span class="built_in">require</span>(<span class="string">'events'</span>);</span><br><span class="line"></span><br><span class="line">  Mpeg1Muxer = <span class="built_in">require</span>(<span class="string">'./mpeg1muxer'</span>);</span><br><span class="line"></span><br><span class="line">  STREAM_MAGIC_BYTES = <span class="string">"jsmp"</span>; <span class="comment">// Must be 4 bytes</span></span><br><span class="line"></span><br><span class="line">  VideoStream = <span class="function"><span class="keyword">function</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.options = options;</span><br><span class="line">    <span class="keyword">this</span>.name = options.name;</span><br><span class="line">    <span class="keyword">this</span>.streamUrl = options.streamUrl;</span><br><span class="line">    <span class="keyword">this</span>.width = options.width;</span><br><span class="line">    <span class="keyword">this</span>.height = options.height;</span><br><span class="line">    <span class="keyword">this</span>.wsPort = options.wsPort;</span><br><span class="line">    <span class="keyword">this</span>.inputStreamStarted = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">this</span>.stream = <span class="keyword">void</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">this</span>.startMpeg1Stream();</span><br><span class="line">    <span class="keyword">this</span>.pipeStreamToSocketServer();</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  util.inherits(VideoStream, events.EventEmitter);</span><br><span class="line"></span><br><span class="line">  VideoStream.prototype.stop = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.wsServer.close();</span><br><span class="line">    <span class="keyword">this</span>.stream.kill();</span><br><span class="line">    <span class="keyword">this</span>.inputStreamStarted = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">// 重新連線</span></span><br><span class="line">  VideoStream.prototype.restart = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.mpeg1Muxer) &#123;</span><br><span class="line">        <span class="keyword">this</span>.mpeg1Muxer.stream.stop()</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'ffmpeg is restart'</span>)</span><br><span class="line">        <span class="keyword">this</span>.inputStreamStarted = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">this</span>.stream = <span class="keyword">void</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">this</span>.startMpeg1Stream();</span><br><span class="line">        <span class="comment">// 檢查 ffmpeg 是否壞掉或關閉</span></span><br><span class="line">        <span class="keyword">this</span>.mpeg1Muxer.on(<span class="string">'ffmpegClose'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">code</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'ffmpeg closed on '</span> + code)</span><br><span class="line">            </span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  VideoStream.prototype.startMpeg1Stream = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> gettingInputData, gettingOutputData, inputData, outputData, self;</span><br><span class="line">    <span class="keyword">this</span>.mpeg1Muxer = <span class="keyword">new</span> Mpeg1Muxer(&#123;</span><br><span class="line">      ffmpegOptions: <span class="keyword">this</span>.options.ffmpegOptions,</span><br><span class="line">      url: <span class="keyword">this</span>.streamUrl</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">this</span>.stream = <span class="keyword">this</span>.mpeg1Muxer.stream;</span><br><span class="line">    self = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.inputStreamStarted) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.mpeg1Muxer.on(<span class="string">'mpeg1data'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> self.emit(<span class="string">'camdata'</span>, data);</span><br><span class="line">    &#125;);</span><br><span class="line">    gettingInputData = <span class="literal">false</span>;</span><br><span class="line">    inputData = [];</span><br><span class="line">    gettingOutputData = <span class="literal">false</span>;</span><br><span class="line">    outputData = [];</span><br><span class="line">    <span class="keyword">this</span>.mpeg1Muxer.on(<span class="string">'ffmpegError'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> size;</span><br><span class="line">      data = data.toString();</span><br><span class="line">      <span class="keyword">if</span> (data.indexOf(<span class="string">'Input #'</span>) !== <span class="number">-1</span>) &#123;</span><br><span class="line">        gettingInputData = <span class="literal">true</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (data.indexOf(<span class="string">'Output #'</span>) !== <span class="number">-1</span>) &#123;</span><br><span class="line">        gettingInputData = <span class="literal">false</span>;</span><br><span class="line">        gettingOutputData = <span class="literal">true</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (data.indexOf(<span class="string">'frame'</span>) === <span class="number">0</span>) &#123;</span><br><span class="line">        gettingOutputData = <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (gettingInputData) &#123;</span><br><span class="line">        inputData.push(data.toString());</span><br><span class="line">        size = data.match(<span class="regexp">/\d+x\d+/</span>);</span><br><span class="line">        <span class="keyword">if</span> (size != <span class="literal">null</span>) &#123;</span><br><span class="line">          size = size[<span class="number">0</span>].split(<span class="string">'x'</span>);</span><br><span class="line">          <span class="keyword">if</span> (self.width == <span class="literal">null</span>) &#123;</span><br><span class="line">            self.width = <span class="built_in">parseInt</span>(size[<span class="number">0</span>], <span class="number">10</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span> (self.height == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> self.height = <span class="built_in">parseInt</span>(size[<span class="number">1</span>], <span class="number">10</span>);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">this</span>.mpeg1Muxer.on(<span class="string">'ffmpegError'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> global.process.stderr.write(data);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  VideoStream.prototype.pipeStreamToSocketServer = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> self;</span><br><span class="line">    self = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">this</span>.wsServer = <span class="keyword">new</span> ws.Server(&#123;</span><br><span class="line">      port: <span class="keyword">this</span>.wsPort</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">this</span>.wsServer.on(<span class="string">"connection"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">socket</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> self.onSocketConnect(socket);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">this</span>.wsServer.broadcast = <span class="function"><span class="keyword">function</span>(<span class="params">data, opts</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> i, results;</span><br><span class="line">      results = [];</span><br><span class="line">      <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="keyword">this</span>.clients) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.clients[i].readyState === <span class="number">1</span>) &#123;</span><br><span class="line">          results.push(<span class="keyword">this</span>.clients[i].send(data, opts));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          results.push(<span class="built_in">console</span>.log(<span class="string">"Error: Client ("</span> + i + <span class="string">") not connected."</span>));</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> results;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.on(<span class="string">'camdata'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> self.wsServer.broadcast(data);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  VideoStream.prototype.onSocketConnect = <span class="function"><span class="keyword">function</span>(<span class="params">socket</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> self, streamHeader;</span><br><span class="line">    <span class="comment">// Send magic bytes and video size to the newly connected socket</span></span><br><span class="line">    <span class="comment">// struct &#123; char magic[4]; unsigned short width, height;&#125;</span></span><br><span class="line">    self = <span class="keyword">this</span>;</span><br><span class="line">    streamHeader = <span class="keyword">new</span> Buffer(<span class="number">8</span>);</span><br><span class="line">    streamHeader.write(STREAM_MAGIC_BYTES);</span><br><span class="line">    streamHeader.writeUInt16BE(<span class="keyword">this</span>.width, <span class="number">4</span>);</span><br><span class="line">    streamHeader.writeUInt16BE(<span class="keyword">this</span>.height, <span class="number">6</span>);</span><br><span class="line">    socket.send(streamHeader, &#123;</span><br><span class="line">      binary: <span class="literal">true</span></span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>: New WebSocket Connection (`</span> + <span class="keyword">this</span>.wsServer.clients.length + <span class="string">" total)"</span>);</span><br><span class="line">    <span class="keyword">return</span> socket.on(<span class="string">"close"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">code, message</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>: Disconnected WebSocket (`</span> + self.wsServer.clients.length + <span class="string">" total)"</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="built_in">module</span>.exports = VideoStream;</span><br><span class="line"></span><br><span class="line">&#125;).call(<span class="keyword">this</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>node 端使用</p>
+   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">Stream = <span class="built_in">require</span>(<span class="string">'node-rtsp-stream'</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">streams</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>() &#123;</span><br><span class="line">        <span class="keyword">this</span>.stream;</span><br><span class="line">        <span class="keyword">this</span>.restartStream.bind(<span class="keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    start() &#123;</span><br><span class="line">        <span class="keyword">this</span>.stream = <span class="keyword">new</span> Stream(&#123;</span><br><span class="line">            name: <span class="string">'cameraStream'</span>,</span><br><span class="line">            streamUrl: <span class="string">'rtsp://192.168.2.236/user=admin&amp;password=&amp;channel=1&amp;stream=0.sdp'</span>,</span><br><span class="line">            wsPort: <span class="number">9999</span>,</span><br><span class="line">            reconnect: <span class="literal">true</span>,</span><br><span class="line">            ffmpegOptions: &#123;</span><br><span class="line">                <span class="string">'-reconnect'</span> :<span class="number">1</span>,</span><br><span class="line">                <span class="string">'-reconnect_at_eof'</span>:<span class="number">1</span>,</span><br><span class="line">                <span class="string">'-reconnect_streamed'</span> : <span class="number">1</span>,</span><br><span class="line">                <span class="comment">//'-hide_banner': '',</span></span><br><span class="line">                <span class="comment">//'-loglevel': 'panic'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">this</span>.stream.mpeg1Muxer.on(<span class="string">'ffmpegClose'</span>,  (code) =&gt; &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'ffmpeg closed on need restart '</span> + code);</span><br><span class="line">            <span class="keyword">this</span>.restartStream();</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    restartStream () &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'restart stream'</span>)</span><br><span class="line">        <span class="keyword">this</span>.stream.restart()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = streams; <span class="comment">// stream;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>index.js</code> 引入</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Stream = <span class="built_in">require</span>(<span class="string">'./cameraStream'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//cameraStream</span></span><br><span class="line"><span class="keyword">const</span> streams = <span class="keyword">new</span> Stream();</span><br><span class="line">streams.start();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Client端</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">'can'</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'jsmpeg.min.js'</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> canvas = <span class="built_in">document</span>.querySelector(<span class="string">'#can'</span>)</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> ws = <span class="keyword">new</span> WebSocket(<span class="string">'ws://127.0.0.1:11111'</span>)</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> player = <span class="keyword">new</span> jsmpeg(ws, &#123;</span></span><br><span class="line"><span class="undefined">        canvas: canvas,</span></span><br><span class="line"><span class="javascript">        autoplay: <span class="literal">true</span></span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h1><p>目前這方法沒出啥問題，不過有時候FFMPEG在瀏覽器端會出現編譯錯誤問題，不知道原因為何。</p>
+
+          </div>
+          
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最後更新時間：<time datetime="2019-03-10T14:57:31.742Z" itemprop="dateUpdated">2019-03-10 22:57:31</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2019/03/10/網路監視器直播/" target="_blank" rel="external">https://blog.dandan.tw/2019/03/10/網路監視器直播/</a>
+        
+    </div>
+    <footer>
+        <a href="https://blog.dandan.tw">
+            <img src="/img/avatars.jpg" alt="Dandan">
+            Dandan
+        </a>
+    </footer>
+</blockquote>
+
+          
+          <div class="post-footer">
+              
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FFmpeg/">FFmpeg</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-rtsp-stream/">node-rtsp-stream</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
+
+              <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.dandan.tw/2019/03/10/網路監視器直播/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《網路監視器直播》 — Dandan Rhapsody&url=https://blog.dandan.tw/2019/03/10/網路監視器直播/&via=https://blog.dandan.tw" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.dandan.tw/2019/03/10/網路監視器直播/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+          </div>
+          
+              
+    <div id="comment"></div>
+
+
+
+          
+      </div>
+      
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2019/07/27/饒河夜市/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">饒河夜市</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2019/02/16/退伍後一些記錄/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">退伍後一些記錄</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+      
+      
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目錄</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#網路監視器直播"><span class="post-toc-number">1.</span> <span class="post-toc-text">網路監視器直播</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#整體想法"><span class="post-toc-number">2.</span> <span class="post-toc-text">整體想法</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#準備"><span class="post-toc-number">3.</span> <span class="post-toc-text">準備</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安裝FFmpeg-轉碼工具"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">安裝FFmpeg 轉碼工具</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安裝Node-js"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">安裝Node.js</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#jsmpeg"><span class="post-toc-number">4.</span> <span class="post-toc-text">jsmpeg</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#改造-node-rtsp-stream"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">改造 node-rtsp-stream</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#結論"><span class="post-toc-number">5.</span> <span class="post-toc-text">結論</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+  </article>
+  
+  
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Dandan &copy; 2015 - 2019
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+            <span>
+	            Hosted by <a href="https://coding.net/pages" target="_blank">Coding Pages</a>
+            </span>
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.dandan.tw/2019/03/10/網路監視器直播/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《網路監視器直播》 — Dandan Rhapsody&url=https://blog.dandan.tw/2019/03/10/網路監視器直播/&via=https://blog.dandan.tw" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.dandan.tw/2019/03/10/網路監視器直播/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMElEQVR42u3aS5KDMAxF0ex/02QBBHOfZVKFfD1KVfPxYaCWJX0+eB2ndf7r+PrzNed7x1cuWDJkyHgt4xiuqxeQl109Yfw0ctePt8uQIWMDBtkECYtjKvk05GPJkCFDRrqh9DkpVYYMGTLWMsaJHT+NypAhQ8bcITbdRLq5P53FZciQ8UJGJQg+/fuR/oYMGTJexTjClYZa8hySUN7sSoYMGa0ZaTOStAfStI8nl+P9yJAhozdjXBrjQxhzwXqu5XD5TBkyZLRmpOdE0p6c+1ik2TlZdJMhQ0YLBh+GWDXemjZKZciQsRtj7RhEJSnkTYKbqqEMGTKaMipJ4drBr7lDrwwZMnZjkEZjJX2stwp+/JYhQ0ZrBi/u8y2uOuKm/wBkyJDRlTFX3por69cLbcFAmAwZMpoy5n5XgjI/xN4EaBkyZLRm8A5nGnDThsFcIyHoxMqQIePljLlmZCmZCxNT1CSQIUNGU0ZaaOPBdK6dWSq3yZAhoymDHE3jIS1wlCWpJG9qypAhYzcGr1/NhddKKomGLWTIkLEBg2w0Tft4ES09VMuQIWM3BnnZ2msqYfoyNZQhQ0Y7xhGucZpIUklCigO9DBkyWjMqYa7SQuCpYTpAJkOGjK4MHmTr5TNeUIu/twwZMjZg8BJ8Jcg+OJwhQ4YMGUuTP37XgwFXhgwZrRl8bCuFERLqxMqQIaMpgzcD0q2nTYU0rZQhQ8YOjDTvqpfJSFs0Df0yZMhoyvgCTsHuzZJNZDIAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.1"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.1"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.1"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+        <script type="text/javascript" src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script type="text/javascript" src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script type="text/javascript" src="/js/plugins/valine.js?v=1.4.1"></script>
+    
+    
+
+
+
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script type="text/javascript" src="/js/plugins/leancloud_visitors.js?v=1.4.1"></script>
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+    <script>
+    (function() {
+        var OriginTitile = document.title, titleTime;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.title = '回來繼續看啦！';
+                clearTimeout(titleTime);
+            } else {
+                document.title = '(つェ⊂)咦!又好了!';
+                titleTime = setTimeout(function() {
+                    document.title = OriginTitile;
+                },2000);
+            }
+        });
+    })();
+</script>
+
+
+
+
+
+    
+</body>
+</html>

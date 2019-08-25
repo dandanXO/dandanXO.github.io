@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    
+    <title>passportjs 筆記 | Dandan Rhapsody | 紀錄一些技術/瑣事</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="nodeJs,express,passportjs">
+    <link rel="shortcut icon" href="/img/favicons.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="/css/style.css?v=1.4.1">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":true,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":true,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"dandanXO","repo":"gitment","oauth":{"client_id":"03d79e26c1ae2b6081a3","client_secret":"bbcc8d0e56be3034b326e92235ef2ca69928b229"},"perPage":2}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatars.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Dandan</h5>
+          <a href="mailto:dandanxo.1996@gmail.com" title="dandanxo.1996@gmail.com" class="mail">
+            
+              <span>d</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>d</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>x</span>
+            
+              <span>o</span>
+            
+              <span>.</span>
+            
+              <span>1</span>
+            
+              <span>9</span>
+            
+              <span>9</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>g</span>
+            
+              <span>m</span>
+            
+              <span>a</span>
+            
+              <span>i</span>
+            
+              <span>l</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/dandanXO" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                ABOUT
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="https://www.cakeresume.com/91daf4" target="_blank" >
+                <i class="icon icon-lg icon-plus-square"></i>
+                Resume
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="https://github.com/dandanXO" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>passportjs 筆記</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="https://i.imgur.com/OLJxbaR.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">passportjs 筆記</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-12-05T16:46:33.000Z" itemprop="datePublished" class="page-time">
+  2017-12-06
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/passportjs/">passportjs</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="passportjs-passportjs筆記"
+    class="post-article article-type-passportjs" itemprop="blogPost">
+      <div class="post-card">
+          <h1 class="post-card-title">passportjs 筆記</h1>
+          <div class="post-meta">
+              <time class="post-time" title="2017-12-06 00:46:33" datetime="2017-12-05T16:46:33.000Z"  itemprop="datePublished">2017-12-06</time>
+
+              
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/passportjs/">passportjs</a></li></ul>
+
+
+
+              
+	<span id="/2017/12/06/passportjs筆記/" class="leancloud_visitors" data-flag-title="passportjs 筆記" title="passportjs 筆記">
+		
+			<i class="icon icon-eye"></i>
+		
+		<span class="leancloud-visitors-count"></span>
+	</span>
+ 
+
+              
+    <span class="leancloud-comment">
+        <i class="icon icon-comment-o"></i>
+        <a href="/2017/12/06/passportjs筆記/#comment">
+            <span class="valine-comment-count" data-xid="/2017/12/06/passportjs筆記/"></span>
+        </a>
+    </span>
+
+
+
+              
+          </div>
+          <div class="post-content" id="post-content" itemprop="postContent">
+              
+              <h1 id="passportjs-筆記"><a href="#passportjs-筆記" class="headerlink" title="passportjs 筆記"></a>passportjs 筆記</h1><figure class="image-box">
+                <a rel=passportjs 筆記 href="https://i.imgur.com/Se9H7n4.jpg" title="Imgur" data-fancybox="images"><img src="https://i.imgur.com/Se9H7n4.jpg" alt="Imgur" title="" class=""></a>
+                <p>Imgur</p>
+            </figure>
+<h1 id="環境要求"><a href="#環境要求" class="headerlink" title="環境要求"></a>環境要求</h1><p>Nodejs，然後資料庫用來存儲用戶數據；另外passport作為中間件，需要依賴Express和Connect，還有由於Express 3.x或4.x以後的版本將一些中間件分離出去，因此你還需要先安裝它們。其中express-flash是用於顯示提示信息的中間件，是可選則的，如果需要用到passport中的提示，則需要安裝。</p>
+<h2 id="主要的中間件"><a href="#主要的中間件" class="headerlink" title="主要的中間件"></a>主要的中間件</h2><ul>
+<li>Express：web框架。或其他支持的框架。</li>
+<li>Connect：中間件框架。</li>
+<li>cookie-parser：Connect的cookie解析中間件。</li>
+<li>express-session：Connect的session解析中間件，依賴於cookie-parser。</li>
+<li>express-flash：express的消息提示中間件，可選，但一般情況下都需要裝。</li>
+</ul>
+<h2 id="安裝和配置"><a href="#安裝和配置" class="headerlink" title="安裝和配置"></a>安裝和配置</h2><p>你最少需要安裝一個passport <em>策略</em> 來使用它，一般而言本地驗證策略passport-local是必裝的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install passport</span><br><span class="line">npm install passport-local</span><br></pre></td></tr></table></figure></p>
+<p>安裝完成後需要配置中間件，一般的順序如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> cookieParser = <span class="built_in">require</span>(<span class="string">'cookie-parser'</span>);</span><br><span class="line"><span class="keyword">var</span> session = <span class="built_in">require</span>(<span class="string">'express-session'</span>);</span><br><span class="line"><span class="keyword">var</span> flash = <span class="built_in">require</span>(<span class="string">'express-flash'</span>);</span><br><span class="line"><span class="keyword">var</span> passport = <span class="built_in">require</span>(<span class="string">'passport'</span>);</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">app.use(cookieParser());</span><br><span class="line">app.use(session(&#123;...&#125;));</span><br><span class="line">app.use(passport.initialize());</span><br><span class="line">app.use(passport.session());</span><br><span class="line">app.use(flash())</span><br></pre></td></tr></table></figure></p>
+<p>其中重要的是app.use()部分，express中的中間件順序很重要，注意不要弄錯，除非你知道不同中間件間的準確相依關係。</p>
+<hr>
+<h1 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h1><p>passport用的比較多的有local本地驗證和OAuth驗證。</p>
+<p>你也可以看看這兩篇，Express結合<a href="http://blog.fens.me/nodejs-express-passport/" target="_blank" rel="noopener">Passport實現登陸認證</a>和<a href="http://blog.fens.me/nodejs-oauth-passport/" target="_blank" rel="noopener">Passport實現社交網絡OAuth登陸</a>，裡面的示例涵蓋了基本的用法，本文也參考<br>了其中的一些例子。</p>
+<ul>
+<li>local本地驗證<ul>
+<li>配置策略</li>
+<li>usernameField</li>
+<li>驗證回調</li>
+<li>密碼驗證</li>
+<li>session序列化與反序列化</li>
+<li>Authenticate驗證</li>
+<li>HTTP請求操作</li>
+<li>完整範例</li>
+</ul>
+</li>
+<li>OAuth驗證<ul>
+<li>OAuth驗證流程</li>
+<li>OAuth1.0</li>
+<li>OAuth2.0的</li>
+<li>使用passport-x插件</li>
+<li>OAuth驗證的邏輯</li>
+</ul>
+</li>
+</ul>
+<h2 id="local本地驗證"><a href="#local本地驗證" class="headerlink" title="local本地驗證"></a>local本地驗證</h2><p>本地驗證預設使用用戶名和密碼來進行驗證。</p>
+<h3 id="配置策略"><a href="#配置策略" class="headerlink" title="配置策略"></a>配置策略</h3><p>在做驗證之前，首先需要對策略進行配置，官方的示例如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> passport = <span class="built_in">require</span>(<span class="string">'passport'</span>)</span><br><span class="line">  , LocalStrategy = <span class="built_in">require</span>(<span class="string">'passport-local'</span>).Strategy;</span><br><span class="line"></span><br><span class="line">passport.use(<span class="keyword">new</span> LocalStrategy(</span><br><span class="line">  <span class="function"><span class="keyword">function</span>(<span class="params">username, password, done</span>) </span>&#123;</span><br><span class="line">    User.findOne(&#123; <span class="attr">username</span>: username &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err, user</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (err) &#123; <span class="keyword">return</span> done(err); &#125;</span><br><span class="line">      <span class="keyword">if</span> (!user) &#123;</span><br><span class="line">        <span class="keyword">return</span> done(<span class="literal">null</span>, <span class="literal">false</span>, &#123; <span class="attr">message</span>: <span class="string">'用户名不存在.'</span> &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (!user.validPassword(password)) &#123;</span><br><span class="line">        <span class="keyword">return</span> done(<span class="literal">null</span>, <span class="literal">false</span>, &#123; <span class="attr">message</span>: <span class="string">'密码不匹配.'</span> &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> done(<span class="literal">null</span>, user);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">));</span><br></pre></td></tr></table></figure></p>
+<p>其中的是MongoDB的語法，意思是從數據庫的User集合中查詢一條數據，第一個參數是查詢條件，後面是callback，一般在callback中進行後續操作。<code>User.findOne()</code></p>
+<p>這裡的邏輯很簡單，依次檢查、，如果出錯則返回錯誤信息，如果通過則返回。<code>usernamepassworddone(null,user)</code></p>
+<h3 id="usernameField"><a href="#usernameField" class="headerlink" title="usernameField"></a>usernameField</h3><p>前面說過passport默認使用用戶名和密碼來驗證，但實際上也有很多需要用郵箱來驗證的，那麼如何實現呢？</p>
+<p>passport在策略配置裡提供了options參數，用來設置你要驗證的字段名稱，即usernameField，使用方法如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">passport.use(<span class="keyword">new</span> LocalStrategy(&#123;</span><br><span class="line">    usernameField: <span class="string">'email'</span>,</span><br><span class="line">    passwordField: <span class="string">'passwd'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="keyword">function</span>(<span class="params">username, password, done</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">));</span><br></pre></td></tr></table></figure></p>
+<p> <em>注意，這裡的字段名稱應該是頁面表單提交的名稱，即req.body.xxx，而不是user數據庫中的字段名稱。</em></p>
+<p> 將options作為LocalStrategy第一個參數傳入即可。</p>
+<h3 id="驗證callback"><a href="#驗證callback" class="headerlink" title="驗證callback"></a>驗證callback</h3><p> passport本身不處理驗證，驗證方法在策略配置的回調函數里由用戶自行設置，它又稱為驗證回調。驗證回調需要返回驗證結果，這是由done()來完成的。</p>
+<p>在passport.use()裡面，done()有三種用法：</p>
+<ul>
+<li><p>當發生系統級異常時，返回done(err)，這裡是數據庫查詢出錯，一般用next(err)，但這裡用done(err)，兩者的效果相同，都是返回error信息；</p>
+</li>
+<li><p>當驗證不通過時，返回done(null, false, message)，這裡的message是可選的，可通過express-flash調用；</p>
+</li>
+<li><p>當驗證通過時，返回done(null, user)。</p>
+</li>
+</ul>
+<h3 id="密碼驗證"><a href="#密碼驗證" class="headerlink" title="密碼驗證"></a>密碼驗證</h3><p>一般對密碼進行hash和鹽化(solt)的Nodejs模塊是bcrypt，它提供一個compare方法來驗證密碼，如何使用它則超出本文的範圍，這裡就不講了。</p>
+<h3 id="session序列化與反序列化"><a href="#session序列化與反序列化" class="headerlink" title="session序列化與反序列化"></a>session序列化與反序列化</h3><p>驗證用戶提交的憑證是否正確，是與session中儲存的對象進行對比，所以涉及到從session中存取數據，需要做session對象序列化與反序列化。調用代碼如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">passport.serializeUser(<span class="function"><span class="keyword">function</span>(<span class="params">user, done</span>) </span>&#123;</span><br><span class="line">  done(<span class="literal">null</span>, user.id);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">passport.deserializeUser(<span class="function"><span class="keyword">function</span>(<span class="params">id, done</span>) </span>&#123;</span><br><span class="line">  User.findById(id, <span class="function"><span class="keyword">function</span>(<span class="params">err, user</span>) </span>&#123;</span><br><span class="line">    done(err, user);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>這裡第一段代碼是將環境中的user.id序列化到session中，即sessionID，同時它將作為憑證存儲在用戶cookie中。</p>
+<p>第二段代碼是從session反序列化，參數為用戶提交的sessionID，若存在則從數據庫中查詢user並存儲與req.user中。</p>
+<p>這段代碼的順序可以放在passport.use()的前面或後面，但需要在app.configure()之前。</p>
+<p><em>PS:其實這段只要到官方文件照抄就好不太需要變動到。</em></p>
+<h3 id="Authenticate驗證"><a href="#Authenticate驗證" class="headerlink" title="Authenticate驗證"></a>Authenticate驗證</h3><p>做完了上面這些設置，我們終於可以開始做驗證了。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">app.post(<span class="string">'/login'</span>,</span><br><span class="line">  passport.authenticate(<span class="string">'local'</span>,</span><br><span class="line">    &#123; <span class="attr">successRedirect</span>: <span class="string">'/'</span>,</span><br><span class="line">     failureRedirect: <span class="string">'/login'</span>,</span><br><span class="line">     failureFlash: <span class="literal">true</span> &#125;),</span><br><span class="line">  <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 验证成功则调用此回调函数</span></span><br><span class="line">    res.redirect(<span class="string">'/users/'</span> + req.user.username);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>這裡的passport.authenticate(‘local’)就是中間件，若通過就進入後面的回調函數，並且給res加上res.user，若不通過則默認返回401錯誤。<br>uthenticate()方法有3個參數，第一是name，即驗證策略的名稱，第二個是options，包括下列屬性：</p>
+<ul>
+<li>session：Boolean。設置是否需要session，默認為true</li>
+<li>successRedirect：String。設置當驗證成功時的跳轉鏈接</li>
+<li>failureRedirect：String。設置當驗證失敗時的跳轉鏈接</li>
+<li>failureFlash：Boolean or String。設置為Boolean時，express-flash將調用use()裡設置<br>的message。設置為String時將直接調用這裡的信息。</li>
+<li>successFlash：Boolean or String。使用方法同上。</li>
+</ul>
+<p>第三個參數是callback。注意如果使用了callback，那麼驗證之後建立session和發出響應都應該由這個callback來做，passport中間件之後不應該再有其他中間件或callback。以下是代碼：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">'/login'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  passport.authenticate(<span class="string">'local'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, user, info</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123; <span class="keyword">return</span> next(err); &#125;</span><br><span class="line">    <span class="keyword">if</span> (!user) &#123; <span class="keyword">return</span> res.redirect(<span class="string">'/login'</span>); &#125;</span><br><span class="line">    req.logIn(user, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (err) &#123; <span class="keyword">return</span> next(err); &#125;</span><br><span class="line">      <span class="keyword">return</span> res.redirect(<span class="string">'/users/'</span> + user.username);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;)(req, res, next);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="HTTP請求操作"><a href="#HTTP請求操作" class="headerlink" title="HTTP請求操作"></a>HTTP請求操作</h3><p>注意上面的代碼裡有個req.logIn()，它不是http模塊原生的方法，也不是express中的方法，而是passport加上的，passport擴展了HTTP request，添加了四種方法。</p>
+<ul>
+<li>logIn(user, options, callback)：用login()也可以。作用是為登錄用戶初始化session。options可設置session為false，即不初始化session，默認為true。</li>
+<li>logOut()：別名為logout()。作用是登出用戶，刪除該用戶session。不帶參數。</li>
+<li>isAuthenticated()：不帶參數。作用是測試該用戶是否存在於session中（即是否已登錄）。若存在返回true。事實上這個比登錄驗證要用的更多，畢竟session通常會保留一段時間，在此期間判斷用戶是否已登錄用這個方法就行了。</li>
+<li>isUnauthenticated()：不帶參數。和上面的作用相反。</li>
+</ul>
+<h3 id="完整範例"><a href="#完整範例" class="headerlink" title="完整範例"></a>完整範例</h3><p>基本上passport本地驗證的知識點就是這些，下面給出一個相對完整的示例，包括bcrypt的實現，這裡借用了nodeclub中的方法，為實現它你需要自己配置hash：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> cookieParser = <span class="built_in">require</span>(<span class="string">'cookie-parser'</span>);</span><br><span class="line"><span class="keyword">var</span> session = <span class="built_in">require</span>(<span class="string">'express-session'</span>);</span><br><span class="line"><span class="keyword">var</span> passport = <span class="built_in">require</span>(<span class="string">'passport'</span>);</span><br><span class="line"><span class="keyword">var</span> LocalStrategy = <span class="built_in">require</span>(<span class="string">'passport-local'</span>).Strategy;</span><br><span class="line"><span class="comment">//User模型需自己實作</span></span><br><span class="line"><span class="keyword">var</span> User = <span class="built_in">require</span>(<span class="string">'../models/User'</span>);</span><br><span class="line"><span class="keyword">var</span> bcrypt = <span class="built_in">require</span>(<span class="string">'bcrypt'</span>);</span><br><span class="line"></span><br><span class="line">passport.serializeUser(<span class="function"><span class="keyword">function</span>(<span class="params">user, done</span>) </span>&#123;</span><br><span class="line">  done(<span class="literal">null</span>, user.id);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">passport.deserializeUser(<span class="function"><span class="keyword">function</span>(<span class="params">id, done</span>) </span>&#123;</span><br><span class="line">  User.findById(id, <span class="function"><span class="keyword">function</span>(<span class="params">err, user</span>) </span>&#123;</span><br><span class="line">    done(err, user);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//這裡username可以改成前端表單對應的名稱，如：</span></span><br><span class="line"><span class="comment">// &lt;form&gt;&lt;input type="text" name="hehe"&gt;...&lt;/form&gt;</span></span><br><span class="line"><span class="comment">//這裡將所有的username改成hehe</span></span><br><span class="line">passport.use(<span class="keyword">new</span> LocalStrategy(&#123; <span class="attr">usernameField</span>: <span class="string">'username'</span> &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">username, password, done</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//實現用户名或電子郵件登錄</span></span><br><span class="line">  <span class="comment">//這裡判斷提交上的username是否含有@，來決定查詢的字段是哪一個</span></span><br><span class="line">  <span class="keyword">var</span> criteria = (username.indexOf(<span class="string">'@'</span>) === <span class="number">-1</span>) ? &#123;<span class="attr">username</span>: username&#125; : &#123;<span class="attr">email</span>: username&#125;;</span><br><span class="line">  User.findOne(criteria, <span class="function"><span class="keyword">function</span>(<span class="params">err, user</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!user) <span class="keyword">return</span> done(<span class="literal">null</span>, <span class="literal">false</span>, &#123; <span class="attr">message</span>: <span class="string">'用戶名或電子郵件 '</span> + username + <span class="string">' 不存在'</span>&#125;);</span><br><span class="line">    bcompare(password, hash, <span class="function"><span class="keyword">function</span>(<span class="params">err, isMatch</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (isMatch) &#123;</span><br><span class="line">        <span class="keyword">return</span> done(<span class="literal">null</span>, user);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> done(<span class="literal">null</span>, <span class="literal">false</span>, &#123; <span class="attr">message</span>: <span class="string">'密码不符'</span> &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">app.use(cookieParser());</span><br><span class="line">app.use(session(&#123;<span class="attr">secret</span>: <span class="string">"need change"</span>&#125;));</span><br><span class="line">app.use(passport.initialize());</span><br><span class="line">app.use(passport.session());</span><br><span class="line">app.use(flash());</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">app.post(<span class="string">'/login'</span>, passport.authenticate(<span class="string">'local'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, user, info</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) <span class="keyword">return</span> next(err);</span><br><span class="line">    <span class="keyword">if</span> (!user) &#123;</span><br><span class="line">      req.flash(<span class="string">'errors'</span>, &#123; <span class="attr">msg</span>: info.message &#125;);</span><br><span class="line">      <span class="keyword">return</span> res.redirect(<span class="string">'/login'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    req.logIn(user, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (err) <span class="keyword">return</span> next(err);</span><br><span class="line">      req.flash(<span class="string">'success'</span>, &#123; <span class="attr">msg</span>: <span class="string">'登入成功！'</span> &#125;);</span><br><span class="line">      res.redirect(<span class="string">'/'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;)(req, res, next)</span><br><span class="line">);</span><br><span class="line"><span class="comment">//getUser方法需要自定義</span></span><br><span class="line">app.get(<span class="string">'/user'</span>, isAuthenticated, getUser);</span><br><span class="line">app.get(<span class="string">'/logout'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">  req.logout();</span><br><span class="line">  res.redirect(<span class="string">'/'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//將req.isAuthenticated()封裝成中間件</span></span><br><span class="line"><span class="keyword">var</span> isAuthenticated = <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (req.isAuthenticated()) <span class="keyword">return</span> next();</span><br><span class="line">  res.redirect(<span class="string">'/login'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> bcompare = <span class="function"><span class="keyword">function</span> (<span class="params">str, hash, callback</span>) </span>&#123;</span><br><span class="line">bcrypt.compare(str, hash, callback);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>基本的local驗證就到這裡，下篇還有進階的驗證技巧，比如在RESTful API中使用passport，驗證多個條件等。</p>
+<h2 id="OAuth驗證"><a href="#OAuth驗證" class="headerlink" title="OAuth驗證"></a>OAuth驗證</h2><p>OAuth驗證是體現passport強大的地方，如果你看過nodeclub的源碼，會發現它自己實現了local驗證，但它的Github驗證是用passport來實現的。</p>
+<p>OAuth標準分為兩個版本，1.0版和2.0版，兩者被使用的都很廣泛，passport通過passport-oauth為兩者提供支持，使用下面的命令可以安裝。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install passport-oauth</span><br></pre></td></tr></table></figure></p>
+<h3 id="OAuth驗證流程"><a href="#OAuth驗證流程" class="headerlink" title="OAuth驗證流程"></a>OAuth驗證流程</h3><p>OAuth1.0和2.0的使用流程都差不多，一般來說如下：</p>
+<ol>
+<li>為你的app去第三方服務商處申請標識和令牌appkey和secret；</li>
+<li>在你的app裡添加按鈕或鏈接，將用戶引導至服務商的授權頁，用戶在這裡選擇授權給你的app；</li>
+<li>授權成功後跳轉回你的app，同時還傳遞回access_token和一些用戶資料。</li>
+</ol>
+<p>到這里首次驗證流程就完成了，之後只要拿access_token去就可以做登錄驗證或者其他事了。</p>
+<h3 id="OAuth1-0"><a href="#OAuth1-0" class="headerlink" title="OAuth1.0"></a>OAuth1.0</h3><p>要使用passport OAuth1.0驗證你需要先引入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var passport = require(&apos;passport&apos;)</span><br><span class="line">  , OAuthStrategy = require(&apos;passport-oauth&apos;).OAuthStrategy;</span><br></pre></td></tr></table></figure></p>
+<p>然後是配置：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">passport.use(<span class="string">'provider'</span>, <span class="keyword">new</span> OAuthStrategy(&#123;</span><br><span class="line">    requestTokenURL: <span class="string">'https://www.provider.com/oauth/request_token'</span>,</span><br><span class="line">    accessTokenURL: <span class="string">'https://www.provider.com/oauth/access_token'</span>,</span><br><span class="line">    userAuthorizationURL: <span class="string">'https://www.provider.com/oauth/authorize'</span>,</span><br><span class="line">    consumerKey: <span class="string">'123-456-789'</span>,</span><br><span class="line">    consumerSecret: <span class="string">'shhh-its-a-secret'</span></span><br><span class="line">    callbackURL: <span class="string">'https://www.example.com/auth/provider/callback'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="keyword">function</span>(<span class="params">token, tokenSecret, profile, done</span>) </span>&#123;</span><br><span class="line">    User.findOrCreate(..., <span class="function"><span class="keyword">function</span>(<span class="params">err, user</span>) </span>&#123;</span><br><span class="line">      done(err, user);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">));</span><br></pre></td></tr></table></figure></p>
+<p>這裡比通用流程多的一點就是，你的App需要先訪問第三方服務，獲取request token，這個request token是未授權的，等用戶授權之後，可以拿這個request token去換取access token。</p>
+<p>在passport中你不必管這些細節，找到第三服務的文檔找到對應的URL添上即可。當然你還得申請key和secret。</p>
+<p>use方法的回調接受四個參數，token就是access token，和tokenSecret一起好好保存。profile則是用戶在第三方服務上的一些公開資料，它的模型在<a href="http://www.passportjs.org/docs/profile" target="_blank" rel="noopener">這裡</a>，不過返回的資料不一定全面，在使用前需要驗證是否存在。</p>
+<h3 id="OAuth2-0的"><a href="#OAuth2-0的" class="headerlink" title="OAuth2.0的"></a>OAuth2.0的</h3><p>OAuth2.0的驗證不需要request_token，但比1.0多了scope和refresh token，我們先來看看具體的配置方法：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> passport = <span class="built_in">require</span>(<span class="string">'passport'</span>)</span><br><span class="line">  , OAuth2Strategy = <span class="built_in">require</span>(<span class="string">'passport-oauth'</span>).OAuth2Strategy;</span><br><span class="line"></span><br><span class="line">passport.use(<span class="string">'provider'</span>, <span class="keyword">new</span> OAuth2Strategy(&#123;</span><br><span class="line">    authorizationURL: <span class="string">'https://www.provider.com/oauth2/authorize'</span>,</span><br><span class="line">    tokenURL: <span class="string">'https://www.provider.com/oauth2/token'</span>,</span><br><span class="line">    clientID: <span class="string">'123-456-789'</span>,</span><br><span class="line">    clientSecret: <span class="string">'shhh-its-a-secret'</span></span><br><span class="line">    callbackURL: <span class="string">'https://www.example.com/auth/provider/callback'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="keyword">function</span>(<span class="params">accessToken, refreshToken, profile, done</span>) </span>&#123;</span><br><span class="line">    User.findOrCreate(..., <span class="function"><span class="keyword">function</span>(<span class="params">err, user</span>) </span>&#123;</span><br><span class="line">      done(err, user);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">));</span><br></pre></td></tr></table></figure></p>
+<p>refreshToken是重新獲取access token的方法，因為access token是有使用期限的，到期了必須讓用戶重新授權才行，現在有了refresh token，你可以讓應用定期的用它去更新access token，這樣第三方服務就可以一直綁定了。不過這個方法並不是每個服務商都提供，注意看服務商的文檔。</p>
+<p>下面是路由，OAuth2.0也有一點不同：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">'/auth/provider'</span>,</span><br><span class="line">  passport.authenticate(<span class="string">'provider'</span>, &#123; <span class="attr">scope</span>: <span class="string">'email'</span> &#125;)</span><br><span class="line">);</span><br><span class="line">app.get(<span class="string">'/auth/provider/callback'</span>,</span><br><span class="line">  passport.authenticate(<span class="string">'provider'</span>, &#123; <span class="attr">successRedirect</span>: <span class="string">'/'</span>,</span><br><span class="line">                                      failureRedirect: <span class="string">'/login'</span> &#125;));</span><br></pre></td></tr></table></figure></p>
+<p>scope是權限範圍，需要在服務商處事先申請，想進一步了解可參考微博的<a href="http://open.weibo.com/wiki/Scope" target="_blank" rel="noopener">scope文檔</a>。它可以只有一項，也可以有多項，當為多項時以數組形式表示。</p>
+<h3 id="使用passport-x插件"><a href="#使用passport-x插件" class="headerlink" title="使用passport-x插件"></a>使用passport-x插件</h3><p>passport-oauth包含通用的驗證方法，基本山任何提供OAuth的服務都能用上面的方法來驗證，但大部分提供第三方登錄的網站都有passport的插件，它們的列表見<a href="http://passportjs.org/guide/providers/" target="_blank" rel="noopener">官網</a>和<a href="https://github.com/jaredhanson/passport/wiki/Strategies#providers" target="_blank" rel="noopener">Github wiki</a>。使用它們可以讓app綁定第三方服務更加簡單和模塊化。<br>passport-x插件的一般用法如下（以Github為例）。</p>
+<p>首先安裝passport-github，注意這種情況不需要安裝passport-oauth：</p>
+<p><code>npm install passport-github</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> passport = <span class="built_in">require</span>(<span class="string">'passport'</span>)</span><br><span class="line">  , GithubStrategy = <span class="built_in">require</span>(<span class="string">'passport-github'</span>).Strategy;</span><br><span class="line"></span><br><span class="line"><span class="comment">//passport设置部分</span></span><br><span class="line">passport.use(<span class="keyword">new</span> GithubStrategy(&#123;</span><br><span class="line">    clientID: GITHUB_CLIENT_ID,</span><br><span class="line">    clientSecret: GITHUB_CLIENT_SECRET,</span><br><span class="line">    callbackURL: <span class="string">"http://www.example.com/auth/github/callback"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="keyword">function</span>(<span class="params">accessToken, refreshToken, profile, done</span>) </span>&#123;</span><br><span class="line">    User.findOrCreate(..., <span class="function"><span class="keyword">function</span>(<span class="params">err, user</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (err) &#123; <span class="keyword">return</span> done(err); &#125;</span><br><span class="line">      done(<span class="literal">null</span>, user);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">));</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"><span class="comment">//路由部分</span></span><br><span class="line">app.get(<span class="string">'/auth/github'</span>, passport.authenticate(<span class="string">'github'</span>));</span><br><span class="line">app.get(<span class="string">'/auth/github/callback'</span>,</span><br><span class="line">  passport.authenticate(<span class="string">'github'</span>, &#123; <span class="attr">failureRedirect</span>: <span class="string">'/login'</span> &#125;),</span><br><span class="line">  <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    res.redirect(<span class="string">'/'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"><span class="string">``</span><span class="string">`  </span></span><br><span class="line"><span class="string">與通用OAuth驗證流程對比，上面的代碼少了服務商的驗證頁部分，你只需要將獲得的appkey和secret填到對應地方即可。</span></span><br><span class="line"><span class="string">### OAuth驗證的邏輯</span></span><br><span class="line"><span class="string">OAuth驗證的麻煩之處主要是處理邏輯，很多網站將第三方的OAuth作為一種用戶註冊手段，當用戶點擊第三方登錄時，若用戶未註冊會為他們創建賬號，這裡面的邏輯就比較繞了。比如Hackathon Starter的處理邏輯如下：</span></span><br></pre></td></tr></table></figure></p>
+<p>/**</p>
+<ul>
+<li>OAuth驗證策略<br>*</li>
+<li>用戶點擊“使用XX登陸”連接</li>
+<li><ul>
+<li>若用户已登陸</li>
+</ul>
+</li>
+<li><ul>
+<li>檢查該用户是否已經绑定XX服務</li>
+</ul>
+</li>
+<li><ul>
+<li>如果已绑定，返回錯誤（不允許帳戶合併）</li>
+</ul>
+</li>
+<li><ul>
+<li>否則開始驗證流程，為該用户綁定XX服務</li>
+</ul>
+</li>
+<li><ul>
+<li>用戶未登入</li>
+</ul>
+</li>
+<li><ul>
+<li>檢查是否是老用戶</li>
+</ul>
+</li>
+<li><ul>
+<li>如果是老用户，則登入</li>
+</ul>
+</li>
+<li><ul>
+<li>否則檢查OAuth返回profile中的email，是否在用戶存在於資料庫中</li>
+</ul>
+</li>
+<li><ul>
+<li>如果存在，返回錯誤訊息</li>
+</ul>
+</li>
+<li><ul>
+<li>否則創建一個新帳號<br>*/<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">另外還有平常驗證用戶是否已綁定某個服務，可以封裝成中間件：</span><br><span class="line">```js</span><br><span class="line">var isAuthorized = function(req, res, next) &#123;</span><br><span class="line"></span><br><span class="line">  if (req.user.provider)) &#123;</span><br><span class="line">    next();</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    //do something else</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>學習OAuth驗證最好的項目是<a href="https://github.com/sahat/hackathon-starter" target="_blank" rel="noopener">Hackathon Starter</a>，它實現了十幾種的第三方網站和服務的OAuth驗證，推薦學習。下面進階學習裡面還有如何開發一個passport OAuth驗證插件。</p>
+
+          </div>
+          
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最後更新時間：<time datetime="2017-12-15T03:54:39.212Z" itemprop="dateUpdated">2017-12-15 11:54:39</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2017/12/06/passportjs筆記/" target="_blank" rel="external">https://blog.dandan.tw/2017/12/06/passportjs筆記/</a>
+        
+    </div>
+    <footer>
+        <a href="https://blog.dandan.tw">
+            <img src="/img/avatars.jpg" alt="Dandan">
+            Dandan
+        </a>
+    </footer>
+</blockquote>
+
+          
+          <div class="post-footer">
+              
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/express/">express</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodeJs/">nodeJs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/passportjs/">passportjs</a></li></ul>
+
+              <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.dandan.tw/2017/12/06/passportjs筆記/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《passportjs 筆記》 — Dandan Rhapsody&url=https://blog.dandan.tw/2017/12/06/passportjs筆記/&via=https://blog.dandan.tw" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.dandan.tw/2017/12/06/passportjs筆記/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+          </div>
+          
+              
+    <div id="comment"></div>
+
+
+
+          
+      </div>
+      
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2017/12/08/Promise學習筆記/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Promise 筆記</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2017/11/09/Mongoose筆記/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Mongoose筆記</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+      
+      
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目錄</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#passportjs-筆記"><span class="post-toc-number">1.</span> <span class="post-toc-text">passportjs 筆記</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#環境要求"><span class="post-toc-number">2.</span> <span class="post-toc-text">環境要求</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#主要的中間件"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">主要的中間件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安裝和配置"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">安裝和配置</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#基本用法"><span class="post-toc-number">3.</span> <span class="post-toc-text">基本用法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#local本地驗證"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">local本地驗證</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置策略"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">配置策略</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#usernameField"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">usernameField</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#驗證callback"><span class="post-toc-number">3.1.3.</span> <span class="post-toc-text">驗證callback</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#密碼驗證"><span class="post-toc-number">3.1.4.</span> <span class="post-toc-text">密碼驗證</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#session序列化與反序列化"><span class="post-toc-number">3.1.5.</span> <span class="post-toc-text">session序列化與反序列化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Authenticate驗證"><span class="post-toc-number">3.1.6.</span> <span class="post-toc-text">Authenticate驗證</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#HTTP請求操作"><span class="post-toc-number">3.1.7.</span> <span class="post-toc-text">HTTP請求操作</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#完整範例"><span class="post-toc-number">3.1.8.</span> <span class="post-toc-text">完整範例</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#OAuth驗證"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">OAuth驗證</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#OAuth驗證流程"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">OAuth驗證流程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#OAuth1-0"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">OAuth1.0</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#OAuth2-0的"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">OAuth2.0的</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用passport-x插件"><span class="post-toc-number">3.2.4.</span> <span class="post-toc-text">使用passport-x插件</span></a></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+  </article>
+  
+  
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Dandan &copy; 2015 - 2019
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+            <span>
+	            Hosted by <a href="https://coding.net/pages" target="_blank">Coding Pages</a>
+            </span>
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.dandan.tw/2017/12/06/passportjs筆記/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《passportjs 筆記》 — Dandan Rhapsody&url=https://blog.dandan.tw/2017/12/06/passportjs筆記/&via=https://blog.dandan.tw" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.dandan.tw/2017/12/06/passportjs筆記/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3aQW7DMAwEwP7/0ynQaxp7SakFTI1OReJamhwIiuTXV7xeP+v9k/eVfPvpzddPblgYGBiPZbwuV77Zp+fzI+Y/xy/vwcDAOICRh8L8QNfvvwbnZ8PAwMDIA2j1k17gxsDAwOgF3OqVtZqGYmBgYOSvbl4v4yJd/vNhYGCcxqg2Bv7z7z/sb2BgYDyE8SquvDGwd9+bU2FgYIxmJKX53vbVxmc1JS13GDAwMB7O6I1/5dR8tCL/WW8wGBgYgxi9MYiVENks+l/jMTAwRjOSELkSQFeuvuViHAYGxmhGrzFQDazJt1V2s4WAgYHxQMZ6e6A3itEb7Li5ymJgYAxlJIlgdZs8lczT0+gqi4GBMY7RS/Kq+IS00pHEwMCYzVgvePXSyl478yagY2BgHMlIBh32poDNUIuBgTGakbQtkwSx+u3eSy8GBsZsRj4wUd2m1xDddRIMDIypjN7AVq/o1hu8iE6CgYFxAGO9SbASxK/DbrQ7BgbGOEZvuGGluNZrDxSCLAYGxlDG+ie9cNlL/qLmJQYGxiBG9dH1Y/Wej8I3BgbGUMb6UFdSSuu1PAv/i4GBMZqRr6SUv6vlWd0LAwPjBEYSZFdakoUstTobkrwaAwNjECMv8efX1F3X16jwh4GBgVEMvnn6WL0MFxoDGBgYxzO2Bcrl4Q8MDIxzGL2gmYTgamEub0I07+IYGBgPZPQaA0lzsXro9dCMgYExjvENUF5gvp1Z348AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.1"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.1"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.1"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+        <script type="text/javascript" src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script type="text/javascript" src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script type="text/javascript" src="/js/plugins/valine.js?v=1.4.1"></script>
+    
+    
+
+
+
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script type="text/javascript" src="/js/plugins/leancloud_visitors.js?v=1.4.1"></script>
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+    <script>
+    (function() {
+        var OriginTitile = document.title, titleTime;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.title = '回來繼續看啦！';
+                clearTimeout(titleTime);
+            } else {
+                document.title = '(つェ⊂)咦!又好了!';
+                titleTime = setTimeout(function() {
+                    document.title = OriginTitile;
+                },2000);
+            }
+        });
+    })();
+</script>
+
+
+
+
+
+    
+</body>
+</html>

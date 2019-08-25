@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    
+    <title>First Interview | Dandan Rhapsody | 紀錄一些技術/瑣事</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Interview,javascript">
+    <link rel="shortcut icon" href="/img/favicons.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="/css/style.css?v=1.4.1">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":true,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":true,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"dandanXO","repo":"gitment","oauth":{"client_id":"03d79e26c1ae2b6081a3","client_secret":"bbcc8d0e56be3034b326e92235ef2ca69928b229"},"perPage":2}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatars.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Dandan</h5>
+          <a href="mailto:dandanxo.1996@gmail.com" title="dandanxo.1996@gmail.com" class="mail">
+            
+              <span>d</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>d</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>x</span>
+            
+              <span>o</span>
+            
+              <span>.</span>
+            
+              <span>1</span>
+            
+              <span>9</span>
+            
+              <span>9</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>g</span>
+            
+              <span>m</span>
+            
+              <span>a</span>
+            
+              <span>i</span>
+            
+              <span>l</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/dandanXO" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                ABOUT
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="https://www.cakeresume.com/91daf4" target="_blank" >
+                <i class="icon icon-lg icon-plus-square"></i>
+                Resume
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="https://github.com/dandanXO" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>First Interview</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="https://i.imgur.com/OLJxbaR.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">First Interview</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-06T07:26:49.000Z" itemprop="datePublished" class="page-time">
+  2018-05-06
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Interview/">Interview</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-FirstInterview"
+    class="post-article article-type-post" itemprop="blogPost">
+      <div class="post-card">
+          <h1 class="post-card-title">First Interview</h1>
+          <div class="post-meta">
+              <time class="post-time" title="2018-05-06 15:26:49" datetime="2018-05-06T07:26:49.000Z"  itemprop="datePublished">2018-05-06</time>
+
+              
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Interview/">Interview</a></li></ul>
+
+
+
+              
+	<span id="/2018/05/06/FirstInterview/" class="leancloud_visitors" data-flag-title="First Interview" title="First Interview">
+		
+			<i class="icon icon-eye"></i>
+		
+		<span class="leancloud-visitors-count"></span>
+	</span>
+ 
+
+              
+    <span class="leancloud-comment">
+        <i class="icon icon-comment-o"></i>
+        <a href="/2018/05/06/FirstInterview/#comment">
+            <span class="valine-comment-count" data-xid="/2018/05/06/FirstInterview/"></span>
+        </a>
+    </span>
+
+
+
+              
+          </div>
+          <div class="post-content" id="post-content" itemprop="postContent">
+              
+              <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>安，一如往常的聊天開頭。想說等所有面試一結束就寫文章，發現太忙(<strike>其實是懶的打</strike>)就拖到現在。</p>
+<p>我自己滿喜歡看的文章大致分成兩類，一種是分享軟硬體技術，例如教你如何使用golang從頭到尾實作出<code>Web Server</code>等<br>，另一種則是像心得文章例如<a href="http://jaceju.net/2016-12-24-be-a-senior-engineer/" target="_blank" rel="noopener">接近 2016 年底的我是否有資格稱為資深工程師</a>這種文章，自我審視等。</p>
+<h2 id="先說小結論"><a href="#先說小結論" class="headerlink" title="先說小結論"></a>先說小結論</h2><p> 有找到一家願意以實習方式用我的公司</p>
+<h1 id="個人介紹"><a href="#個人介紹" class="headerlink" title="個人介紹"></a>個人介紹</h1><p>國立科大學士即將畢業，這4年有作一些前端後端(全端?)<a href="https://github.com/dandanXO" target="_blank" rel="noopener">作品</a>，手機APP等。</p>
+<p>熟練的語言/工具</p>
+<ul>
+<li>java </li>
+<li>javascript (vue, node, ES5/6/7 (大致規範))</li>
+<li>html css</li>
+<li>github/git</li>
+</ul>
+<p>摸過皮毛語言/工具</p>
+<ul>
+<li>php</li>
+<li>C#</li>
+<li>docker</li>
+<li>CI/CD 僅流程與想法</li>
+<li>aws</li>
+<li>azure</li>
+</ul>
+<p>由於沒畢業(2018/6/30才可畢業)，所以去面試基本上心態都是去當吸收經驗，這4個月面了5家公司，在面試時我就意識到了所謂即戰力，以一個剛出社會的學士根本不可能到達那個門檻或甚至是超越，因為會發現面試問題除了基本考題都會參情境問題提出解決方案，在校園接觸機會極少…真的很尷尬。</p>
+<h1 id="面試開始"><a href="#面試開始" class="headerlink" title="面試開始"></a>面試開始</h1><h2 id="尋找職位與公司方向"><a href="#尋找職位與公司方向" class="headerlink" title="尋找職位與公司方向"></a>尋找職位與公司方向</h2><ul>
+<li>新創 </li>
+<li>小公司</li>
+<li>地點不重要</li>
+<li>前端</li>
+<li>後端</li>
+</ul>
+<h2 id="宇清數位"><a href="#宇清數位" class="headerlink" title="宇清數位"></a>宇清數位</h2><p><strong>軟體工程師</strong></p>
+<p>這是104主動邀約的，我記得我把104履歷自傳填完過幾天就來了, 想說反正出生之犢不畏虎，就直接答應了。</p>
+<p>也算惱衝吧，我記得那是第一次去換證件的辦公大樓，還不知道流程弄了快20分鐘才換好證件上樓。這家公司在竹科附近(不在裡面)醫道他們會議室第一面就總經理來面試，他大概也知道我還沒畢業，所以就以聊天方式面試了(我心裡OS應該是要找時可上工的大概沒機會了)，一開始就直接講要找前端並使用vue完成公司的產品的UI(web base), 順便介紹公司是做產線效率優化的系統廠，使用數據進行智能生產的軟體接案開發公司，人數大約20-25人小型公司。</p>
+<p>面試大致分成</p>
+<ul>
+<li>自我介紹</li>
+<li>問題/考題</li>
+<li>公司介紹</li>
+<li>期望薪資/我出問題</li>
+</ul>
+<p>過程中有問到vue的開發方式，vuex的4個狀態，你要怎麼解釋vue是甚麼諸如此類…整個有被洗臉的感覺XD</p>
+<p>談到最後依然會問對公司有甚麼問題與期望薪資。這兩樣基本上每家公司都會問講出你心裡的答案與想知道的就好了。</p>
+<blockquote>
+<h2 id="結果-無聲卡"><a href="#結果-無聲卡" class="headerlink" title="結果: 無聲卡"></a>結果: 無聲卡</h2></blockquote>
+<h2 id="雲端達人科技股份有限公司"><a href="#雲端達人科技股份有限公司" class="headerlink" title="雲端達人科技股份有限公司"></a>雲端達人科技股份有限公司</h2><p><strong>軟體工程師</strong></p>
+<p>一樣104主動邀約，這家的印象讓我不是很好，是在台北市某辦公大樓中，一面試就問是否接受駐點與加班，開始介紹他們是專門的接案公司，感覺起來是很缺人。<br>然後問一下JAVA基本觀念就結束面試了直接發給我名片說當完兵可以連絡我，我當一臉黑人問號(到底多缺肝??)<br>這整個過程大概30分鐘而已，說起來有點詭異，不過就當一次經驗吧。</p>
+<blockquote>
+<h2 id="結果-發名片"><a href="#結果-發名片" class="headerlink" title="結果: 發名片"></a>結果: 發名片</h2></blockquote>
+<h2 id="有無科技股份有限公司"><a href="#有無科技股份有限公司" class="headerlink" title="有無科技股份有限公司"></a>有無科技股份有限公司</h2><p><strong>Junior backend developer</strong></p>
+<p>這家公司在台北101附近，信義大樓裡面整個氣派到不行。</p>
+<p>面試開始就給60-90分鐘寫題目，寫白板題目我是有先心理準備，不過在紙上寫15題code真的超累，還好之前有刷leetcode還可以應付過去。<br>題目已經忘了差不多，很多都是JS經典考題題目刷一下應該沒問題。</p>
+<p>寫完考券與填完表格，面試的是一位內部工程師，聊一下公司環境與公司產品，他說他們原先是做社區型的外送APP想擴展服務，讓更多人使用有點像<a href="https://www.foodpanda.com.tw" target="_blank" rel="noopener">foodpanda</a>的概念。</p>
+<p>也順便聊了一下目前台灣新創公司的窘境，台灣新創100%都在燒錢拿輔助與投資發展新服務項目過活，像他們就在信義集團底下才有<code>$$</code>燒，最大的敵人是<a href="https://www.ubereats-tw.com" target="_blank" rel="noopener">uber eats</a>，因為人家資金很多。</p>
+<p>這家的技術問題就比較困難問了:</p>
+<ul>
+<li>橫向擴展/縱向擴展使用時機與比較</li>
+<li>大數據分析 tensorflow 資料探勘的概念</li>
+<li>sql/nonsql 比較與優缺點</li>
+<li>javascirpt es6/7 promise async/await</li>
+<li>想投入的產業</li>
+<li>當完兵沒(聽到這題代表我已死XD)</li>
+</ul>
+<p>經過上面的面試大概2小時多，最後面試官說等第二次面試通知，出來的時候已經中午就到對面101隨便吃吃混混，下午就發感謝函來沒有第二次面試，不過還滿有效率不讓面試者等太久XD。</p>
+<blockquote>
+<h2 id="結果-感謝函-無第二次面試"><a href="#結果-感謝函-無第二次面試" class="headerlink" title="結果: 感謝函 無第二次面試"></a>結果: 感謝函 無第二次面試</h2></blockquote>
+<h2 id="果子云數位科技有限公司"><a href="#果子云數位科技有限公司" class="headerlink" title="果子云數位科技有限公司"></a>果子云數位科技有限公司</h2><p><strong>前端程式設計師</strong></p>
+<p>算是竄升很快的新創(應該不算)，在高雄的面試只有小小的辦公室面試官是一位資深技術PM，他們公司主要是做國外博弈軟體開發，與國內界案為主背後資金應該也是很雄厚，另外他有提到上班不用打卡可以完全<code>remote work</code>，應該所謂責任制吧XD</p>
+<p>聊到還沒當兵，直接說當完打給我就可以了(offer get?)，有點像是去聊天又不太像。全程大概60分鐘就結束了。頗快的。</p>
+<blockquote>
+<h2 id="結果-發名片-1"><a href="#結果-發名片-1" class="headerlink" title="結果: 發名片"></a>結果: 發名片</h2></blockquote>
+<h2 id="實習get的公司就不說名字了"><a href="#實習get的公司就不說名字了" class="headerlink" title="實習get的公司就不說名字了"></a>實習get的公司就不說名字了</h2><p>這間公司在台中，是做聊天機器人和使用者對話收集與分析的公新創。</p>
+<p>第一次面試是視訊面試，超緊張的。</p>
+<p>面試問題很用心會去看你的<code>gitbub</code>從其中問問題與實作方式，在人格特質方面也問了很多像是co-work和5年後想成為怎麼樣的人…等，考了一些JS的經典問題同步非同步for loop 問題當場remote作答…等。整個過程大概2小時多都看者視訊鏡頭身心疲憊。</p>
+<p>最後，出了一題FB爬蟲回家作業決定使否取用，那時既興奮又害怕。雖然最後有做出來並實習get，但感覺自己沒有說做得很好。還滿有趣的經驗。</p>
+<blockquote>
+<h2 id="結果-實習get"><a href="#結果-實習get" class="headerlink" title="結果: 實習get"></a>結果: 實習get</h2></blockquote>
+<h1 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h1><p>在這些面是中間有去日本玩7-8天，高雄KKBOX有打電話來問我要不要去面試不過要去日本我竟然拒絕了!!</p>
+<p>現在想想，我也滿大膽的XD</p>
+<p>其中有滿多問後續職涯規劃，說真的很難回答，人生也不是只有寫成是對吧?</p>
+<p>我也不是那種被問到「你喜歡寫程式嗎」會毫不遲疑給答案的人寫程式這件事的確有它的魅力在，可以訓練邏輯、可以開發實用的工具解決問題、可以在咖啡廳像駭客一樣工作就是潮，儘管學習期常常會有很沈悶與自我懷疑的時候，但就是不斷嘗試各種自己有興趣的方向去切入，至少有個開始，每天都比昨天的自己多會一些。</p>
+<p>最後，從這一階段面試發現找工作上沒當完兵基本沒戲唱，除非強到頂天的等級，超越即戰力門檻很多不然只能多試與碰碰運氣了。</p>
+
+          </div>
+          
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最後更新時間：<time datetime="2018-05-06T09:39:14.738Z" itemprop="dateUpdated">2018-05-06 17:39:14</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2018/05/06/FirstInterview/" target="_blank" rel="external">https://blog.dandan.tw/2018/05/06/FirstInterview/</a>
+        
+    </div>
+    <footer>
+        <a href="https://blog.dandan.tw">
+            <img src="/img/avatars.jpg" alt="Dandan">
+            Dandan
+        </a>
+    </footer>
+</blockquote>
+
+          
+          <div class="post-footer">
+              
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Interview/">Interview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+              <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.dandan.tw/2018/05/06/FirstInterview/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《First Interview》 — Dandan Rhapsody&url=https://blog.dandan.tw/2018/05/06/FirstInterview/&via=https://blog.dandan.tw" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.dandan.tw/2018/05/06/FirstInterview/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+          </div>
+          
+              
+    <div id="comment"></div>
+
+
+
+          
+      </div>
+      
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2018/07/15/Nuxt-storyblok/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Nuxt storyblok</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2018/05/03/promiseToasync-await/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">promise To async/await</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+      
+      
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目錄</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#先說小結論"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">先說小結論</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#個人介紹"><span class="post-toc-number">2.</span> <span class="post-toc-text">個人介紹</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#面試開始"><span class="post-toc-number">3.</span> <span class="post-toc-text">面試開始</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#尋找職位與公司方向"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">尋找職位與公司方向</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#宇清數位"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">宇清數位</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#結果-無聲卡"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">結果: 無聲卡</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#雲端達人科技股份有限公司"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">雲端達人科技股份有限公司</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#結果-發名片"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">結果: 發名片</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#有無科技股份有限公司"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">有無科技股份有限公司</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#結果-感謝函-無第二次面試"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">結果: 感謝函 無第二次面試</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#果子云數位科技有限公司"><span class="post-toc-number">3.8.</span> <span class="post-toc-text">果子云數位科技有限公司</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#結果-發名片-1"><span class="post-toc-number">3.9.</span> <span class="post-toc-text">結果: 發名片</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#實習get的公司就不說名字了"><span class="post-toc-number">3.10.</span> <span class="post-toc-text">實習get的公司就不說名字了</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#結果-實習get"><span class="post-toc-number">3.11.</span> <span class="post-toc-text">結果: 實習get</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#後記"><span class="post-toc-number">4.</span> <span class="post-toc-text">後記</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+  </article>
+  
+  
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Dandan &copy; 2015 - 2019
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+            <span>
+	            Hosted by <a href="https://coding.net/pages" target="_blank">Coding Pages</a>
+            </span>
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.dandan.tw/2018/05/06/FirstInterview/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《First Interview》 — Dandan Rhapsody&url=https://blog.dandan.tw/2018/05/06/FirstInterview/&via=https://blog.dandan.tw" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.dandan.tw/2018/05/06/FirstInterview/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLUlEQVR42u3awW7rMAwEwPz/T/sBvfbF2RWdApZHp6KpHY0OLEXy9YrX8bN+/+b3Sj599+bzv7xgYWBg3JZxnK53jHZDyRbz4/jPezAwMB7AmITCd+E4f/8Fz2JgYGCcBsE8yJ4HzTzQY2BgYLRbT7a4loZiYGBgtK8+TwHnNbE/uotjYGDckNE2Bv7y5y/2NzAwMG7COMp1VQPyuHRhYGDszUjK+udfnxfLkqfygl0xD4KBgXFzxtoIRd4eaEcr8mP9EGoxMDA2YnxvtCK/rE4KdhgYGE9jtMlckjK2oxhtgQ8DA+M5jLUS2zywriHfkjAwMDZl5CWwJNROBjgm34KBgfEERptFriWCk+TvAwwDA2NrRtuYnH+atz8xMDAw3jUy8zSuDcptCG5LexgYGLsyvn3JzI+phUX1QgwMjC0Y855nO/i1lmJGl2QMDIxNGUmxLL+athtKjix6MwYGxtaMySjYWtjN2wktEgMD4zmMNizm6ePaZbg4VgwMjE0Zk/A6GfxqL72v9jEMDIztGMnVMUki1667RfJ33sLEwMDYlNGmaGvNgKsC64fRDQwMjE0ZR7muGoxoGw8f/hlgYGBszchXUgJrw25SwmuTUQwMjF0ZeeFsLbBOEsfivDEwMB7AyINsnti14XUSmjEwMDCSBK5N6ZJjKnJbDAwMjHhUa1IgG6WYGBgYD2BMBrzaEJmnmMXlFgMDY2vGBRfIMh1sC3mTxgMGBsbNGf8AKNH6CB0hsG0AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.1"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.1"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.1"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+        <script type="text/javascript" src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script type="text/javascript" src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script type="text/javascript" src="/js/plugins/valine.js?v=1.4.1"></script>
+    
+    
+
+
+
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script type="text/javascript" src="/js/plugins/leancloud_visitors.js?v=1.4.1"></script>
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+    <script>
+    (function() {
+        var OriginTitile = document.title, titleTime;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.title = '回來繼續看啦！';
+                clearTimeout(titleTime);
+            } else {
+                document.title = '(つェ⊂)咦!又好了!';
+                titleTime = setTimeout(function() {
+                    document.title = OriginTitile;
+                },2000);
+            }
+        });
+    })();
+</script>
+
+
+
+
+
+    
+</body>
+</html>

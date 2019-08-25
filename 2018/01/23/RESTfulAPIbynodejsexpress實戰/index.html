@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    
+    <title>RESTful API by node jsexpress 紀錄 | Dandan Rhapsody | 紀錄一些技術/瑣事</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="nodeJs,express,JWT,RESTFulAPI,MONGODB">
+    <link rel="shortcut icon" href="/img/favicons.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="/css/style.css?v=1.4.1">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":true,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":true,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"dandanXO","repo":"gitment","oauth":{"client_id":"03d79e26c1ae2b6081a3","client_secret":"bbcc8d0e56be3034b326e92235ef2ca69928b229"},"perPage":2}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatars.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Dandan</h5>
+          <a href="mailto:dandanxo.1996@gmail.com" title="dandanxo.1996@gmail.com" class="mail">
+            
+              <span>d</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>d</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>x</span>
+            
+              <span>o</span>
+            
+              <span>.</span>
+            
+              <span>1</span>
+            
+              <span>9</span>
+            
+              <span>9</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>g</span>
+            
+              <span>m</span>
+            
+              <span>a</span>
+            
+              <span>i</span>
+            
+              <span>l</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/dandanXO" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                ABOUT
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="https://www.cakeresume.com/91daf4" target="_blank" >
+                <i class="icon icon-lg icon-plus-square"></i>
+                Resume
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="https://github.com/dandanXO" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>RESTful API by node jsexpress 紀錄</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="https://i.imgur.com/OLJxbaR.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">RESTful API by node jsexpress 紀錄</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-01-23T14:49:32.000Z" itemprop="datePublished" class="page-time">
+  2018-01-23
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/RESTFulAPI/">RESTFulAPI</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-RESTfulAPIbynodejsexpress實戰"
+    class="post-article article-type-post" itemprop="blogPost">
+      <div class="post-card">
+          <h1 class="post-card-title">RESTful API by node jsexpress 紀錄</h1>
+          <div class="post-meta">
+              <time class="post-time" title="2018-01-23 22:49:32" datetime="2018-01-23T14:49:32.000Z"  itemprop="datePublished">2018-01-23</time>
+
+              
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/RESTFulAPI/">RESTFulAPI</a></li></ul>
+
+
+
+              
+	<span id="/2018/01/23/RESTfulAPIbynodejsexpress實戰/" class="leancloud_visitors" data-flag-title="RESTful API by node jsexpress 紀錄" title="RESTful API by node jsexpress 紀錄">
+		
+			<i class="icon icon-eye"></i>
+		
+		<span class="leancloud-visitors-count"></span>
+	</span>
+ 
+
+              
+    <span class="leancloud-comment">
+        <i class="icon icon-comment-o"></i>
+        <a href="/2018/01/23/RESTfulAPIbynodejsexpress實戰/#comment">
+            <span class="valine-comment-count" data-xid="/2018/01/23/RESTfulAPIbynodejsexpress實戰/"></span>
+        </a>
+    </span>
+
+
+
+              
+          </div>
+          <div class="post-content" id="post-content" itemprop="postContent">
+              
+              <h1 id="計畫要做甚麼"><a href="#計畫要做甚麼" class="headerlink" title="計畫要做甚麼"></a>計畫要做甚麼</h1><h2 id="簡單需要登入控制的SHOP"><a href="#簡單需要登入控制的SHOP" class="headerlink" title="簡單需要登入控制的SHOP"></a>簡單需要登入控制的SHOP</h2><p> 架構圖如下:</p>
+<p> <a rel=RESTful API by node jsexpress 紀錄 href="https://i.imgur.com/XuFhvPw.jpg" title="Imgur" data-fancybox="images"><img src="https://i.imgur.com/XuFhvPw.jpg" alt="Imgur"></a></p>
+<h2 id="準備工具"><a href="#準備工具" class="headerlink" title="準備工具"></a>準備工具</h2><p> <a href="https://www.getpostman.com/" target="_blank" rel="noopener">PostMan</a></p>
+<h2 id="資料庫"><a href="#資料庫" class="headerlink" title="資料庫"></a>資料庫</h2><p>我用 <a href="https://www.mongodb.com/cloud/atlas/pricing" target="_blank" rel="noopener">MongoDB Atlas</a><br>有免費版本流量夠測試使用</p>
+<h2 id="products"><a href="#products" class="headerlink" title="/products"></a>/products</h2><ul>
+<li>/products:GET: 產品列表</li>
+<li>/products:POST: 產品新增</li>
+<li>/products/{id}:GET: 單一產品資訊</li>
+<li>/products/{id}:PATCH: 單一產品修改</li>
+<li>/products/{id}:DELETE: 單一產品刪除<hr>
+
+</li>
+</ul>
+<h2 id="orders"><a href="#orders" class="headerlink" title="/orders"></a>/orders</h2><ul>
+<li>/orders:GET: 訂單列表</li>
+<li>/orders:POST: 訂單新增</li>
+<li>/orders/{id}:GET: 單一訂單資訊</li>
+<li>/orders/{id}:DELETE: 單一訂單取消</li>
+</ul>
+<p>上圖紅色部分是需要使用者登入才能操作的請求。</p>
+<h1 id="目錄結構"><a href="#目錄結構" class="headerlink" title="目錄結構"></a>目錄結構</h1><figure class="image-box">
+                <a rel=RESTful API by node jsexpress 紀錄 href="https://i.imgur.com/pQiYrzZ.png" title="Imgur" data-fancybox="images"><img src="https://i.imgur.com/pQiYrzZ.png" alt="Imgur" title="" class=""></a>
+                <p>Imgur</p>
+            </figure>
+<h1 id="部分程式碼講解"><a href="#部分程式碼講解" class="headerlink" title="部分程式碼講解"></a>部分程式碼講解</h1><p>在製作過程會有一些遇到的問題在下面我都整理了起來</p>
+<p>完整檔案在 <a href="https://github.com/dandanXO/node-RESTfulAPI-shop" target="_blank" rel="noopener">GITHUB</a> 上</p>
+<h2 id="Server-js"><a href="#Server-js" class="headerlink" title="Server.js"></a>Server.js</h2><p>一些基本nodejs server設定<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const http = require(&apos;http&apos;);</span><br><span class="line">const app = require(&apos;./app&apos;);</span><br><span class="line"></span><br><span class="line">const port = process.env.port || 3000;</span><br><span class="line"></span><br><span class="line">const server = http.createServer(app);</span><br><span class="line">server.listen(port);</span><br></pre></td></tr></table></figure></p>
+<h2 id="App-js-部分"><a href="#App-js-部分" class="headerlink" title="App.js 部分"></a>App.js 部分</h2><h3 id="錯誤控制"><a href="#錯誤控制" class="headerlink" title="錯誤控制"></a>錯誤控制</h3><p>基本的流程或是路由錯誤控制<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// errro control</span><br><span class="line">app.use((req, res, next)=&gt;&#123;</span><br><span class="line">    const error = new Error(&apos;Not found&apos;);</span><br><span class="line">    error.status=404;</span><br><span class="line">    next(error);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.use((error,req,res,next)=&gt;&#123;</span><br><span class="line">    res.status(error.status || 500);</span><br><span class="line">    res.json(&#123;</span><br><span class="line">        error:&#123;</span><br><span class="line">            message: error.message</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用的套件或是middleware"><a href="#使用的套件或是middleware" class="headerlink" title="使用的套件或是middleware"></a>使用的套件或是middleware</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const express = require(&apos;express&apos;);</span><br><span class="line">const app = express();</span><br><span class="line">const morgan = require(&apos;morgan&apos;);</span><br><span class="line">const bodyParser = require(&apos;body-parser&apos;)</span><br><span class="line">const mongoose = require(&apos;mongoose&apos;);</span><br></pre></td></tr></table></figure>
+<h3 id="nodemon-amp-morgan"><a href="#nodemon-amp-morgan" class="headerlink" title="nodemon &amp; morgan"></a>nodemon &amp; morgan</h3><p>好用的自動restart與debug模組<br>在 <code>packeage.json</code>中加入<code>&quot;start&quot;: &quot;nodemon server.js&quot;</code></p>
+<p>morgan使用</p>
+<p>在<code>app.js.</code>中放入<code>var morgan = require(&#39;morgan&#39;);</code> 和<code>app.use(morgan(&#39;dev&#39;))</code></p>
+<h2 id="Router-部分"><a href="#Router-部分" class="headerlink" title="Router 部分"></a>Router 部分</h2><p>我是想有 orders products user5這三個部分﹐分別處理不同功能</p>
+<p>orders products 需要跟controller 一起看 </p>
+<p>多了一個controller讓可讀性與維護性更高</p>
+<p>基本上這部分都是一些資料庫控操作與權限控制</p>
+<h3 id="order部分"><a href="#order部分" class="headerlink" title="order部分"></a>order部分</h3><p>在mongoose models 地方有用了 ref這參數</p>
+<p><code>product: { type: mongoose.Schema.Types.ObjectId, ref: &#39;Product&#39;, required: true },</code><br>product 這一欄參數是參考 Product這個集合的</p>
+<p>在<code>orders_get_all</code> 就可以列出product這個集合的資料<br>在mongoose使用這個<code>.populate(&quot;product&quot;, &quot;name&quot;)</code>函數就可以控制</p>
+<h2 id="api-token-實作方法"><a href="#api-token-實作方法" class="headerlink" title="api token 實作方法"></a>api token 實作方法</h2><p>這裡是使用 <a href="https://jwt.io/" target="_blank" rel="noopener">JWT</a> 這個套件來實作</p>
+<p>在<code>user/login</code>的地方<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">                        const token =jwt.sign(&#123;</span><br><span class="line">                            email:user[0].email,</span><br><span class="line">                            userId:user[0]._id</span><br><span class="line">                            &#125;,</span><br><span class="line">                            process.env.JWT_key,</span><br><span class="line">                            &#123;</span><br><span class="line">                                expiresIn: &quot;1h&quot;</span><br><span class="line">                            &#125;</span><br><span class="line">                        );   </span><br><span class="line">                return res.status(200).json(&#123;</span><br><span class="line">                    message:&apos;Auth successful&apos;,</span><br><span class="line">                    token:token</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure></p>
+<p>讓成功登入者取得TOKEN</p>
+<p>在使用此TOKEN 來進行上述紅色需要驗證的部分</p>
+<p>在所有需要驗證的URL錢加上middleware 來成功實作出API+驗證機制</p>
+<p><code>checkAuth</code>使自己製作的middleware 在 middleware資料夾當中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const jwt = require(&apos;jsonwebtoken&apos;)</span><br><span class="line"></span><br><span class="line">module.exports = (req, res, next) =&gt; &#123;</span><br><span class="line">  try &#123;</span><br><span class="line">    const decoded = jwt.verify(req.headers.authorization.split(&quot; &quot;)[1], process.env.JWT_key)</span><br><span class="line">    req.userData = decoded;</span><br><span class="line">    next();</span><br><span class="line">  &#125; catch (error) &#123;</span><br><span class="line">    return res.status(401).json(&#123;</span><br><span class="line">      message: &apos;Auth failed&apos;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用方式E.G. :<code>router.post(&quot;/&quot;, checkAuth, upload.single(&#39;productImage&#39;), ProductsController.products_create_product);</code></p>
+<p>根據上面方式 使用postman 來測試</p>
+<p><strong>Body</strong></p>
+<figure class="image-box">
+                <a rel=RESTful API by node jsexpress 紀錄 href="https://i.imgur.com/5An4dGb.png" title="Imgur" data-fancybox="images"><img src="https://i.imgur.com/5An4dGb.png" alt="Imgur" title="" class=""></a>
+                <p>Imgur</p>
+            </figure>
+<p><strong>HEADER</strong></p>
+<figure class="image-box">
+                <a rel=RESTful API by node jsexpress 紀錄 href="https://i.imgur.com/WsjB6bL.png" title="Imgur" data-fancybox="images"><img src="https://i.imgur.com/WsjB6bL.png" alt="Imgur" title="" class=""></a>
+                <p>Imgur</p>
+            </figure>
+<h2 id="user部分"><a href="#user部分" class="headerlink" title="user部分"></a>user部分</h2><p>在signup 有用bcrypt 進行加密</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">bcrypt.hash(req.body.password, 10,(err,hash) =&gt; &#123;</span><br><span class="line">               if(err)&#123;</span><br><span class="line">                   return res.status(500).json(&#123;</span><br><span class="line">                       error:err</span><br><span class="line">                   &#125;)</span><br><span class="line">               &#125;else&#123;</span><br><span class="line">                   const addUser = new User(&#123;</span><br><span class="line">                       _id: new mongoose.Types.ObjectId(),</span><br><span class="line">                       email: req.body.email,</span><br><span class="line">                       password: hash</span><br><span class="line">                   &#125;);</span><br><span class="line">                   addUser.save()</span><br><span class="line">                   .then(result =&gt; &#123;</span><br><span class="line">                       res.status(201).json(&#123;</span><br><span class="line">                           message: &apos;User created&apos;</span><br><span class="line">                       &#125;)</span><br><span class="line">                   &#125;)</span><br><span class="line">                   .catch(err =&gt; &#123;</span><br><span class="line">                       console.log(err);</span><br><span class="line">                       res.status(500).json(&#123;</span><br><span class="line">                           error:err</span><br><span class="line">                       &#125;)</span><br><span class="line">                   &#125;)</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;)</span><br></pre></td></tr></table></figure>
+
+          </div>
+          
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最後更新時間：<time datetime="2018-02-21T03:11:46.330Z" itemprop="dateUpdated">2018-02-21 11:11:46</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2018/01/23/RESTfulAPIbynodejsexpress實戰/" target="_blank" rel="external">https://blog.dandan.tw/2018/01/23/RESTfulAPIbynodejsexpress實戰/</a>
+        
+    </div>
+    <footer>
+        <a href="https://blog.dandan.tw">
+            <img src="/img/avatars.jpg" alt="Dandan">
+            Dandan
+        </a>
+    </footer>
+</blockquote>
+
+          
+          <div class="post-footer">
+              
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JWT/">JWT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MONGODB/">MONGODB</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RESTFulAPI/">RESTFulAPI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/express/">express</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodeJs/">nodeJs</a></li></ul>
+
+              <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.dandan.tw/2018/01/23/RESTfulAPIbynodejsexpress實戰/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《RESTful API by node jsexpress 紀錄》 — Dandan Rhapsody&url=https://blog.dandan.tw/2018/01/23/RESTfulAPIbynodejsexpress實戰/&via=https://blog.dandan.tw" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.dandan.tw/2018/01/23/RESTfulAPIbynodejsexpress實戰/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+          </div>
+          
+              
+    <div id="comment"></div>
+
+
+
+          
+      </div>
+      
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2018/02/11/git/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">GIT 使用筆記</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2017/12/15/FileUploaderWithNodeJs/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">File Uploader With NodeJs</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+      
+      
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目錄</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#計畫要做甚麼"><span class="post-toc-number">1.</span> <span class="post-toc-text">計畫要做甚麼</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#簡單需要登入控制的SHOP"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">簡單需要登入控制的SHOP</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#準備工具"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">準備工具</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#資料庫"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">資料庫</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#products"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">/products</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#orders"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">/orders</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#目錄結構"><span class="post-toc-number">2.</span> <span class="post-toc-text">目錄結構</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#部分程式碼講解"><span class="post-toc-number">3.</span> <span class="post-toc-text">部分程式碼講解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Server-js"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">Server.js</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#App-js-部分"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">App.js 部分</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#錯誤控制"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">錯誤控制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用的套件或是middleware"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">使用的套件或是middleware</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nodemon-amp-morgan"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">nodemon &amp; morgan</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Router-部分"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">Router 部分</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#order部分"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">order部分</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#api-token-實作方法"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">api token 實作方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#user部分"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">user部分</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+  </article>
+  
+  
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Dandan &copy; 2015 - 2019
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+            <span>
+	            Hosted by <a href="https://coding.net/pages" target="_blank">Coding Pages</a>
+            </span>
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.dandan.tw/2018/01/23/RESTfulAPIbynodejsexpress實戰/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《RESTful API by node jsexpress 紀錄》 — Dandan Rhapsody&url=https://blog.dandan.tw/2018/01/23/RESTfulAPIbynodejsexpress實戰/&via=https://blog.dandan.tw" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.dandan.tw/2018/01/23/RESTfulAPIbynodejsexpress實戰/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACqklEQVR42u3awY7bMAwE0Pz/T6fXAkXcGVLaBsXzKUC8jp4XEImhXq/4ev925ff8+fnTPZ+e/+lphy88PDy8xdKTRTwv/Xlxz/ck68zXjIeHh3eblzwuv799ccn9szXg4eHhfQ8vLx6nFo2Hh4f3P/HaKCEPNfbFCQ8PD+8er218W8DzK0hCiutZCx4eHl7Mm0Wo//bzlfkeHh4e3nqqnkcG7XCrXeh7dOHh4eHd4OU/lrSt+bGq5EjB7KXg4eHh3ebNNv0EsBlc7aNhPDw8vNu8NjZNvm2jjbzwFE05Hh4e3gXeDNl+btnJqCwvJHh4eHhnee0j9pt+0qwnMUS0Njw8PLwLvM0i2uNWycBsFm1EAzA8PDy8o7xZYUgeOgt829dRpy94eHh4C14SIsw28Q2yPUBQpyx4eHh4F3j7R98INdp/DB4eHt4NXrtxJ0vMm+/NoKuIffHw8PCO8tqRf3tcYB9YtL/1GlYPPDw8vI63iSGSV/P8zASTl5C64uHh4eGtefn4vx1otY37fj14eHh493h5iNAOt9p2fNMPfywMeHh4eEd5s0NXs+FWG9q258Wi0RoeHh7eUd4MMzsWsG+d2xeEh4eHd4q3GYDlse+mzMxCZDw8PLx7vHx8lUeoLWzWghdRCB4eHt6P85KfbFvqKHINSEW+goeHh3eB17a2eTzRHg7Iy0lyQAEPDw/vHi9vl9utOWfvQ+EojMDDw8Nb8N7lNduaZ8Vm9m3UTOPh4eEteO2Guz9o1ZaBzd/i4eHh3ePNisHmcED7i6vCgIeHh3eNl2/Km0H+fnhWrxMPDw/v63n3Zvdtq42Hh4f3Pbz8YNZfhvplnJE/Ew8PD+9nePn2nW/redvdlpDiKAMeHh7eBd7wrFbcRudHr/Lo9sBMDw8PD2/C+wWzebtgnPtxCAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.1"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.1"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.1"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+        <script type="text/javascript" src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script type="text/javascript" src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script type="text/javascript" src="/js/plugins/valine.js?v=1.4.1"></script>
+    
+    
+
+
+
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script type="text/javascript" src="/js/plugins/leancloud_visitors.js?v=1.4.1"></script>
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+    <script>
+    (function() {
+        var OriginTitile = document.title, titleTime;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.title = '回來繼續看啦！';
+                clearTimeout(titleTime);
+            } else {
+                document.title = '(つェ⊂)咦!又好了!';
+                titleTime = setTimeout(function() {
+                    document.title = OriginTitile;
+                },2000);
+            }
+        });
+    })();
+</script>
+
+
+
+
+
+    
+</body>
+</html>

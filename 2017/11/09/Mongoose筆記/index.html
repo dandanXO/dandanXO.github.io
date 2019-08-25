@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    
+    <title>Mongoose筆記 | Dandan Rhapsody | 紀錄一些技術/瑣事</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="mongodb,mongodb first,first,author,mongodb author,Mongoose,nodeJs,node">
+    <link rel="shortcut icon" href="/img/favicons.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="/css/style.css?v=1.4.1">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":true,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":true,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"dandanXO","repo":"gitment","oauth":{"client_id":"03d79e26c1ae2b6081a3","client_secret":"bbcc8d0e56be3034b326e92235ef2ca69928b229"},"perPage":2}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatars.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Dandan</h5>
+          <a href="mailto:dandanxo.1996@gmail.com" title="dandanxo.1996@gmail.com" class="mail">
+            
+              <span>d</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>d</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>x</span>
+            
+              <span>o</span>
+            
+              <span>.</span>
+            
+              <span>1</span>
+            
+              <span>9</span>
+            
+              <span>9</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>g</span>
+            
+              <span>m</span>
+            
+              <span>a</span>
+            
+              <span>i</span>
+            
+              <span>l</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/dandanXO" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                ABOUT
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="https://www.cakeresume.com/91daf4" target="_blank" >
+                <i class="icon icon-lg icon-plus-square"></i>
+                Resume
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="https://github.com/dandanXO" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>Mongoose筆記</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="https://i.imgur.com/OLJxbaR.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">Mongoose筆記</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-11-09T01:39:44.000Z" itemprop="datePublished" class="page-time">
+  2017-11-09
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/mongoose/">mongoose</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-Mongoose筆記"
+    class="post-article article-type-post" itemprop="blogPost">
+      <div class="post-card">
+          <h1 class="post-card-title">Mongoose筆記</h1>
+          <div class="post-meta">
+              <time class="post-time" title="2017-11-09 09:39:44" datetime="2017-11-09T01:39:44.000Z"  itemprop="datePublished">2017-11-09</time>
+
+              
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/mongoose/">mongoose</a></li></ul>
+
+
+
+              
+	<span id="/2017/11/09/Mongoose筆記/" class="leancloud_visitors" data-flag-title="Mongoose筆記" title="Mongoose筆記">
+		
+			<i class="icon icon-eye"></i>
+		
+		<span class="leancloud-visitors-count"></span>
+	</span>
+ 
+
+              
+    <span class="leancloud-comment">
+        <i class="icon icon-comment-o"></i>
+        <a href="/2017/11/09/Mongoose筆記/#comment">
+            <span class="valine-comment-count" data-xid="/2017/11/09/Mongoose筆記/"></span>
+        </a>
+    </span>
+
+
+
+              
+          </div>
+          <div class="post-content" id="post-content" itemprop="postContent">
+              
+              <p><font color="MediumVioletRed" size="7">MONGOOSE</font></p>
+<h1 id="連接"><a href="#連接" class="headerlink" title="連接"></a>連接</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);</span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">  useMongoClient: <span class="literal">true</span>,</span><br><span class="line">  autoIndex: <span class="literal">false</span>, <span class="comment">// Don't build indexes</span></span><br><span class="line">  reconnectTries: <span class="built_in">Number</span>.MAX_VALUE, <span class="comment">// Never stop trying to reconnect</span></span><br><span class="line">  reconnectInterval: <span class="number">500</span>, <span class="comment">// Reconnect every 500ms</span></span><br><span class="line">  poolSize: <span class="number">10</span>, <span class="comment">// Maintain up to 10 socket connections</span></span><br><span class="line">  <span class="comment">// If not connected, return errors immediately rather than waiting for reconnect</span></span><br><span class="line">  bufferMaxEntries: <span class="number">0</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">mongoose.connect(<span class="string">'mongodb://帳號:密碼@localhost:27017/資料庫名稱'</span>,options)</span><br><span class="line">mongoose.Promise = global.Promise; <span class="comment">//新版的一些問題</span></span><br></pre></td></tr></table></figure>
+<h1 id="Schema設定"><a href="#Schema設定" class="headerlink" title="Schema設定"></a>Schema設定</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//設定集合內容與屬性</span></span><br><span class="line"><span class="keyword">var</span> userDataSchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">  title: &#123;<span class="attr">type</span>: <span class="built_in">String</span>, <span class="attr">required</span>: <span class="literal">true</span>&#125;,</span><br><span class="line">  content: <span class="built_in">String</span>,</span><br><span class="line">  author: <span class="built_in">String</span></span><br><span class="line">&#125;,</span><br><span class="line">  &#123;<span class="attr">collection</span>: <span class="string">'user-data'</span>&#125;  <span class="comment">//設定集合名稱 預設是 UserData加S</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> UserData = mongoose.model(<span class="string">'UserData'</span>, userDataSchema); <span class="comment">//以mongoose.model方式來宣告並使用</span></span><br></pre></td></tr></table></figure>
+<h1 id="mongoose-搜尋-新增-修改-刪除"><a href="#mongoose-搜尋-新增-修改-刪除" class="headerlink" title="mongoose 搜尋 新增 修改 刪除"></a>mongoose 搜尋 新增 修改 刪除</h1><h2 id="搜尋"><a href="#搜尋" class="headerlink" title="搜尋"></a>搜尋</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">UserData.find()</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span>(<span class="params">doc</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//do something</span></span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="新增"><a href="#新增" class="headerlink" title="新增"></a>新增</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> item = &#123;</span><br><span class="line">  titile : <span class="string">'newtitle'</span>,</span><br><span class="line">  content: <span class="string">'someContent'</span>,</span><br><span class="line">  author: <span class="string">'someName'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> newData = <span class="keyword">new</span> UserData(item);</span><br><span class="line">newData.save();</span><br></pre></td></tr></table></figure>
+<h2 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> id = req.body.id;</span><br><span class="line"></span><br><span class="line">UserData.findById(id,<span class="function"><span class="keyword">function</span>(<span class="params">err,doc</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(err)&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'error, no entry found'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    doc.content = req.body.content;</span><br><span class="line">    doc.title = req.body.title;</span><br><span class="line">    doc.author = req.body.author;</span><br><span class="line">    doc.save();</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="刪除"><a href="#刪除" class="headerlink" title="刪除"></a>刪除</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> id -req.body.id;</span><br><span class="line"></span><br><span class="line">UserData.findByIdAndRemove(id),exec();</span><br></pre></td></tr></table></figure>
+<h1 id="參閱"><a href="#參閱" class="headerlink" title="參閱"></a>參閱</h1><p><a href="http://mongoosejs.com/docs/guide.html" target="_blank" rel="noopener">MONGOSE文件</a></p>
+
+          </div>
+          
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最後更新時間：<time datetime="2017-12-15T03:52:52.009Z" itemprop="dateUpdated">2017-12-15 11:52:52</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2017/11/09/Mongoose筆記/" target="_blank" rel="external">https://blog.dandan.tw/2017/11/09/Mongoose筆記/</a>
+        
+    </div>
+    <footer>
+        <a href="https://blog.dandan.tw">
+            <img src="/img/avatars.jpg" alt="Dandan">
+            Dandan
+        </a>
+    </footer>
+</blockquote>
+
+          
+          <div class="post-footer">
+              
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mongoose/">Mongoose</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/author/">author</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/first/">first</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongodb/">mongodb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongodb-author/">mongodb author</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongodb-first/">mongodb first</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodeJs/">nodeJs</a></li></ul>
+
+              <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.dandan.tw/2017/11/09/Mongoose筆記/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Mongoose筆記》 — Dandan Rhapsody&url=https://blog.dandan.tw/2017/11/09/Mongoose筆記/&via=https://blog.dandan.tw" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.dandan.tw/2017/11/09/Mongoose筆記/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+          </div>
+          
+              
+    <div id="comment"></div>
+
+
+
+          
+      </div>
+      
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2017/12/06/passportjs筆記/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">passportjs 筆記</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2017/11/05/mongodb第一次使用/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Mongodb第一次使用設定紀錄</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+      
+      
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目錄</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#連接"><span class="post-toc-number">1.</span> <span class="post-toc-text">連接</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Schema設定"><span class="post-toc-number">2.</span> <span class="post-toc-text">Schema設定</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#mongoose-搜尋-新增-修改-刪除"><span class="post-toc-number">3.</span> <span class="post-toc-text">mongoose 搜尋 新增 修改 刪除</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#搜尋"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">搜尋</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#新增"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">新增</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#修改"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">修改</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#刪除"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">刪除</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#參閱"><span class="post-toc-number">4.</span> <span class="post-toc-text">參閱</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+  </article>
+  
+  
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Dandan &copy; 2015 - 2019
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+            <span>
+	            Hosted by <a href="https://coding.net/pages" target="_blank">Coding Pages</a>
+            </span>
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.dandan.tw/2017/11/09/Mongoose筆記/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Mongoose筆記》 — Dandan Rhapsody&url=https://blog.dandan.tw/2017/11/09/Mongoose筆記/&via=https://blog.dandan.tw" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.dandan.tw/2017/11/09/Mongoose筆記/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACI0lEQVR42u3aQa6kMAwFQO5/aUb6e+j3nGFBqKxaLSCpLCw7znHE4/wb+TPnxcjfOp4YGBgYr2Wct+Nqsvx3vsSreaNNwcDA+ABjFgrzd2fBPfk+BgYGRh5A239WtgADAwMjCbgrS7xPQDEwMDBWitj1RDApRx+vxTEwMF7IWCksn/79YH8DAwPjJYyzHPnX2nmXVoWBgbE14/4oLSkd28Znngi2ZS0GBsaujJXAl8PaAF3/g4GBsTVjNsGstZmH4CToY2BgfI2RT/NEatimqlERi4GBsRFjfdF5kG2TyCLgYmBgbM2YLbF9a/ZMe1SHgYHxNUZeoLZPrrQfilIWAwNja0abtOVJYdIwaDcOAwPjC4xZmTr7fxaCoxViYGB8gNGWqW0sn7UHihCMgYGxNSO5q9B+epZKtuG4vnKBgYHxcka7iGN5tA3OCIyBgbEp4/6YrJ1+/dBteDyHgYGxNWOlk5Bvwf2RXFuyRkUsBgbGRoz/dRUsD7V5sljX3xgYGFszVo71k8Xl4LbovcxwMTAwNmK0LcYkNOfhtT3I+1HcYmBgbMo4y9E2DGbv1vNiYGBszVhvOraHdD+O9csiFgMD4zuMJMi26WN70J8H3DpzxMDA2Igxu1rRtgGStmW+zstaHAMD48OMPEyvb0F7LQMDAwPjucO12Rd+9DcwMDA2ZeRBM78ENrsull9HG9biGBgYL2SsnGU9txFtkwADA2NTxj+G1xkGfS1+LAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.1"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.1"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.1"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+        <script type="text/javascript" src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script type="text/javascript" src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script type="text/javascript" src="/js/plugins/valine.js?v=1.4.1"></script>
+    
+    
+
+
+
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script type="text/javascript" src="/js/plugins/leancloud_visitors.js?v=1.4.1"></script>
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+    <script>
+    (function() {
+        var OriginTitile = document.title, titleTime;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.title = '回來繼續看啦！';
+                clearTimeout(titleTime);
+            } else {
+                document.title = '(つェ⊂)咦!又好了!';
+                titleTime = setTimeout(function() {
+                    document.title = OriginTitile;
+                },2000);
+            }
+        });
+    })();
+</script>
+
+
+
+
+
+    
+</body>
+</html>

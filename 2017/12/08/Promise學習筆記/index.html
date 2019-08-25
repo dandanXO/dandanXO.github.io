@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    
+    <title>Promise 筆記 | Dandan Rhapsody | 紀錄一些技術/瑣事</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="nodeJs,Promise,express">
+    <link rel="shortcut icon" href="/img/favicons.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="/css/style.css?v=1.4.1">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":true,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":true,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"dandanXO","repo":"gitment","oauth":{"client_id":"03d79e26c1ae2b6081a3","client_secret":"bbcc8d0e56be3034b326e92235ef2ca69928b229"},"perPage":2}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatars.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Dandan</h5>
+          <a href="mailto:dandanxo.1996@gmail.com" title="dandanxo.1996@gmail.com" class="mail">
+            
+              <span>d</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>d</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>x</span>
+            
+              <span>o</span>
+            
+              <span>.</span>
+            
+              <span>1</span>
+            
+              <span>9</span>
+            
+              <span>9</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>g</span>
+            
+              <span>m</span>
+            
+              <span>a</span>
+            
+              <span>i</span>
+            
+              <span>l</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/dandanXO" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                ABOUT
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="https://www.cakeresume.com/91daf4" target="_blank" >
+                <i class="icon icon-lg icon-plus-square"></i>
+                Resume
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="https://github.com/dandanXO" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>Promise 筆記</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="https://i.imgur.com/OLJxbaR.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">Promise 筆記</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-12-07T16:55:13.000Z" itemprop="datePublished" class="page-time">
+  2017-12-08
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Promise/">Promise</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-Promise學習筆記"
+    class="post-article article-type-post" itemprop="blogPost">
+      <div class="post-card">
+          <h1 class="post-card-title">Promise 筆記</h1>
+          <div class="post-meta">
+              <time class="post-time" title="2017-12-08 00:55:13" datetime="2017-12-07T16:55:13.000Z"  itemprop="datePublished">2017-12-08</time>
+
+              
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Promise/">Promise</a></li></ul>
+
+
+
+              
+	<span id="/2017/12/08/Promise學習筆記/" class="leancloud_visitors" data-flag-title="Promise 筆記" title="Promise 筆記">
+		
+			<i class="icon icon-eye"></i>
+		
+		<span class="leancloud-visitors-count"></span>
+	</span>
+ 
+
+              
+    <span class="leancloud-comment">
+        <i class="icon icon-comment-o"></i>
+        <a href="/2017/12/08/Promise學習筆記/#comment">
+            <span class="valine-comment-count" data-xid="/2017/12/08/Promise學習筆記/"></span>
+        </a>
+    </span>
+
+
+
+              
+          </div>
+          <div class="post-content" id="post-content" itemprop="postContent">
+              
+              <h1 id="介紹"><a href="#介紹" class="headerlink" title="介紹"></a>介紹</h1><h2 id="Promises-A-標準定義"><a href="#Promises-A-標準定義" class="headerlink" title="Promises/A+標準定義"></a>Promises/A+標準定義</h2><p>所謂的<a href="https://promisesaplus.com/" target="_blank" rel="noopener">Promises/A+</a>標準，其實就是個幾千字的一頁網頁而已，裡面的說明與用語並不會太難理解。雖然ES6標準中也有自己的Promise物件標準章節，但因為裡面涉及很多實作技術說明，明顯地用字遣詞艱澀許多，所以在這裡就不多加討論。以下使用Promises/A+標準作為一個開始，來解說Promise的標準裡有什麼內容。</p>
+<h2 id="專門用語"><a href="#專門用語" class="headerlink" title="專門用語"></a>專門用語</h2><ul>
+<li>promise (承諾)是一個帶有遵照這個規格的then方法的物件</li>
+<li>thenable 是一個有定義then方法的物件</li>
+<li>value 合法的JavaScript值(包含undefined、thenable與promise)</li>
+<li>exception (例外)使用throw語句丟出來的值</li>
+<li>reason (理由)是表明為什麼promise被拒絕(rejected)的值</li>
+</ul>
+<blockquote>
+<p>註: 另外有個常見的專有名詞 settled(固定的) 一個promise最後的狀態，也就是fulfilled(已實現)或rejected(已拒絕)<br>註: reason(理由)通常是一個Error物件，用於錯誤處理。<br>註: promise/帕咪死/ 的中文翻譯是”承諾”、”約定”，本書中並不會用它的中文翻譯字詞，都是直接用英文。</p>
+</blockquote>
+<h2 id="Promise狀態"><a href="#Promise狀態" class="headerlink" title="Promise狀態"></a>Promise狀態</h2><p>promise物件必定是以下三種狀態中的其中一種: pending(等待中)、fulfilled(已實現)或rejected(已拒絕)。</p>
+<p>2.1.1 當處在pending(等待中)時，一個promise:</p>
+<p>2.1.1.1 可能會轉變到不是fulfilled(已實現)就是rejected(已拒絕)狀態</p>
+<p>2.2.1 當處在fulfilled(已實現)時，一個promise:</p>
+<p>2.2.1.1 必定不會再轉變到其他任何狀態</p>
+<p>2.2.1.2 必定有不能再更動的值</p>
+<p>2.3.1 當處在rejected(已拒絕)時，一個promise:</p>
+<p>2.3.1.1 必定不會再轉變到其他任何狀態</p>
+<p>2.3.1.2 必定有不能再更動的值reason(理由)</p>
+<p>這個用下面的圖解說明，應該可以很清楚的理解:<br><figure class="image-box">
+                <a rel=Promise 筆記 href="https://i.imgur.com/t1POUcO.png" title="Imgur" data-fancybox="images"><img src="https://i.imgur.com/t1POUcO.png" alt="Imgur" title="" class=""></a>
+                <p>Imgur</p>
+            </figure></p>
+<p>狀態是在Promise結構很重要的一個屬性，因為promise物件一開始都是代表懸而未決的值，所以一開始在promise物件在建立時，狀態都是pending(等待中)，之後可以轉變到fulfilled(已實現)就是rejected(已拒絕)其中一個，然後就固定不變了。如果有產生value(值)的情況就是轉變到fulfilled(已實現)狀態，而如果是有reason(理由)時，代表要轉變到rejected(已拒絕)狀態。</p>
+<h1 id="建立一個-Promise"><a href="#建立一個-Promise" class="headerlink" title="建立一個 Promise"></a>建立一個 Promise</h1><p>看完上面的比喻讓我們對應到 Javascript。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isMomHappy = <span class="literal">false</span></span><br><span class="line"><span class="keyword">var</span> willIGetNewPhone = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (isMomHappy) &#123;</span><br><span class="line">    <span class="keyword">var</span> phone = &#123;</span><br><span class="line">      brand: <span class="string">'Samsung'</span>,</span><br><span class="line">      color: <span class="string">'black'</span>,</span><br><span class="line">      type: <span class="string">'s8'</span></span><br><span class="line">    &#125;</span><br><span class="line">    resolve(phone)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> reason = <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Mom is unhappy'</span>)</span><br><span class="line">    reject(reason)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>第一行我們使用一個 Boolean <em>isMomHappy</em> 定義媽媽是否開心。<br>我們宣告一個 Promise <em>willIGetNewPhone</em>。這個 Promise 可能是被 <em>履行(resolved)</em> 又或者 <em>拒絕(rejected)</em>。<br>Promise 標準的語法可以參考 <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="noopener">MDN</a></p>
+<p><code>new Promise(function (resolve, reject) {})</code></p>
+<p>我們需要記得的是如果一個 Promise 執行成功要在內部 function 呼叫 <em>resolve(成功結果)</em> ，如果結果是失敗則呼叫 <em>reject(失敗結果)</em> 。在我們的範例中如果媽媽開心，我們將得到手機因此我們執行 <em>reslove(phone)</em>，如果媽媽不高興則執行 <em>reject(reason)</em>。</p>
+<h2 id="使用-Promise"><a href="#使用-Promise" class="headerlink" title="使用 Promise"></a>使用 Promise</h2><p>到這一步我們已經有了一個 Promise，讓我們接著來使用它。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> askMom = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  willIGetNewPhone</span><br><span class="line">    .then(<span class="function"><span class="keyword">function</span> (<span class="params">fulfilled</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(fulfilled)</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(<span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(error.message)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">askMom()</span><br></pre></td></tr></table></figure>
+<ol>
+<li>首先我們有個 function 叫 askMom 在這個 function 中，我們將利用 Promise willIGetNewPhone。</li>
+<li>我們希望一旦等待的結果發生時可以採取對應的動作，我們可以使用 .then 或 .catch 來執行對應的行為。</li>
+<li>在這個範例中，我們在 .then 中使用 function (fulfilled){}，而這個 fulfilled 就是從 Promise 的 resolve(成功結果) 傳來的結果，範例中這個結果就是 phone 物件。</li>
+<li>在 .catch 中我們使用了 function (error) {}。而這個 error 就是從 Promise 的 reject(失敗結果) 傳來的即 reason。</li>
+</ol>
+<h2 id="鏈式調用-Promise"><a href="#鏈式調用-Promise" class="headerlink" title="鏈式調用 Promise"></a>鏈式調用 Promise</h2><p>假如你承諾您的朋友，如果你拿到新手機會借他們看看。這又是另一個 Promise。讓我們繼續來撰寫這個範例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> showOff = <span class="function"><span class="keyword">function</span> (<span class="params">phone</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> message = <span class="string">'Hey friend, I have a new '</span> + phone.color + <span class="string">' '</span> + phone.brand + <span class="string">' phone'</span> + phone.type</span><br><span class="line">    resolve(message)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>在這個範例，您可能發現到我們根本沒有呼叫 reject，這是可選的，我們可以省略不調用。</li>
+<li>另外，我們可以透過使用 Promise.resolve 簡化這個範例。</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> showOff = <span class="function"><span class="keyword">function</span> (<span class="params">phone</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> message = <span class="string">'Hey friend, I have a new '</span> + phone.color + <span class="string">' '</span> + phone.brand + <span class="string">' phone '</span> + phone.type</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(message)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接著讓我們來看看如何串連 Promise。在 willIGetNewPhone 這個 Promise 之後接續 showOff Promise。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> askMom = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  willIGetNewPhone</span><br><span class="line">    .then(showOff)</span><br><span class="line">    .then(<span class="function"><span class="keyword">function</span> (<span class="params">fulfilled</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(fulfilled)</span><br><span class="line">      <span class="comment">// 'Hey friend, I have a new black Samsung phone s8'</span></span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(<span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(error.message)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>這就是 Promise 串連的方式。</p>
+<h1 id="非同步"><a href="#非同步" class="headerlink" title="非同步"></a>非同步</h1><p>Promise 是非同步的，讓我們在呼叫 Promise 的前後加上 console.log</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> askMom = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'before asking Mom'</span>)</span><br><span class="line">  willIGetNewPhone</span><br><span class="line">    .then(showOff)</span><br><span class="line">    .then(<span class="function"><span class="keyword">function</span> (<span class="params">fulfilled</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(fulfilled)</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(<span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(error.message)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'after asking Mom'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>順序是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. before asking Mom</span><br><span class="line">2. after asking Mom</span><br><span class="line">3. Hey friend, I have a new black Samsung phone s8</span><br></pre></td></tr></table></figure></p>
+<h1 id="ES5，-ES6-ES2015，ES7-Next-的-Promise"><a href="#ES5，-ES6-ES2015，ES7-Next-的-Promise" class="headerlink" title="ES5， ES6/ES2015，ES7/Next 的 Promise"></a>ES5， ES6/ES2015，ES7/Next 的 Promise</h1><p>完整範例<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> isMomHappy = <span class="literal">true</span></span><br><span class="line"><span class="keyword">const</span> willIGetNewPhone = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (isMomHappy) &#123;</span><br><span class="line">    <span class="keyword">const</span> phone = &#123;</span><br><span class="line">      brand: <span class="string">'Samsung'</span>,</span><br><span class="line">      color: <span class="string">'black'</span>,</span><br><span class="line">      type: <span class="string">'s8'</span></span><br><span class="line">    &#125;</span><br><span class="line">    resolve(phone)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> reason = <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Mom is not happy)</span></span><br><span class="line"><span class="string">    reject(reason)</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;)</span></span><br><span class="line"><span class="string">const showOff = function (phone) &#123;</span></span><br><span class="line"><span class="string">  const message = '</span>Hey friend, I have a <span class="keyword">new</span> <span class="string">' + phone.color + '</span> <span class="string">' + phone.brand + '</span> phone <span class="string">' + phone.type</span></span><br><span class="line"><span class="string">  return Promise.resolve(message)</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">const askMom = function () &#123;</span></span><br><span class="line"><span class="string">  willIGetNewPhone</span></span><br><span class="line"><span class="string">    .then(showOff)</span></span><br><span class="line"><span class="string">    .then(fulfilled =&gt; console.log(fulfilled))</span></span><br><span class="line"><span class="string">    .catch(error =&gt; console.log(error.message))</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">askMom()</span></span><br></pre></td></tr></table></figure></p>
+
+          </div>
+          
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最後更新時間：<time datetime="2017-12-15T03:55:00.029Z" itemprop="dateUpdated">2017-12-15 11:55:00</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2017/12/08/Promise學習筆記/" target="_blank" rel="external">https://blog.dandan.tw/2017/12/08/Promise學習筆記/</a>
+        
+    </div>
+    <footer>
+        <a href="https://blog.dandan.tw">
+            <img src="/img/avatars.jpg" alt="Dandan">
+            Dandan
+        </a>
+    </footer>
+</blockquote>
+
+          
+          <div class="post-footer">
+              
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Promise/">Promise</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/express/">express</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodeJs/">nodeJs</a></li></ul>
+
+              <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.dandan.tw/2017/12/08/Promise學習筆記/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Promise 筆記》 — Dandan Rhapsody&url=https://blog.dandan.tw/2017/12/08/Promise學習筆記/&via=https://blog.dandan.tw" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.dandan.tw/2017/12/08/Promise學習筆記/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+          </div>
+          
+              
+    <div id="comment"></div>
+
+
+
+          
+      </div>
+      
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2017/12/15/FileUploaderWithNodeJs/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">File Uploader With NodeJs</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2017/12/06/passportjs筆記/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">passportjs 筆記</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+      
+      
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目錄</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#介紹"><span class="post-toc-number">1.</span> <span class="post-toc-text">介紹</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Promises-A-標準定義"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Promises/A+標準定義</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#專門用語"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">專門用語</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Promise狀態"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Promise狀態</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#建立一個-Promise"><span class="post-toc-number">2.</span> <span class="post-toc-text">建立一個 Promise</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用-Promise"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">使用 Promise</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#鏈式調用-Promise"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">鏈式調用 Promise</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#非同步"><span class="post-toc-number">3.</span> <span class="post-toc-text">非同步</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ES5，-ES6-ES2015，ES7-Next-的-Promise"><span class="post-toc-number">4.</span> <span class="post-toc-text">ES5， ES6/ES2015，ES7/Next 的 Promise</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+  </article>
+  
+  
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Dandan &copy; 2015 - 2019
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+            <span>
+	            Hosted by <a href="https://coding.net/pages" target="_blank">Coding Pages</a>
+            </span>
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.dandan.tw/2017/12/08/Promise學習筆記/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Promise 筆記》 — Dandan Rhapsody&url=https://blog.dandan.tw/2017/12/08/Promise學習筆記/&via=https://blog.dandan.tw" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.dandan.tw/2017/12/08/Promise學習筆記/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKElEQVR42u3ay27CQAwFUP7/p1Op6o6SXI+HqjgnK4Qg+GRh/JjHI76O7+v59fNnXn3yOL1e3WHzhYGB8bGM/g8k3117TElsGBgY92Ekt05CrKbjJE2fx4aBgYGRh/vqnTzcPFljYGBgJOVataNMQsHAwMA4Z1Qb0fN3doX4ll4cAwPjAxmdxcC7X//RfgMDA+MfM47iVR2cJUO3Tjw/98HAwBjN6I+61r7b+WcoVLgYGBgjGHmr2TmE0Wllo/tjYGCMZnRGadVHkDyU5LcuSkMMDIyhjDwhrh35WltzlptYDAyMoYzc1w90bT0ZLUoxMDBGM/o7wbxw7Kfv6hICAwNjKqO6GMjbzvwO1aNmGBgYd2Dk5VdnTFZdDOSpHwMD4z6M5ABEp+GM2s5im4qBgXE3Rj4C6w/X+s3qxf8GBgbGOEZ54J7crnFUojVuw8DAGMpYW0PmaTpvetdaWQwMjHsyqoH2k+zmnQYGBsY4xq71ZBJ6vhjI1wwYGBizGXnplvzkefJN0nd1/YCBgYGxNujPq7W8NCwcs8DAwBjHSAZb5Q1DMei9qwgMDIx5jKN47R3o56XhRbrHwMAYzVhLiJ0R/1q4yV8CBgbGbEYnCa7BOgn3YqeBgYExmlE99JAf18jLx2oT+0vCxcDAuD2jmi47C85yeYqBgYERp87+QY1qiYmBgXEfxloaXRuurZWA5ZMjGBgYgxi7DkNUk3KefDcAMDAwPpXxBc2C9RtVnj8zAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.1"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.1"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.1"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+        <script type="text/javascript" src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script type="text/javascript" src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script type="text/javascript" src="/js/plugins/valine.js?v=1.4.1"></script>
+    
+    
+
+
+
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script type="text/javascript" src="/js/plugins/leancloud_visitors.js?v=1.4.1"></script>
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+    <script>
+    (function() {
+        var OriginTitile = document.title, titleTime;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.title = '回來繼續看啦！';
+                clearTimeout(titleTime);
+            } else {
+                document.title = '(つェ⊂)咦!又好了!';
+                titleTime = setTimeout(function() {
+                    document.title = OriginTitile;
+                },2000);
+            }
+        });
+    })();
+</script>
+
+
+
+
+
+    
+</body>
+</html>
