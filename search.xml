@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>Css Backdrop-filter</title>
+      <link href="/2019/09/29/css-backdrop-filter/"/>
+      <url>/2019/09/29/css-backdrop-filter/</url>
+      <content type="html"><![CDATA[<h1 id="CSS-Backdrop-filter-與-filter差異"><a href="#CSS-Backdrop-filter-與-filter差異" class="headerlink" title="CSS Backdrop-filter 與 filter差異"></a>CSS Backdrop-filter 與 filter差異</h1><p>通常要製造毛玻璃背景效果，會很麻煩的去使用偽元素<code>before</code>來去修飾單一圖層，達到毛玻璃的高斯模糊效果。</p><h2 id="Filter"><a href="#Filter" class="headerlink" title="Filter"></a>Filter</h2><iframe height="600" style="width: 100%;" scrolling="no" title="How to Create a Frosted Glass Effect in CSS - Method 1" src="https://codepen.io/dandanXO/embed/YzKbLbG?height=265&theme-id=dark&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true"><br>  See the Pen <a href="https://codepen.io/dandanXO/pen/YzKbLbG" target="_blank" rel="noopener">How to Create a Frosted Glass Effect in CSS - Method 1</a> by Dandan<br>  (<a href="https://codepen.io/dandanXO" target="_blank" rel="noopener">@dandanXO</a>) on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.<br></iframe><p>會發現，它其實就只是修飾這個元素下面底層元素其實是沒有關係的，如果要做到移動就會非常麻煩。</p><h2 id="Backdrop-filter"><a href="#Backdrop-filter" class="headerlink" title="Backdrop-filter"></a>Backdrop-filter</h2><p>但 <code>backdrop-filter</code> 則剛好相反，是對添加此濾鏡的元素的下層元素的快照添加濾鏡</p><iframe height="600" style="width: 100%;" scrolling="no" title="How to Create a Frosted Glass Effect in CSS - Method 2" src="https://codepen.io/dandanXO/embed/aborKzz?height=265&theme-id=dark&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true"><br>  See the Pen <a href="https://codepen.io/dandanXO/pen/aborKzz" target="_blank" rel="noopener">How to Create a Frosted Glass Effect in CSS - Method 2</a> by Dandan<br>  (<a href="https://codepen.io/dandanXO" target="_blank" rel="noopener">@dandanXO</a>) on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.<br></iframe><h3 id="Backdrop-filter-應用"><a href="#Backdrop-filter-應用" class="headerlink" title="Backdrop-filter 應用"></a>Backdrop-filter 應用</h3><p>這樣只要一張背景圖就可以做到各種上層濾淨效果</p><iframe height="600" style="width: 100%;" scrolling="no" title="backdrop-filter demo" src="https://codepen.io/dandanXO/embed/YzKbvNQ?height=265&theme-id=dark&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true"><br>  See the Pen <a href="https://codepen.io/dandanXO/pen/YzKbvNQ" target="_blank" rel="noopener">backdrop-filter demo</a> by Dandan<br>  (<a href="https://codepen.io/dandanXO" target="_blank" rel="noopener">@dandanXO</a>) on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.<br></iframe><h2 id="進一步研究"><a href="#進一步研究" class="headerlink" title="進一步研究"></a>進一步研究</h2><p>其實會發現 <code>Backdrop-filter</code>並不會對本身的元素做出濾淨效果，下面可以清楚看到，圖片下方下層元素被濾鏡而原始的圖片卻沒有。</p><iframe height="500" style="width: 100%;" scrolling="no" title="Apply Filter to Psuedo Element" src="https://codepen.io/dandanXO/embed/RwbmJgj?height=265&theme-id=dark&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true"><br>  See the Pen <a href="https://codepen.io/dandanXO/pen/RwbmJgj" target="_blank" rel="noopener">Apply Filter to Psuedo Element</a> by Dandan<br>  (<a href="https://codepen.io/dandanXO" target="_blank" rel="noopener">@dandanXO</a>) on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.<br></iframe><h1 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h1><p>總結來說，還不錯省了很多麻煩事，不然以前只能仰賴 <code>JS</code> 去做這件事情。<br>另外這個css 功能很早就發布了，同事無意間看到最近瀏覽器開始支援了就分享給出來。</p>]]></content>
+      
+      <categories>
+          
+          <category> CSS </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> css </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Intersection Observer</title>
       <link href="/2019/08/25/Intersection-Observer/"/>
       <url>/2019/08/25/Intersection-Observer/</url>
@@ -491,13 +512,13 @@
       
         <tags>
             
-            <tag> Hexo </tag>
-            
-            <tag> NodeJs </tag>
-            
             <tag> github </tag>
             
             <tag> git </tag>
+            
+            <tag> Hexo </tag>
+            
+            <tag> NodeJs </tag>
             
             <tag> DNS </tag>
             
@@ -522,13 +543,13 @@
             
             <tag> First </tag>
             
-            <tag> Hexo </tag>
-            
-            <tag> NodeJs </tag>
-            
             <tag> github </tag>
             
             <tag> git </tag>
+            
+            <tag> Hexo </tag>
+            
+            <tag> NodeJs </tag>
             
         </tags>
       
