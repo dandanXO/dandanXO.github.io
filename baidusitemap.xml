@@ -4,6 +4,34 @@
 
     
   <url>
+    <loc>https://blog.dandan.tw/2019/11/02/Api/</loc>
+    <lastmod>2019-11-02T17:36:41.849Z</lastmod>
+    <data>
+        <display>
+        <title>從拉麵店的販賣機理解什麼是 API</title>
+        <pubTime>2019-11-02T15:48:35.000Z</pubTime>
+        
+        <tag>教學</tag>
+         
+        <tag>api</tag>
+         
+        <tag>故事</tag>
+         
+        <tag>拉麵</tag>
+         
+        <tag>販賣機</tag>
+         
+         
+           
+             
+              <breadCrumb title="教學" url="https://blog.dandan.tw/categories/%E6%95%99%E5%AD%B8/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://blog.dandan.tw/2019/09/29/css-backdrop-filter/</loc>
     <lastmod>2019-09-29T14:37:14.730Z</lastmod>
     <data>
@@ -198,9 +226,9 @@
         <title>Nuxt storyblok</title>
         <pubTime>2018-07-15T11:20:52.000Z</pubTime>
         
-        <tag>first</tag>
-         
         <tag>vue.js</tag>
+         
+        <tag>first</tag>
          
         <tag>nuxt</tag>
          
@@ -403,13 +431,13 @@
         
         <tag>First</tag>
          
-        <tag>github</tag>
-         
-        <tag>git</tag>
-         
         <tag>Hexo</tag>
          
         <tag>NodeJs</tag>
+         
+        <tag>github</tag>
+         
+        <tag>git</tag>
          
          
            
@@ -477,11 +505,11 @@
         <title>Mongoose筆記</title>
         <pubTime>2017-11-09T01:39:44.000Z</pubTime>
         
+        <tag>first</tag>
+         
         <tag>mongodb</tag>
          
         <tag>mongodb first</tag>
-         
-        <tag>first</tag>
          
         <tag>author</tag>
          
@@ -511,11 +539,11 @@
         <title>Mongodb第一次使用設定紀錄</title>
         <pubTime>2017-11-05T11:41:52.000Z</pubTime>
         
+        <tag>first</tag>
+         
         <tag>mongodb</tag>
          
         <tag>mongodb first</tag>
-         
-        <tag>first</tag>
          
         <tag>author</tag>
          
@@ -539,13 +567,13 @@
         <title>hexo從0到有{二}</title>
         <pubTime>2017-11-03T07:42:48.000Z</pubTime>
         
-        <tag>github</tag>
-         
-        <tag>git</tag>
-         
         <tag>Hexo</tag>
          
         <tag>NodeJs</tag>
+         
+        <tag>github</tag>
+         
+        <tag>git</tag>
          
         <tag>DNS</tag>
          
