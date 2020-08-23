@@ -4,6 +4,32 @@
 
     
   <url>
+    <loc>https://blog.dandan.tw/2020/08/23/%E7%BE%8E%E8%82%A1%E6%8A%95%E8%B3%87%E5%85%A9%E5%80%8B%E6%9C%88%E5%BF%83%E5%BE%97/</loc>
+    <lastmod>2020-08-23T12:57:29.228Z</lastmod>
+    <data>
+        <display>
+        <title>美股投資兩個月心得</title>
+        <pubTime>2020-08-23T11:45:42.000Z</pubTime>
+        
+        <tag>investment</tag>
+         
+        <tag>美股</tag>
+         
+        <tag>投資</tag>
+         
+        <tag>sotck</tag>
+         
+         
+           
+             
+              <breadCrumb title="investment" url="https://blog.dandan.tw/categories/investment/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://blog.dandan.tw/2019/11/02/Api/</loc>
     <lastmod>2019-11-02T18:48:10.709Z</lastmod>
     <data>
@@ -226,9 +252,9 @@
         <title>Nuxt storyblok</title>
         <pubTime>2018-07-15T11:20:52.000Z</pubTime>
         
-        <tag>vue.js</tag>
-         
         <tag>first</tag>
+         
+        <tag>vue.js</tag>
          
         <tag>nuxt</tag>
          
@@ -505,11 +531,11 @@
         <title>Mongoose筆記</title>
         <pubTime>2017-11-09T01:39:44.000Z</pubTime>
         
-        <tag>first</tag>
-         
         <tag>mongodb</tag>
          
         <tag>mongodb first</tag>
+         
+        <tag>first</tag>
          
         <tag>author</tag>
          
@@ -539,11 +565,11 @@
         <title>Mongodb第一次使用設定紀錄</title>
         <pubTime>2017-11-05T11:41:52.000Z</pubTime>
         
-        <tag>first</tag>
-         
         <tag>mongodb</tag>
          
         <tag>mongodb first</tag>
+         
+        <tag>first</tag>
          
         <tag>author</tag>
          
