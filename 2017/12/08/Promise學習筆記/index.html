@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Promise 筆記 - Dandan Rhapsody</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="Dandan&#39;s Blog,介紹Promises/A+標準定義所謂的Promises/A+標準，其實就是個幾千字的一頁網頁而已，裡面的說明與用語並不會太難理解。雖然ES6標準中也有自己的Promise物件標準章節，但因為裡面涉,"> 
+    <meta name="author" content="Dandan"> 
+    <link rel="alternative" href="atom.xml" title="Dandan Rhapsody" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Dandan Rhapsody</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://dandanxo.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">Promise 筆記</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Promise 筆記</h1>
+        <div class="stuff">
+            <span>十二月 08, 2017</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Promise/" rel="tag">Promise</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/express/" rel="tag">express</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/nodeJs/" rel="tag">nodeJs</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="介紹"><a href="#介紹" class="headerlink" title="介紹"></a>介紹</h1><h2 id="Promises-A-標準定義"><a href="#Promises-A-標準定義" class="headerlink" title="Promises/A+標準定義"></a>Promises/A+標準定義</h2><p>所謂的<a target="_blank" rel="noopener" href="https://promisesaplus.com/">Promises/A+</a>標準，其實就是個幾千字的一頁網頁而已，裡面的說明與用語並不會太難理解。雖然ES6標準中也有自己的Promise物件標準章節，但因為裡面涉及很多實作技術說明，明顯地用字遣詞艱澀許多，所以在這裡就不多加討論。以下使用Promises/A+標準作為一個開始，來解說Promise的標準裡有什麼內容。</p>
+<h2 id="專門用語"><a href="#專門用語" class="headerlink" title="專門用語"></a>專門用語</h2><ul>
+<li>promise (承諾)是一個帶有遵照這個規格的then方法的物件</li>
+<li>thenable 是一個有定義then方法的物件</li>
+<li>value 合法的JavaScript值(包含undefined、thenable與promise)</li>
+<li>exception (例外)使用throw語句丟出來的值</li>
+<li>reason (理由)是表明為什麼promise被拒絕(rejected)的值</li>
+</ul>
+<blockquote>
+<p>註: 另外有個常見的專有名詞 settled(固定的) 一個promise最後的狀態，也就是fulfilled(已實現)或rejected(已拒絕)<br>註: reason(理由)通常是一個Error物件，用於錯誤處理。<br>註: promise/帕咪死/ 的中文翻譯是”承諾”、”約定”，本書中並不會用它的中文翻譯字詞，都是直接用英文。</p>
+</blockquote>
+<h2 id="Promise狀態"><a href="#Promise狀態" class="headerlink" title="Promise狀態"></a>Promise狀態</h2><p>promise物件必定是以下三種狀態中的其中一種: pending(等待中)、fulfilled(已實現)或rejected(已拒絕)。</p>
+<p>2.1.1 當處在pending(等待中)時，一個promise:</p>
+<p>2.1.1.1 可能會轉變到不是fulfilled(已實現)就是rejected(已拒絕)狀態</p>
+<p>2.2.1 當處在fulfilled(已實現)時，一個promise:</p>
+<p>2.2.1.1 必定不會再轉變到其他任何狀態</p>
+<p>2.2.1.2 必定有不能再更動的值</p>
+<p>2.3.1 當處在rejected(已拒絕)時，一個promise:</p>
+<p>2.3.1.1 必定不會再轉變到其他任何狀態</p>
+<p>2.3.1.2 必定有不能再更動的值reason(理由)</p>
+<p>這個用下面的圖解說明，應該可以很清楚的理解:<br><img src="https://i.imgur.com/t1POUcO.png" alt="Imgur"></p>
+<p>狀態是在Promise結構很重要的一個屬性，因為promise物件一開始都是代表懸而未決的值，所以一開始在promise物件在建立時，狀態都是pending(等待中)，之後可以轉變到fulfilled(已實現)就是rejected(已拒絕)其中一個，然後就固定不變了。如果有產生value(值)的情況就是轉變到fulfilled(已實現)狀態，而如果是有reason(理由)時，代表要轉變到rejected(已拒絕)狀態。</p>
+<h1 id="建立一個-Promise"><a href="#建立一個-Promise" class="headerlink" title="建立一個 Promise"></a>建立一個 Promise</h1><p>看完上面的比喻讓我們對應到 Javascript。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isMomHappy = <span class="literal">false</span></span><br><span class="line"><span class="keyword">var</span> willIGetNewPhone = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (isMomHappy) &#123;</span><br><span class="line">    <span class="keyword">var</span> phone = &#123;</span><br><span class="line">      <span class="attr">brand</span>: <span class="string">&#x27;Samsung&#x27;</span>,</span><br><span class="line">      <span class="attr">color</span>: <span class="string">&#x27;black&#x27;</span>,</span><br><span class="line">      <span class="attr">type</span>: <span class="string">&#x27;s8&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    resolve(phone)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> reason = <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;Mom is unhappy&#x27;</span>)</span><br><span class="line">    reject(reason)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>第一行我們使用一個 Boolean <em>isMomHappy</em> 定義媽媽是否開心。<br>我們宣告一個 Promise _willIGetNewPhone_。這個 Promise 可能是被 <em>履行(resolved)</em> 又或者 _拒絕(rejected)_。<br>Promise 標準的語法可以參考 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise">MDN</a></p>
+<p><code>    new Promise(function (resolve, reject) &#123;&#125;)</code></p>
+<p>我們需要記得的是如果一個 Promise 執行成功要在內部 function 呼叫 <em>resolve(成功結果)</em> ，如果結果是失敗則呼叫 <em>reject(失敗結果)</em> 。在我們的範例中如果媽媽開心，我們將得到手機因此我們執行 _reslove(phone)_，如果媽媽不高興則執行 _reject(reason)_。</p>
+<h2 id="使用-Promise"><a href="#使用-Promise" class="headerlink" title="使用 Promise"></a>使用 Promise</h2><p>到這一步我們已經有了一個 Promise，讓我們接著來使用它。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> askMom = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  willIGetNewPhone</span><br><span class="line">    .then(<span class="function"><span class="keyword">function</span> (<span class="params">fulfilled</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(fulfilled)</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(<span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(error.message)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">askMom()</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>首先我們有個 function 叫 askMom 在這個 function 中，我們將利用 Promise willIGetNewPhone。</li>
+<li>我們希望一旦等待的結果發生時可以採取對應的動作，我們可以使用 .then 或 .catch 來執行對應的行為。</li>
+<li>在這個範例中，我們在 .then 中使用 function (fulfilled){}，而這個 fulfilled 就是從 Promise 的 resolve(成功結果) 傳來的結果，範例中這個結果就是 phone 物件。</li>
+<li>在 .catch 中我們使用了 function (error) {}。而這個 error 就是從 Promise 的 reject(失敗結果) 傳來的即 reason。</li>
+</ol>
+<h2 id="鏈式調用-Promise"><a href="#鏈式調用-Promise" class="headerlink" title="鏈式調用 Promise"></a>鏈式調用 Promise</h2><p>假如你承諾您的朋友，如果你拿到新手機會借他們看看。這又是另一個 Promise。讓我們繼續來撰寫這個範例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> showOff = <span class="function"><span class="keyword">function</span> (<span class="params">phone</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> message = <span class="string">&#x27;Hey friend, I have a new &#x27;</span> + phone.color + <span class="string">&#x27; &#x27;</span> + phone.brand + <span class="string">&#x27; phone&#x27;</span> + phone.type</span><br><span class="line">    resolve(message)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>在這個範例，您可能發現到我們根本沒有呼叫 reject，這是可選的，我們可以省略不調用。</li>
+<li>另外，我們可以透過使用 Promise.resolve 簡化這個範例。</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> showOff = <span class="function"><span class="keyword">function</span> (<span class="params">phone</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> message = <span class="string">&#x27;Hey friend, I have a new &#x27;</span> + phone.color + <span class="string">&#x27; &#x27;</span> + phone.brand + <span class="string">&#x27; phone &#x27;</span> + phone.type</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(message)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接著讓我們來看看如何串連 Promise。在 willIGetNewPhone 這個 Promise 之後接續 showOff Promise。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> askMom = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  willIGetNewPhone</span><br><span class="line">    .then(showOff)</span><br><span class="line">    .then(<span class="function"><span class="keyword">function</span> (<span class="params">fulfilled</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(fulfilled)</span><br><span class="line">      <span class="comment">// &#x27;Hey friend, I have a new black Samsung phone s8&#x27;</span></span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(<span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(error.message)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>這就是 Promise 串連的方式。</p>
+<h1 id="非同步"><a href="#非同步" class="headerlink" title="非同步"></a>非同步</h1><p>Promise 是非同步的，讓我們在呼叫 Promise 的前後加上 console.log</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> askMom = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;before asking Mom&#x27;</span>)</span><br><span class="line">  willIGetNewPhone</span><br><span class="line">    .then(showOff)</span><br><span class="line">    .then(<span class="function"><span class="keyword">function</span> (<span class="params">fulfilled</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(fulfilled)</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(<span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(error.message)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;after asking Mom&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>順序是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. before asking Mom</span><br><span class="line">2. after asking Mom</span><br><span class="line">3. Hey friend, I have a new black Samsung phone s8</span><br></pre></td></tr></table></figure>
+<h1 id="ES5，-ES6-ES2015，ES7-Next-的-Promise"><a href="#ES5，-ES6-ES2015，ES7-Next-的-Promise" class="headerlink" title="ES5， ES6/ES2015，ES7/Next 的 Promise"></a>ES5， ES6/ES2015，ES7/Next 的 Promise</h1><p>完整範例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> isMomHappy = <span class="literal">true</span></span><br><span class="line"><span class="keyword">const</span> willIGetNewPhone = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (isMomHappy) &#123;</span><br><span class="line">    <span class="keyword">const</span> phone = &#123;</span><br><span class="line">      <span class="attr">brand</span>: <span class="string">&#x27;Samsung&#x27;</span>,</span><br><span class="line">      <span class="attr">color</span>: <span class="string">&#x27;black&#x27;</span>,</span><br><span class="line">      <span class="attr">type</span>: <span class="string">&#x27;s8&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    resolve(phone)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> reason = <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;Mom is not happy)</span></span><br><span class="line"><span class="string">    reject(reason)</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;)</span></span><br><span class="line"><span class="string">const showOff = function (phone) &#123;</span></span><br><span class="line"><span class="string">  const message = &#x27;</span>Hey friend, I have a <span class="keyword">new</span> <span class="string">&#x27; + phone.color + &#x27;</span> <span class="string">&#x27; + phone.brand + &#x27;</span> phone <span class="string">&#x27; + phone.type</span></span><br><span class="line"><span class="string">  return Promise.resolve(message)</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">const askMom = function () &#123;</span></span><br><span class="line"><span class="string">  willIGetNewPhone</span></span><br><span class="line"><span class="string">    .then(showOff)</span></span><br><span class="line"><span class="string">    .then(fulfilled =&gt; console.log(fulfilled))</span></span><br><span class="line"><span class="string">    .catch(error =&gt; console.log(error.message))</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">askMom()</span></span><br></pre></td></tr></table></figure>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://drive.google.com/uc?id=1W1l7f8cKS2KOk3gYgMC_khkA5svwYxIn&export=download'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

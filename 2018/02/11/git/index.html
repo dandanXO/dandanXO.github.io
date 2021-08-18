@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GIT 使用筆記 - Dandan Rhapsody</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="Dandan&#39;s Blog,GIT 基本筆記1. 進入暫存區(ADD)、提交版本(COMMIT)1234567891011121314151617181920212223git clone   clone下來別人的專案到loc,"> 
+    <meta name="author" content="Dandan"> 
+    <link rel="alternative" href="atom.xml" title="Dandan Rhapsody" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Dandan Rhapsody</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://dandanxo.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">GIT 使用筆記</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">GIT 使用筆記</h1>
+        <div class="stuff">
+            <span>二月 11, 2018</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/git/" rel="tag">git</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/github/" rel="tag">github</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="GIT-基本筆記"><a href="#GIT-基本筆記" class="headerlink" title="GIT 基本筆記"></a>GIT 基本筆記</h1><h2 id="1-進入暫存區-ADD-、提交版本-COMMIT"><a href="#1-進入暫存區-ADD-、提交版本-COMMIT" class="headerlink" title="1. 進入暫存區(ADD)、提交版本(COMMIT)"></a>1. 進入暫存區(ADD)、提交版本(COMMIT)</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">git clone   </span><br><span class="line">clone下來別人的專案到local端</span><br><span class="line"> </span><br><span class="line">git init  </span><br><span class="line">創建一個新的Repository (打開任何一個專案資料夾打上git init)</span><br><span class="line"> </span><br><span class="line">add add 主檔名.副檔名   </span><br><span class="line">將檔案提交入Staging Areagit add 整個資料夾提交入Staging Area </span><br><span class="line"> </span><br><span class="line">git commit -m &#x27;一行解說文字&#x27;  </span><br><span class="line">將檔案提交入Repository git commit -e 能用編輯器撰寫多行解說文字</span><br><span class="line"> </span><br><span class="line">git rm --cached 檔案名稱 </span><br><span class="line">將不在Repository的檔案移出Staging Area</span><br><span class="line"> </span><br><span class="line">git reset HEAD </span><br><span class="line">將已經在Repository的檔案移出Staging Area</span><br><span class="line"> </span><br><span class="line">git status</span><br><span class="line">查看目前檔案的狀態</span><br><span class="line"> </span><br><span class="line">git log</span><br><span class="line">查看目前所有commit的歷史紀錄</span><br></pre></td></tr></table></figure>
+<p><em>如果已經被加入repository過的檔案，絕對不行用git rm –cached，因為這行指令是把檔案從Repository中幹掉：</em></p>
+<ol>
+<li>若檔案不在Repository內 : git rm –cached幫我們從stage刪除，且檔案本來就是untracked，執行完還是untracked，還在預期之內。</li>
+<li>若檔案已經在repository內 : git rm –cached會幫我們從repository刪除，並且從stage刪除，因為已經從repository刪除檔案，檔案會從tracked變成untracked。</li>
+</ol>
+<p>因此要移除Staing Area中的檔案，我們必須根據檔案狀態採用不同的指令： __</p>
+<ol>
+<li>若該檔案不在repository內 : git rm –cached 檔案名稱</li>
+<li>若檔案已經在repository內 : git reset HEAD 檔案名稱</li>
+</ol>
+<h2 id="2-查看目前狀態的常用指令-DIFF-LOG-SHOW"><a href="#2-查看目前狀態的常用指令-DIFF-LOG-SHOW" class="headerlink" title="2. 查看目前狀態的常用指令 (DIFF, LOG, SHOW)"></a>2. 查看目前狀態的常用指令 (DIFF, LOG, SHOW)</h2><h3 id="從Git命令列鍵入git-diff就可以看到修改過後的紀錄。"><a href="#從Git命令列鍵入git-diff就可以看到修改過後的紀錄。" class="headerlink" title="從Git命令列鍵入git diff就可以看到修改過後的紀錄。"></a>從Git命令列鍵入git diff就可以看到修改過後的紀錄。</h3><figure class="highlight plaintext"><figcaption><span>git diff</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">diff --git a/hello.txt b/hello.txt</span><br><span class="line">index e69de29..1029def 100644</span><br><span class="line">--- a/hello.txt</span><br><span class="line">+++ b/hello.txt</span><br><span class="line">@@ -0,0 +1,2 @@</span><br><span class="line">+print (&#x27;hello world&#x27;)^M</span><br><span class="line">+print (&#x27;I wanna fly&#x27;)</span><br><span class="line">\ No newline at end of file</span><br></pre></td></tr></table></figure>
+<h3 id="要怎麼知道每一項commit確切到底改了什麼"><a href="#要怎麼知道每一項commit確切到底改了什麼" class="headerlink" title="要怎麼知道每一項commit確切到底改了什麼"></a>要怎麼知道每一項commit確切到底改了什麼</h3><p>git show來查看某項特定commit的修改內容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ git log</span><br><span class="line">commit 8a85094b22edf4184e7228c3f849807dd7eed2c9</span><br><span class="line">Author: Lynn19931205 </span><br><span class="line">Date:   Wed Sep 7 19:07:21 2016 +0800</span><br><span class="line"> </span><br><span class="line">    Add new line I wanna fly</span><br><span class="line"> </span><br><span class="line">commit 0dc97a8057e1f30139729ce2316f5be966a65ef2</span><br><span class="line">Author: Lynn19931205 </span><br><span class="line">Date:   Wed Sep 7 18:32:32 2016 +0800</span><br><span class="line"> </span><br><span class="line">    Add a line.</span><br></pre></td></tr></table></figure>
+<p>然後我們把上面第一欄的commit代碼複製起來 (複製六碼或以上)後輸入在git show後面，就會顯示該次詳細的修改內容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git show 8a8509</span><br><span class="line">commit 8a85094b22edf4184e7228c3f849807dd7eed2c9</span><br><span class="line">Author: Lynn19931205 </span><br><span class="line">Date:   Wed Sep 7 19:07:21 2016 +0800</span><br><span class="line"> </span><br><span class="line">    Add new line I wanna fly</span><br><span class="line">diff --git a/hello.txt b/hello.txtindex e69de29..1029def 100644--- a/hello.txt+++ b/hello.t</span><br></pre></td></tr></table></figure>
+
+<p>在git diff後面輸入commit代碼，也可以比較兩次commit間修改的差異:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git diff 8a8509 0dc97a</span><br><span class="line">diff --git a/hello.txt b/hello.txt</span><br><span class="line">index 1029def..e69de29 100644</span><br><span class="line">--- a/hello.txt</span><br><span class="line">+++ b/hello.txt</span><br><span class="line">@@ -1,2 +0,0 @@</span><br><span class="line">-print (&#x27;hello world&#x27;)</span><br><span class="line">-print (&#x27;I wanna fly&#x27;)</span><br><span class="line">\ No newline at end of file</span><br></pre></td></tr></table></figure>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">git log </span><br><span class="line">列出所有commit的歷史紀錄</span><br><span class="line"> </span><br><span class="line">git diff </span><br><span class="line">比較文件或commit間修改的差異</span><br><span class="line"> </span><br><span class="line">git show </span><br><span class="line">詳細列出該次commit的修改內容</span><br><span class="line"> </span><br><span class="line">git status </span><br><span class="line">列出目前的檔案狀態</span><br></pre></td></tr></table></figure>
+<h1 id="3-推送程式碼至REMOTE端-PUSH-PULL"><a href="#3-推送程式碼至REMOTE端-PUSH-PULL" class="headerlink" title="3. 推送程式碼至REMOTE端 (PUSH/PULL)"></a>3. 推送程式碼至REMOTE端 (PUSH/PULL)</h1><p>在GitHub上創建一個和本地端名稱相同的資料夾，專案描述可寫可不寫、權限設為開放、README不用勾選，最後按下 ：<br><img src="https://i.imgur.com/bw1tFiX.png" alt="Imgur"></p>
+<p>將hello.txt檔案打開，在Remote端的第三行加入一排的驚嘆號「!!!!!!」、再打開Local端加入一排的問號「?????」。</p>
+<p><img src="https://i.imgur.com/5jY9uwe.jpg" alt="Imgur"></p>
+<p>接下來一樣透過和git commit -m，將Local端的程式碼送進Repository。有趣的來了，當我們將輸入 git pull 將程式碼從Remote端拉下來到Local端這邊時：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> git pull</span><br><span class="line">remote: Counting objects: 3, done.</span><br><span class="line">remote: Compressing objects: 100% (2/2), done.</span><br><span class="line">remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0</span><br><span class="line">Unpacking objects: 100% (3/3), done.</span><br><span class="line">From https://github.com/Lynn19931205/project_1</span><br><span class="line">   260b7de..957b721  master     -&gt; origin/master</span><br><span class="line">Auto-merging hello.txt</span><br><span class="line">CONFLICT (content): Merge conflict in hello.txt</span><br><span class="line">Automatic merge failed; fix conflicts and then commit the result.</span><br></pre></td></tr></table></figure>
+
+<p>Git表示：你們有一些衝突(conflicts)，待解決完我才會幫你們成功把Remote端的東西融合到Local端這邊噢。先來打開Local端的hello.txt檔案：</p>
+<p><img src="https://i.imgur.com/rIMxLem.jpg" alt="Imgur"><br>最後再一次git commit、git add，最後用git push將目前這個版本「推送」到Remote端 (一樣須輸入GitHub帳號密碼)。</p>
+<p>這時回到GitHub網站重新整理，可以發現…Remote端的程式碼從驚嘆號變成最新修改完成的問號了！</p>
+<h1 id="4-切換-CHECKOUT-開分支-BRANCH-與融合-MERGE"><a href="#4-切換-CHECKOUT-開分支-BRANCH-與融合-MERGE" class="headerlink" title="4. 切換(CHECKOUT), 開分支(BRANCH)與融合(MERGE)"></a>4. 切換(CHECKOUT), 開分支(BRANCH)與融合(MERGE)</h1><h2 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h2><p>Git作為分散式版本管理系統的好處是不需仰賴中央單一一條主幹道開發，可根據開發需求、隨時在某一時間點開分支(branch)獨立開發某一項功能，待開發完成後再融合(merge)回去主幹道。</p>
+<p>概念圖:<br><img src="https://i.imgur.com/uIJvSBk.jpg" alt="Imgur"><br>主幹(master)與分支(branch)是稱呼專案的主要版本和分支版本。在Git第一個建立的專案版本會被稱為master版本。</p>
+<p>然而實際上master也僅是其中一條branch，所有branch間的關係都是平等的、彼此間無主從關係。一般習慣將穩定版本稱主幹，其餘的變動、開發中版本則都稱作分支。</p>
+<p>開branch的方式非常簡單，直接輸入git branch 即可。<br><code>git branch branch_a</code></p>
+<p>是意圖:<br><img src="https://i.imgur.com/qG3EX6X.jpg" alt="Imgur"></p>
+<h2 id="checkout"><a href="#checkout" class="headerlink" title="checkout"></a>checkout</h2><p>目前master幹道上有五個commit的版本；若沒有指定要回溯至哪一個歷史版本，branch就會採用最新一次commit的版本。 但若我們想切到某一個commit版本開一條branch時</p>
+<p><img src="https://i.imgur.com/V7zjHi9.jpg" alt="Imgur"></p>
+<p>我們可以先輸入git log查看所有commit的歷史紀錄：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">git log </span><br><span class="line">commit 372466ead9e54fd3a464cb85d78cd5304f335bc4 Merge: 6183031 957b721 </span><br><span class="line"> Author: Lynn19931205  </span><br><span class="line"> Date: Wed Sep 7 23:35:26 2016 +0800 </span><br><span class="line"> </span><br><span class="line">   Final Edit   </span><br><span class="line"> </span><br><span class="line">commit 957b721541d834fb7a71157f0401bdd013ea6e08</span><br><span class="line"> Author: Lynn </span><br><span class="line"> Date: Wed Sep 7 23:23:16 2016 +0800 </span><br><span class="line"> </span><br><span class="line">   Update hello.txt </span><br><span class="line"> </span><br><span class="line">commit adb3238e29668c95130c1e6e82b5bab3faef5489</span><br><span class="line"> Author: Lynn19931205 </span><br><span class="line"> Date: Wed Sep 7 20:30:07 2016 +0800 </span><br><span class="line"> </span><br><span class="line">   Add a if statement </span><br><span class="line"> </span><br><span class="line">commit 8a85094b22edf4184e7228c3f849807dd7eed2c9</span><br><span class="line"> Author: Lynn19931205 </span><br><span class="line"> Date: Wed Sep 7 19:07:21 2016 +0800 </span><br><span class="line"> </span><br><span class="line">   Add new line I wanna fly </span><br><span class="line"> </span><br><span class="line">commit 0dc97a8057e1f30139729ce2316f5be966a65ef2</span><br><span class="line"> Author: Lynn19931205 </span><br><span class="line"> Date: Wed Sep 7 18:32:32 2016 +0800 </span><br><span class="line"> </span><br><span class="line">   Add a line.</span><br></pre></td></tr></table></figure>
+
+
+<p>選好回溯的時間點後使用 <code>git checkout</code> (checkout後面輸入commit代碼至少6碼)；待checkout過去之後，就可以開一條branch了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout adb3238</span><br><span class="line"> </span><br><span class="line">$ git branch branch_a</span><br></pre></td></tr></table></figure>
+<p>但這邊我們只是先建立了一個branch噢，實際上我們人還待在master這條幹道上。</p>
+<p>因此我們必須利用checkout的另外一個功能、也就是切換各條branch的功能! (別忘了master也只是其中一條branch)。輸入git checkout ：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git  ckeckout branch_a</span><br><span class="line">Switched to branch &#x27;branch_a&#x27;</span><br></pre></td></tr></table></figure>
+<p>輸入git branch -a可以查看目前我們開的所有branch：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -a      </span><br><span class="line">branch_a* master  remotes/origin/master</span><br></pre></td></tr></table></figure>
+<p>輸入git branch -a可以查看目前我們開的所有branch(*代表當前所在位置)：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -a      </span><br><span class="line">branch_a* master  remotes/origin/master</span><br><span class="line">$ git branch -a      </span><br><span class="line">branch_a* master  remotes/origin/master</span><br></pre></td></tr></table></figure>
+<p>當我們不想要這條branch時，可以用git branch -d 刪除：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d branch_a</span><br></pre></td></tr></table></figure>
+
+<h2 id="MERGE"><a href="#MERGE" class="headerlink" title="MERGE"></a>MERGE</h2><p> 首先必須利用checkout回到想要merge過去的主幹道上；比如在此例中我們用git checkout回到master線上之後，再輸入要merge過去的branch名稱git merge 。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master </span><br><span class="line">Switched to branch &#x27;master&#x27; </span><br><span class="line"> </span><br><span class="line">$ git merge branch_a</span><br></pre></td></tr></table></figure>
+
+<h1 id="進階-Git-reset-取消上一次的操作"><a href="#進階-Git-reset-取消上一次的操作" class="headerlink" title="進階 Git reset 取消上一次的操作"></a>進階 Git reset 取消上一次的操作</h1><h2 id="取消-merge"><a href="#取消-merge" class="headerlink" title="取消 merge"></a>取消 merge</h2><p>版本控制最大的好處之一就是讓你永遠可以後悔，因此我們常會希望把已暫存的檔案、已提交的 commit 或是已合併的 branch 取消修改，這時候我們可以使用 <code>git reset</code> 這個指令來幫助我們，像現在我若是想要取消剛剛的 merge 動作，我只要下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard ORIG_HEAD</span><br><span class="line">HEAD is now at c126ff9 Config initialze</span><br></pre></td></tr></table></figure>
+<h2 id="取消已暫存的檔案"><a href="#取消已暫存的檔案" class="headerlink" title="取消已暫存的檔案"></a>取消已暫存的檔案</h2><p>有時候手殘不小心將還沒修改完的檔案使用 <code>git add</code>加入了 <code>stage</code> ，這時候可以使用 <code>git reset HEAD &lt;file&gt;</code> 來將這支檔案取消 stage：</p>
+<p><img src="https://i.imgur.com/Cv42Atm.jpg" alt="Imgur"></p>
+<p>你可以看到我使用 <code>git add</code> 將檔案加入 stage 後，在我的 status 狀態顯示 lib/cat.rb 這支檔案現在已經準備好被 commit ，但這時我使用了 <code>git reset HEAD</code> 將這支檔案取消 stage，再使用 status 查看時它就變回一支還沒加入 stage 的檔案了。</p>
+<h2 id="取消修改過的檔案"><a href="#取消修改過的檔案" class="headerlink" title="取消修改過的檔案"></a>取消修改過的檔案</h2><p>連續剛剛的情況，若是我想完全放棄這次修改 (將檔案狀態回復到最新的一次 commit 時的狀態)，我可以使用 <code>git checkout -- &lt;file&gt;</code> 來回復這支檔案：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- lib/cat.rb</span><br><span class="line">取消變更不會有任何訊息，但這時你去看檔案會發現他已經回復成沒修改過時的模樣了。</span><br></pre></td></tr></table></figure>
+<h2 id="修改上一次的commit"><a href="#修改上一次的commit" class="headerlink" title="修改上一次的commit"></a>修改上一次的commit</h2><p>手誤打太快， commit 訊息打錯時，我們可以使用 git commit –amend 來幫助我們重新修改：<br><img src="https://i.imgur.com/a43BX1h.jpg" alt="Imgur">.</p>
+<p><img src="https://i.imgur.com/m8F0w9k.jpg" alt="Imgur"></p>
+<p>在上面我想要修改打錯字的 commit 訊息 “Cat initiae”，因此我使用 git commit –amend 來修改成正確的訊息。</p>
+<h2 id="強制回復到上一次-commit-的版本"><a href="#強制回復到上一次-commit-的版本" class="headerlink" title="強制回復到上一次 commit 的版本"></a>強制回復到上一次 commit 的版本</h2><p>有時候我們想要放棄所有修改回到 commit 時的狀態，這時候我們可以下 git <code>reset --hard HEAD</code> 來回復，HEAD 參數可以加上一些變化，例如 HEAD^ 表示目前版本的上一個版本 HEAD~2 則是再上一個，因此你可以自由的跳回去之前的狀態。</p>
+<p><em>如果您想要保存修改過的檔案，請勿下此指令，請用上面的方式去解決。!!</em></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://drive.google.com/uc?id=1W1l7f8cKS2KOk3gYgMC_khkA5svwYxIn&export=download'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>metascraper - Dandan Rhapsody</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="Dandan&#39;s Blog,Metascraper## 前言現在都講求速度的文化連爬蟲都是，因此發現了這個套件metascraper，有一些內建的規自動掃秒html dom文本與一些規則的meta dat。
+安裝npm 一如,"> 
+    <meta name="author" content="Dandan"> 
+    <link rel="alternative" href="atom.xml" title="Dandan Rhapsody" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Dandan Rhapsody</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://dandanxo.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">metascraper</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">metascraper</h1>
+        <div class="stuff">
+            <span>八月 11, 2019</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/metascraper/" rel="tag">metascraper</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E7%88%AC%E8%9F%B2/" rel="tag">爬蟲</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="Metascraper"><a href="#Metascraper" class="headerlink" title="Metascraper"></a>Metascraper</h1><p><img src="https://i.imgur.com/RVBXhLv.png" alt="metascraper"><br>## 前言<br>現在都講求速度的文化連爬蟲都是，因此發現了這個套件<a target="_blank" rel="noopener" href="https://metascraper.js.org/#/">metascraper</a>，有一些內建的規自動掃秒<code>html dom</code>文本與一些規則的<code>meta dat</code>。</p>
+<h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><p><a target="_blank" rel="noopener" href="https://www.npmjs.com/">npm</a> 一如往常簡單</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install metascraper --save</span><br></pre></td></tr></table></figure>
+
+<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> metascraper = <span class="built_in">require</span>(<span class="string">&#x27;metascraper&#x27;</span>)([</span><br><span class="line">  <span class="built_in">require</span>(<span class="string">&#x27;metascraper-author&#x27;</span>)(),</span><br><span class="line">  <span class="built_in">require</span>(<span class="string">&#x27;metascraper-date&#x27;</span>)(),</span><br><span class="line">  <span class="built_in">require</span>(<span class="string">&#x27;metascraper-description&#x27;</span>)(),</span><br><span class="line">  <span class="built_in">require</span>(<span class="string">&#x27;metascraper-image&#x27;</span>)(),</span><br><span class="line">  <span class="built_in">require</span>(<span class="string">&#x27;metascraper-logo&#x27;</span>)(),</span><br><span class="line">  <span class="built_in">require</span>(<span class="string">&#x27;metascraper-clearbit&#x27;</span>)(),</span><br><span class="line">  <span class="built_in">require</span>(<span class="string">&#x27;metascraper-publisher&#x27;</span>)(),</span><br><span class="line">  <span class="built_in">require</span>(<span class="string">&#x27;metascraper-title&#x27;</span>)(),</span><br><span class="line">  <span class="built_in">require</span>(<span class="string">&#x27;metascraper-url&#x27;</span>)()</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> got = <span class="built_in">require</span>(<span class="string">&#x27;got&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> targetUrl = <span class="string">&#x27;http://www.bloomberg.com/news/articles/2016-05-24/as-zenefits-stumbles-gusto-goes-head-on-by-selling-insurance&#x27;</span></span><br><span class="line"></span><br><span class="line">;(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; <span class="attr">body</span>: html, url &#125; = <span class="keyword">await</span> got(targetUrl)</span><br><span class="line">  <span class="keyword">const</span> metadata = <span class="keyword">await</span> metascraper(&#123; html, url &#125;)</span><br><span class="line">  <span class="built_in">console</span>.log(metadata)</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>輸出</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;author&quot;</span>: <span class="string">&quot;Ellen Huet&quot;</span>,</span><br><span class="line">  <span class="string">&quot;date&quot;</span>: <span class="string">&quot;2016-05-24T18:00:03.894Z&quot;</span>,</span><br><span class="line">  <span class="string">&quot;description&quot;</span>: <span class="string">&quot;The HR startups go to war.&quot;</span>,</span><br><span class="line">  <span class="string">&quot;image&quot;</span>: <span class="string">&quot;https://assets.bwbx.io/images/users/iqjWHBFdfxIU/ioh_yWEn8gHo/v1/-1x-1.jpg&quot;</span>,</span><br><span class="line">  <span class="string">&quot;publisher&quot;</span>: <span class="string">&quot;Bloomberg.com&quot;</span>,</span><br><span class="line">  <span class="string">&quot;title&quot;</span>: <span class="string">&quot;As Zenefits Stumbles, Gusto Goes Head-On by Selling Insurance&quot;</span>,</span><br><span class="line">  <span class="string">&quot;url&quot;</span>: <span class="string">&quot;http://www.bloomberg.com/news/articles/2016-05-24/as-zenefits-stumbles-gusto-goes-head-on-by-selling-insurance&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="如何運作的"><a href="#如何運作的" class="headerlink" title="如何運作的"></a>如何運作的</h2><p>來看看他怎麼運作的吧</p>
+<h3 id="核心部分"><a href="#核心部分" class="headerlink" title="核心部分"></a>核心部分</h3><p>其實很簡單只做函數柯里化<a target="_blank" rel="noopener" href="https://cythilya.github.io/2017/02/27/currying-in-javascript/">(可以參考這裡)</a>輸入規則函數變數與一些錯誤檢查，並且合併規則</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; isUrl &#125; = <span class="built_in">require</span>(<span class="string">&#x27;@metascraper/helpers&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> whoops = <span class="built_in">require</span>(<span class="string">&#x27;whoops&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mergeRules = <span class="built_in">require</span>(<span class="string">&#x27;./merge-rules&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> loadRules = <span class="built_in">require</span>(<span class="string">&#x27;./load-rules&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> loadHTML = <span class="built_in">require</span>(<span class="string">&#x27;./load-html&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> getData = <span class="built_in">require</span>(<span class="string">&#x27;./get-data&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> MetascraperError = whoops(<span class="string">&#x27;MetascraperError&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="params">rules</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> loadedRules = loadRules(rules)</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">async</span> (&#123; url, html, <span class="attr">rules</span>: inlineRules, <span class="built_in">escape</span> = <span class="literal">true</span> &#125; = &#123;&#125;) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (!isUrl(url)) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> MetascraperError(&#123;</span><br><span class="line">        <span class="attr">message</span>: <span class="string">&#x27;Need to provide a valid URL.&#x27;</span>,</span><br><span class="line">        <span class="attr">code</span>: <span class="string">&#x27;INVALID_URL&#x27;</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> getData(&#123;</span><br><span class="line">      url,</span><br><span class="line">      <span class="built_in">escape</span>,</span><br><span class="line">      <span class="attr">htmlDom</span>: loadHTML(html),</span><br><span class="line">      <span class="attr">rules</span>: mergeRules(inlineRules, loadedRules)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="預設規則"><a href="#預設規則" class="headerlink" title="預設規則"></a>預設規則</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">&#x27;metascraper-author&#x27;</span>)(),</span><br><span class="line"> <span class="built_in">require</span>(<span class="string">&#x27;metascraper-date&#x27;</span>)(),</span><br><span class="line"> <span class="built_in">require</span>(<span class="string">&#x27;metascraper-description&#x27;</span>)(),</span><br><span class="line"> <span class="built_in">require</span>(<span class="string">&#x27;metascraper-image&#x27;</span>)(),</span><br><span class="line"> <span class="built_in">require</span>(<span class="string">&#x27;metascraper-logo&#x27;</span>)(),</span><br><span class="line"> <span class="built_in">require</span>(<span class="string">&#x27;metascraper-clearbit&#x27;</span>)(),</span><br><span class="line"> <span class="built_in">require</span>(<span class="string">&#x27;metascraper-publisher&#x27;</span>)(),</span><br><span class="line"> <span class="built_in">require</span>(<span class="string">&#x27;metascraper-title&#x27;</span>)(),</span><br><span class="line"> <span class="built_in">require</span>(<span class="string">&#x27;metascraper-url&#x27;</span>)()</span><br></pre></td></tr></table></figure>
+
+<p>上面這些規則裡面都是柯里化<a target="_blank" rel="noopener" href="https://cythilya.github.io/2017/02/27/currying-in-javascript/">(可以參考這裡)</a>的參數，舉例來說<code>metascraper-title</code>長這個樣子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; $filter, title &#125; = <span class="built_in">require</span>(<span class="string">&#x27;@metascraper/helpers&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> wrap = <span class="function"><span class="params">rule</span> =&gt;</span> <span class="function">(<span class="params">&#123; htmlDom &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> value = rule(htmlDom)</span><br><span class="line">  <span class="keyword">return</span> title(value)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function">() =&gt;</span> (&#123;</span><br><span class="line">  <span class="attr">title</span>: [</span><br><span class="line">    wrap($ =&gt; $(<span class="string">&#x27;meta[property=&quot;og:title&quot;]&#x27;</span>).attr(<span class="string">&#x27;content&#x27;</span>)),</span><br><span class="line">    wrap($ =&gt; $(<span class="string">&#x27;meta[name=&quot;twitter:title&quot;]&#x27;</span>).attr(<span class="string">&#x27;content&#x27;</span>)),</span><br><span class="line">    wrap($ =&gt; $(<span class="string">&#x27;.post-title&#x27;</span>).text()),</span><br><span class="line">    wrap($ =&gt; $(<span class="string">&#x27;.entry-title&#x27;</span>).text()),</span><br><span class="line">    wrap($ =&gt; $(<span class="string">&#x27;h1[class*=&quot;title&quot; i] a&#x27;</span>).text()),</span><br><span class="line">    wrap($ =&gt; $(<span class="string">&#x27;h1[class*=&quot;title&quot; i]&#x27;</span>).text()),</span><br><span class="line">    wrap($ =&gt; $filter($, $(<span class="string">&#x27;title&#x27;</span>)))</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>就只是把每個規則變成陣列函數，然後遍歷一遍判斷產生的結果然後回傳至最終物件，然後印出來。</p>
+<h2 id="實際寫一個-ptt-cc-規則"><a href="#實際寫一個-ptt-cc-規則" class="headerlink" title="實際寫一個 ptt.cc 規則"></a>實際寫一個 ptt.cc 規則</h2><p>其實就是用核心<code>html掃描</code>就是用<a target="_blank" rel="noopener" href="https://cheerio.js.org/">cheeio</a>去實現因此，自己建立規則遵照<a target="_blank" rel="noopener" href="https://cheerio.js.org/">cheeio</a>與<a target="_blank" rel="noopener" href="https://jquery.com/">jquery</a>方式去寫規則語法與限制</p>
+<p>直接來看程式碼</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/* eslint-disable prefer-const */</span></span><br><span class="line"><span class="meta">&#x27;use strict&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> wrap = <span class="function"><span class="params">rule</span> =&gt;</span> <span class="function">(<span class="params">&#123; htmlDom, url &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> value = rule(htmlDom, url)</span><br><span class="line">  <span class="keyword">return</span> value</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function">() =&gt;</span> (&#123;</span><br><span class="line">  <span class="attr">author</span>: [</span><br><span class="line">    wrap($ =&gt; $(<span class="string">&#x27;.article-metaline:first-child .article-meta-value&#x27;</span>).text())</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">kanban</span>: [wrap($ =&gt; $(<span class="string">&#x27;.article-metaline-right .article-meta-value&#x27;</span>).text())],</span><br><span class="line">  <span class="attr">date</span>: [</span><br><span class="line">    wrap($ =&gt; $(<span class="string">&#x27;.article-metaline:nth-child(4) .article-meta-value&#x27;</span>).text())</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">context</span>: [</span><br><span class="line">    wrap($ =&gt; &#123;</span><br><span class="line">      <span class="keyword">const</span> text = $(<span class="string">&#x27;#main-content&#x27;</span>)</span><br><span class="line">        .clone()</span><br><span class="line">        .children(<span class="string">&#x27;:not(a)&#x27;</span>)</span><br><span class="line">        .remove()</span><br><span class="line">        .end()</span><br><span class="line">        .text()</span><br><span class="line">      <span class="keyword">let</span> imageUrls = []</span><br><span class="line">      <span class="keyword">let</span> rowTexts = text.replace(<span class="regexp">/\n/g</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">      rowTexts = rowTexts.replace(</span><br><span class="line">        <span class="regexp">/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g</span>,</span><br><span class="line">        <span class="function">(<span class="params">matched, index, original</span>) =&gt;</span> &#123;</span><br><span class="line">          imageUrls.push(matched)</span><br><span class="line">          <span class="keyword">return</span> <span class="string">&#x27;@@@$#&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">      )</span><br><span class="line">      <span class="keyword">let</span> pureTexts = rowTexts.split(<span class="string">&#x27;@@@$#&#x27;</span>)</span><br><span class="line">      <span class="function"><span class="keyword">function</span> <span class="title">rebuild</span>(<span class="params">imageUrls, pureTexts</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> length =</span><br><span class="line">          imageUrls.length &gt;= pureTexts.length</span><br><span class="line">            ? imageUrls.length</span><br><span class="line">            : pureTexts.length</span><br><span class="line">        <span class="keyword">let</span> result = []</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">          <span class="keyword">if</span> (pureTexts[i]) &#123;</span><br><span class="line">            result.push(&#123; <span class="attr">type</span>: <span class="string">&#x27;TEXT&#x27;</span>, <span class="attr">content</span>: pureTexts[i] &#125;)</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span> (imageUrls[i]) &#123;</span><br><span class="line">            result.push(&#123; <span class="attr">type</span>: <span class="string">&#x27;IMAGE&#x27;</span>, <span class="attr">content</span>: imageUrls[i] &#125;)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="attr">text</span>: text,</span><br><span class="line">        <span class="attr">sections</span>: rebuild(imageUrls, pureTexts)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">comments</span>: [</span><br><span class="line">    wrap($ =&gt; &#123;</span><br><span class="line">      <span class="keyword">let</span> content = []</span><br><span class="line">      <span class="comment">// 空白很重要</span></span><br><span class="line">      <span class="function"><span class="keyword">function</span> <span class="title">checkReaction</span>(<span class="params">target</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (target === <span class="string">&#x27;→ &#x27;</span>) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="string">&#x27;none&#x27;</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (target === <span class="string">&#x27;推 &#x27;</span>) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="string">&#x27;like&#x27;</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (target === <span class="string">&#x27;噓 &#x27;</span>) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="string">&#x27;disLike&#x27;</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="string">&#x27;none&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="function"><span class="keyword">function</span> <span class="title">checkDate</span>(<span class="params">date</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> dateArray = date.split(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">          dateArray[dateArray.length - <span class="number">2</span>] +</span><br><span class="line">          <span class="string">&#x27; &#x27;</span> +</span><br><span class="line">          dateArray[dateArray.length - <span class="number">1</span>]</span><br><span class="line">        )</span><br><span class="line">      &#125;</span><br><span class="line">      $(<span class="string">&#x27;.push&#x27;</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        content.push(&#123;</span><br><span class="line">          <span class="attr">reaction</span>: checkReaction(</span><br><span class="line">            $(<span class="built_in">this</span>)</span><br><span class="line">              .children(<span class="string">&#x27;.push-tag&#x27;</span>)</span><br><span class="line">              .text()</span><br><span class="line">          ),</span><br><span class="line">          <span class="attr">user</span>: $(<span class="built_in">this</span>)</span><br><span class="line">            .children(<span class="string">&#x27;.push-userid&#x27;</span>)</span><br><span class="line">            .text(),</span><br><span class="line">          <span class="attr">content</span>: $(<span class="built_in">this</span>)</span><br><span class="line">            .children(<span class="string">&#x27;.push-content&#x27;</span>)</span><br><span class="line">            .text(),</span><br><span class="line">          <span class="attr">date</span>: checkDate(</span><br><span class="line">            $(<span class="built_in">this</span>)</span><br><span class="line">              .children(<span class="string">&#x27;.push-ipdatetime&#x27;</span>)</span><br><span class="line">              .text()</span><br><span class="line">          )</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">      <span class="keyword">return</span> content</span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>其實可以看到我將整個ptt.cc文章結構化之後輸出，結果像這樣</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;author&quot;</span>: <span class="string">&quot;&lt;String&gt;&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;kanban&quot;</span>: <span class="string">&quot;&lt;String&gt;&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;date&quot;</span>: <span class="string">&quot;&lt;IOS DATE&gt;&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;context&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;text&quot;</span>: <span class="string">&quot;&lt;String&gt;&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;sections&quot;</span>: [&#123;imageUrls, pureTexts&#125;]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;comments&quot;</span>: [&#123;user,content,date&#125;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然後使用mongodb去儲存，就完成ptt的爬蟲了。</p>
+<h1 id="寫在文後"><a href="#寫在文後" class="headerlink" title="寫在文後"></a>寫在文後</h1><p>會知道這個套件，這其實也是用在工作上的一寫小工具，感覺還蠻有趣的因此就拿來玩玩惹。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://drive.google.com/uc?id=1W1l7f8cKS2KOk3gYgMC_khkA5svwYxIn&export=download'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

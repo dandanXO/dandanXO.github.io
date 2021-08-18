@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Nuxt storyblok - Dandan Rhapsody</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="Dandan&#39;s Blog,Nuxt &amp;amp; storyblok通常碰到不會的新技術都會找個東西來實做看看，從過程中來了解他。
+在過程中發現了這東西storyblok他可以管理你的內容，像是內容管理裝置的東西，這樣如果跟n,"> 
+    <meta name="author" content="Dandan"> 
+    <link rel="alternative" href="atom.xml" title="Dandan Rhapsody" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Dandan Rhapsody</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://dandanxo.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">Nuxt storyblok</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Nuxt storyblok</h1>
+        <div class="stuff">
+            <span>七月 15, 2018</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/first/" rel="tag">first</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/node-Js/" rel="tag">node.Js</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/nuxt/" rel="tag">nuxt</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/vue-js/" rel="tag">vue.js</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="Nuxt-amp-storyblok"><a href="#Nuxt-amp-storyblok" class="headerlink" title="Nuxt &amp; storyblok"></a>Nuxt &amp; storyblok</h1><p>通常碰到不會的新技術都會找個東西來實做看看，從過程中來了解他。</p>
+<p>在過程中發現了這東西<a target="_blank" rel="noopener" href="https://www.storyblok.com/">storyblok</a>他可以管理你的內容，像是內容管理裝置的東西，這樣如果跟nuxt連動就可以完成內容發布的blog了。</p>
+<h1 id="blog初始樣貌"><a href="#blog初始樣貌" class="headerlink" title="blog初始樣貌"></a>blog初始樣貌</h1><p>先至 <a target="_blank" rel="noopener" href="https://github.com/nuxt-community/create-nuxt-app">nuxt</a>了解install方法</p>
+<p><code>npx create-nuxt-app &lt;my-project&gt;</code>創建專案</p>
+<p>創建過過程有一些選項看自己選哲是否需要。</p>
+<p>接下來介紹整個會用到的資料夾<code>components</code> <code>layouts</code> <code>pages</code> </p>
+<h2 id="1-components"><a href="#1-components" class="headerlink" title="1. components"></a>1. components</h2><p>就是原本uve的components 的概念，把你寫的components都放在這需要引用再用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> XXX <span class="keyword">from</span> <span class="string">&#x27;@/components/XXX/&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>就可以引用了 prop用法也跟vue一樣</p>
+<h2 id="2-layouts"><a href="#2-layouts" class="headerlink" title="2. layouts"></a>2. layouts</h2><p>這裡的layouts 有點像vue的App.vue的概念 它包含了整個基底與Vue 實俐，virtual DOM….等(<a target="_blank" rel="noopener" href="https://cythilya.github.io/2017/04/11/vue-instance/">詳細可參考這裡</a>)</p>
+<p>在layout可以做一些像是headbar或是footer的東西不會在虛擬路由中重複一直載入</p>
+<h2 id="3-pages"><a href="#3-pages" class="headerlink" title="3. pages"></a>3. pages</h2><p>vue 在實作虛擬路由需要搭踏一個components而在這直接新增<code>x.vue</code>在PAGES資料夾中就是一個頁面+路由把他從components中分離出來。</p>
+<p>若名稱前面加上<code>_</code>就可以以動態路由的方式被宣告。</p>
+<h2 id="4-blog雛形"><a href="#4-blog雛形" class="headerlink" title="4. blog雛形"></a>4. blog雛形</h2><p>怎麼打造每個人由不同見解與方法。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/dandanXO/Fisrt_Nuxt_storyblok">這裡</a>是我的github可以參考。</p>
+<h1 id="如何搭配storyblok-做管理"><a href="#如何搭配storyblok-做管理" class="headerlink" title="如何搭配storyblok 做管理"></a>如何搭配storyblok 做管理</h1><blockquote>
+<h1 id="To-be-continued…"><a href="#To-be-continued…" class="headerlink" title="To be continued…"></a>To be continued…</h1></blockquote>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://drive.google.com/uc?id=1W1l7f8cKS2KOk3gYgMC_khkA5svwYxIn&export=download'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

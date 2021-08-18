@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Intersection Observer - Dandan Rhapsody</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="Dandan&#39;s Blog,Intersection Observer for Infinite Scroll in Vue ApplicationsInfinite scrolling 在現代化網站中是一個非常常用的技巧，當,"> 
+    <meta name="author" content="Dandan"> 
+    <link rel="alternative" href="atom.xml" title="Dandan Rhapsody" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Dandan Rhapsody</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://dandanxo.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">Intersection Observer</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Intersection Observer</h1>
+        <div class="stuff">
+            <span>八月 25, 2019</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/webApi/" rel="tag">webApi</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="Intersection-Observer-for-Infinite-Scroll-in-Vue-Applications"><a href="#Intersection-Observer-for-Infinite-Scroll-in-Vue-Applications" class="headerlink" title="Intersection Observer for Infinite Scroll in Vue Applications"></a>Intersection Observer for Infinite Scroll in Vue Applications</h1><p>Infinite scrolling 在現代化網站中是一個非常常用的技巧，當觸發某些條件時而再去loading資料，可以給網站的效能帶來大幅的提升。</p>
+<p>然而對於前端工程來說，不是一件簡單的事。第一，需要去監聽並控制 scrolling 的事件、行為與屬性。.</p>
+<p>有個比較簡單且原生的方式就是<code>Intersection Observer API</code> ，這個api提供了<code> asynchronously observe changes</code> 在 <code>intersection</code>元素中或是最高層級的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Glossary/viewport">viewport</a>的位置所佔的比重，說那麼多一定聽不懂，下面就直接用vue開始吧。</p>
+<h2 id="The-Intersection-and-observation-process"><a href="#The-Intersection-and-observation-process" class="headerlink" title="The Intersection and observation process"></a>The Intersection and observation process</h2><p>被監聽的目標是一種與跟(<code>root</code>)相對位置的概念，當目標碰到root教會觸發回調函數(<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Glossary/Callback_function">callbaock</a>)，可以用下面的突來解釋會比較清楚。</p>
+<p><img src="https://i.imgur.com/Sb52iTw.png" alt="root"></p>
+<h2 id="Create-an-Intersection-Observer"><a href="#Create-an-Intersection-Observer" class="headerlink" title="Create an Intersection Observer"></a>Create an Intersection Observer</h2><p>因此我們把<code>app.vue</code>當成我們的 <code>root</code> </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> options = &#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="literal">null</span>, <span class="comment">/* uses the page as root */</span></span><br><span class="line">  <span class="attr">threshold</span>: <span class="number">0</span> </span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> observer = <span class="keyword">new</span> IntersectionObserver(callback, options);</span><br></pre></td></tr></table></figure>
+<p>以上為主要的宣告方式</p>
+<h3 id="root"><a href="#root" class="headerlink" title="root"></a>root</h3><p>可以選擇根的元素</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> options = &#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="built_in">document</span>.querySelector(<span class="string">&#x27;#divAsRoot&#x27;</span>), <span class="comment">/* uses the Div element as root */</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="threshold"><a href="#threshold" class="headerlink" title="threshold"></a>threshold</h3><p>可以指定閥值的表示型式</p>
+<p><img src="https://i.imgur.com/XQkLf8h.png" alt="threshold"><br>您可能希望觀察者僅在目標進入視圖中途（50％），完全在視圖中（100％）或第二次進入視圖（0％）時執行回調。閾值是你決定的方式。它默認為0意味著即使一個像素在視圖中，觀察者也將執行回調。值為1.0表示在每個像素都在視圖中之前，回調將不會運行。0.5也是如此。僅當目標位於視圖的一半時才會觸發回調。</p>
+<h2 id="What-should-we-build"><a href="#What-should-we-build" class="headerlink" title="What should we build?"></a>What should we build?</h2><p>用 <a target="_blank" rel="noopener" href="https://randomuser.me/"> Random Users API.</a>來取得資料，當scroll滑到最底觸發我們的目標，然後處發回調函數在一次取的我們要的資料。</p>
+<h2 id="Create-a-Vue-project"><a href="#Create-a-Vue-project" class="headerlink" title="Create a Vue project"></a>Create a Vue project</h2><blockquote>
+<p>創建</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vue create scrolling-demo</span><br><span class="line">cd scrolling-demo</span><br><span class="line">npm install --save axios</span><br><span class="line">npm run serve</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>建立一個 fetchUsers 的function 在beforeMount之前執行他</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- src/App.vue --&gt; </span><br><span class="line">    </span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span></span><br><span class="line"><span class="javascript"><span class="xml"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&quot;axios&quot;</span>;</span></span></span><br><span class="line"><span class="javascript"><span class="xml"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">  <span class="attr">name</span>: <span class="string">&quot;app&quot;</span>,</span></span></span><br><span class="line"><span class="javascript"><span class="xml">  <span class="function"><span class="title">data</span>(<span class="params"></span>)</span> &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">    <span class="keyword">return</span> &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">      <span class="attr">users</span>: [],</span></span></span><br><span class="line"><span class="javascript"><span class="xml">    &#125;;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">  &#125;,</span></span></span><br><span class="line"><span class="javascript"><span class="xml">  <span class="attr">methods</span>: &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">    <span class="function"><span class="title">fetchUsers</span>(<span class="params"></span>)</span> &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">      <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">        axios.get(<span class="string">`https://randomuser.me/api/`</span>).then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">          <span class="built_in">this</span>.users.push(response.data.results[<span class="number">0</span>]);</span></span></span><br><span class="line"><span class="javascript"><span class="xml">          <span class="built_in">console</span>.log(response)</span></span></span><br><span class="line"><span class="javascript"><span class="xml">        &#125;);</span></span></span><br><span class="line"><span class="javascript"><span class="xml">      &#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">    &#125;,</span></span></span><br><span class="line"><span class="javascript"><span class="xml">    <span class="function"><span class="title">beforeMount</span>(<span class="params"></span>)</span> &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">      <span class="built_in">this</span>.fetchUsers();</span></span></span><br><span class="line"><span class="javascript"><span class="xml">    &#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">  &#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">&#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>你會看到下面的情形。</p>
+<p><img src="https://i.imgur.com/FZSRk9h.png" alt="demo"></p>
+<p>把畫面與api資料用<code>v-for</code>帶出</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- src/App.vue --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;user&quot;</span> <span class="attr">:key</span>=<span class="string">&quot;user.id.value&quot;</span> <span class="attr">v-for</span>=<span class="string">&quot;user in users&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">&quot;img&quot;</span> <span class="attr">:src</span>=<span class="string">&quot;user.picture.large&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123; user.name.first &#125;&#125; &#123;&#123; user.name.last &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">ref</span>=<span class="string">&quot;target&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>像這樣<br><img src="https://i.imgur.com/VPnazHL.jpg" alt="demo"></p>
+<p>接下來加入我們的loadin目標</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ref</span>=<span class="string">&quot;divAsTarget&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">h3</span>&gt;</span>Loading ... <span class="tag">&lt;/<span class="name">h3</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> /* below the user&#x27;s list */</span><br></pre></td></tr></table></figure>
+
+<p>之後再加入<code>intersection</code>監聽事件，綁訂於上述的taqrget</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">mounted</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line"><span class="built_in">this</span>.observer = <span class="keyword">new</span> IntersectionObserver(<span class="built_in">this</span>.callback, options);</span><br><span class="line"><span class="built_in">this</span>.observer.observe(<span class="built_in">this</span>.$refs.divAsTarget);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最後在回掉函數中檢查是否觸發目標</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">callback</span>(<span class="params">entries, observer</span>)</span> &#123;</span><br><span class="line">  entries.forEach(<span class="function"><span class="params">entry</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (entry.isIntersecting) &#123;</span><br><span class="line">       <span class="built_in">this</span>.fetchUsers();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最後的demo<br><img src="https://d2mxuefqeaa7sj.cloudfront.net/s_B8F443BB34687E4E41FAC225AEB7751E88C3233AB4506AA668D0CCE979F5CBDF_1550865275193_ezgif.com-video-to-gif+73.gif" alt="demo"></p>
+<h1 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h1><p>我把程式碼都放上去了，方便大家使用。</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/dandanXO/Intersection-Observer-">Repositories on GITHUB</a></p>
+</blockquote>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://drive.google.com/uc?id=1W1l7f8cKS2KOk3gYgMC_khkA5svwYxIn&export=download'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

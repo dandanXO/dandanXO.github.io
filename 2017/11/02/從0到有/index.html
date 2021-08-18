@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>hexo從0到有{一} - Dandan Rhapsody</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="Dandan&#39;s Blog,
+前言其實這東西真的是不小心發現的。類似jekyll但效能似乎更好題外話這東西是台灣人做的
+
+參見:hexojs/hex
+
+框架選擇當然搭建blog並不是說自己從0 開始寫每一個頁面，實際上有很多現,"> 
+    <meta name="author" content="Dandan"> 
+    <link rel="alternative" href="atom.xml" title="Dandan Rhapsody" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Dandan Rhapsody</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://dandanxo.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">hexo從0到有{一}</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">hexo從0到有{一}</h1>
+        <div class="stuff">
+            <span>十一月 02, 2017</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/First/" rel="tag">First</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/NodeJs/" rel="tag">NodeJs</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/git/" rel="tag">git</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/github/" rel="tag">github</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p><img src="https://i.imgur.com/n5LWEw5.png" alt="Imgur"></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>其實這東西真的是不小心發現的。類似jekyll但效能似乎更好<BR><br>題外話這東西是台灣人做的</p>
+<ul>
+<li>參見:<a href="https://link.zhihu.com/?target=https://github.com/hexojs/hexo">hexojs/hex</a></li>
+</ul>
+<h1 id="框架選擇"><a href="#框架選擇" class="headerlink" title="框架選擇"></a>框架選擇</h1><p>當然搭建blog並不是說自己從0 開始寫每一個頁面，實際上有很多現成強大的blog系統。只需要安裝，配置並挑選主題就能直接拿來用了。常見blog平台有以下幾個：<BR></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/" title="hexo">Hexo快速、簡潔且高效的靜態blog</a></li>
+<li>[Ghost 基於Node.js 的開源blog平台](<a target="_blank" rel="noopener" href="https://ghost.org/">https://ghost.org/</a> Ghost)</li>
+<li><a target="_blank" rel="noopener" href="https://wordpress.org/">Wordpress 強大的內容管理平台，可以建各類網站</a></li>
+</ul>
+<p>其中Hexo 和Ghost 可以使用Markdown 寫文章。Wordpress 非常強大，有豐富的插件和主題。但是對於一個簡單的blog來說過肥大，個人覺得不適合輕量級blog。</p>
+<p> <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/" title="hexo">Hexo</a>採用本地保存源文件並渲染成靜態頁面部署的方式，[Ghost](<a target="_blank" rel="noopener" href="https://ghost.org/">https://ghost.org/</a> Ghost)則採用資料庫服務端查詢的方式渲染頁面。我個人比較喜歡<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/" title="hexo">Hexo</a>。</p>
+<h1 id="步驟"><a href="#步驟" class="headerlink" title="步驟"></a>步驟</h1><h2 id="第-一-部分"><a href="#第-一-部分" class="headerlink" title="第{一}部分"></a>第{一}部分</h2><ul>
+<li>獲得個人域名</li>
+<li>GitHub創建個人首頁或是專案首頁</li>
+<li>安裝Git</li>
+<li>安裝Node.js</li>
+<li>安裝Hexo</li>
+<li>推送網站</li>
+</ul>
+<hr>
+<h2 id="第-二-部分"><a href="#第-二-部分" class="headerlink" title="第{二}部分"></a>第{二}部分</h2><ul>
+<li>綁定域名</li>
+<li>更換主題</li>
+<li>初識MarkDown語法</li>
+<li>發布文章</li>
+<li>尋找圖床</li>
+<li>其他</li>
+<li>附錄</li>
+</ul>
+<h1 id="獲得個人域名"><a href="#獲得個人域名" class="headerlink" title="獲得個人域名"></a>獲得個人域名</h1><p>說白了就是一個網域名稱沒有的話去買一個就可以了，像我是在<a target="_blank" rel="noopener" href="https://dcc.godaddy.com/">Godady</a>買，如果先前就有的話直接用就可以了。</p>
+<h1 id="GitHub創建個人首頁或是專案首頁"><a href="#GitHub創建個人首頁或是專案首頁" class="headerlink" title="GitHub創建個人首頁或是專案首頁"></a>GitHub創建個人首頁或是專案首頁</h1><ol>
+<li><del>辦github帳號</del>(廢話)</li>
+<li>創建一個與你名字一樣的Repositories<br><br>新的Repositories的名稱就取 <strong>userName.github.io</strong><br><br>以我的舉例來說我的userName是dandanXO</li>
+</ol>
+<p><img src="https://i.imgur.com/MQjYNHe.png" alt="Imgur"><br><br>那就把專案名稱取成<strong>dandanXO.github.io</strong>即可，分支為<em>master</em>。</p>
+<h1 id="安裝-git"><a href="#安裝-git" class="headerlink" title="安裝 git"></a>安裝 git</h1><p>什麼是Git ?簡單來說Git是開源的分佈式版本控制系統，用於敏捷高效率的處理專案。<BR><br>到這裡下載<a target="_blank" rel="noopener" href="https://git-scm.com/download/win">git</a><br><br>選個64位元的安裝完 點選  <img src="https://i.imgur.com/qFWFEkt.png" alt="Imgur"><BR><br>設定git基本資料</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;你的GitHub用戶名&quot;</span><br><span class="line">git config --global user.email &quot;你的GitHub註冊信箱&quot;</span><br></pre></td></tr></table></figure>
+<p>完成git部分。</p>
+<h1 id="安裝Node-js"><a href="#安裝Node-js" class="headerlink" title="安裝Node.js"></a>安裝Node.js</h1><p>Hexo基於Node.js，Node.js下載地址：<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">Download | Node.js</a> 下載安裝包，注意安裝Node.js會包含環境變量及npm的安裝，安裝後，檢測Node.js是否安裝成功，在命令行中輸入node -v :</p>
+<p><img src="https://i.imgur.com/BaQDM2X.png" alt="Imgur"><BR><br>到這Hexo的環境已經全部設定完畢。</p>
+<h1 id="安裝Hexo"><a href="#安裝Hexo" class="headerlink" title="安裝Hexo"></a>安裝Hexo</h1><p>打開CMD<BR><br>使用npm命令安裝Hexo，輸入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>這個安裝時間較長耐心等待，安裝完成後，初始化我們的博客，輸入：</p>
+<p>hexo init blog<br>注意，這裡的命令都是作用在剛剛創建的Blog文件夾中。</p>
+<p>為了檢測我們的網站雛形，分別按順序輸入以下三條命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo new test_my_site</span><br><span class="line"></span><br><span class="line">hexo g</span><br><span class="line"></span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>這些命令在後面作介紹，完成後，打開瀏覽器輸入地址：</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a></p>
+<p>可以看出我們寫出第一篇博客，只不過我下圖是我修改過的配置，和你的顯示不一樣。</p>
+<p><img src="https://i.imgur.com/ggNPicP.png" alt="Imgur"></p>
+<p>剛剛的三個命令依次是新建一篇博客文章、生成網頁、在本地預覽的操作。</p>
+<p>現在來介紹常用的Hexo命令</p>
+<ul>
+<li>npm install hexo -g #安裝Hexo</li>
+<li>npm update hexo -g #升級</li>
+<li>hexo init #初始化博客</li>
+</ul>
+<h2 id="命令簡寫"><a href="#命令簡寫" class="headerlink" title="命令簡寫"></a>命令簡寫</h2><ul>
+<li>hexo n “我的博客” == hexo new “我的博客” #新建文章</li>
+<li>hexo g == hexo generate #生成</li>
+<li>hexo s == hexo server #啟動服務預覽</li>
+<li>hexo d == hexo deploy #部署</li>
+<li>hexo server #Hexo會監視文件變動並自動更新，無須重啟服務器</li>
+<li>hexo server -s #靜態模式</li>
+<li>hexo server -p 5000 #更改端口</li>
+<li>hexo server -i 192.168.1.1 #自定義IP</li>
+<li>hexo clean #清除緩存，若是網頁正常情況下可以忽略這條命令</li>
+</ul>
+<h1 id="推送網站"><a href="#推送網站" class="headerlink" title="推送網站"></a>推送網站</h1><p>上面只是在本機預覽，接下來要做的就是就是推送網站，也就是發佈網站，讓我們的網站可以被更多的人訪問。在設置之前，需要解釋一個概念，在blog根目錄裡的_config.yml文件稱為網站配置文件，如下圖</p>
+<p><img src="https://i.imgur.com/eYGBFPD.jpg" alt="Imgur"></p>
+<p>下一步將我們的Hexo與GitHub關聯起來，打開站點的配置文件_config.yml，翻到最後修改為：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository:這裡填入你之前在GitHub上創建專案的完整路徑，記得加上.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<p>參考如下：<BR><br><img src="https://i.imgur.com/RQIyMVP.png" alt="Imgur"></p>
+<p>其實就是給hexo d 這個命令做相應的配置，讓hexo知道你要把blog部署在哪個位置，很顯然，我們部署在我們GitHub的倉庫裡。最後安裝Git部署插件，輸入命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>這時，我們分別輸入三條命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>其實第三條的hexo d就是部署網站命令，d是deploy的縮寫。<BR><br>完成後，打開瀏覽器，在地址欄輸入你的放置個人網站的倉庫路徑，即http:// xxxx.github.io  <BR><br>xxxx就是我的GitHub用戶名。</p>
+<p>以我的<a href="https://dandanxo.github.io/">https://dandanXo.github.io/</a>來說<br><br>你就會發現你的blog已經上線了，可以在網絡上被訪問了。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://drive.google.com/uc?id=1W1l7f8cKS2KOk3gYgMC_khkA5svwYxIn&export=download'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

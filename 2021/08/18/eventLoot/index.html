@@ -1,0 +1,274 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>倒底如何解釋Event Loop - Dandan Rhapsody</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="Dandan&#39;s Blog,開頭首先我們從它的運行機制Event Loop來說起。
+首先科普一些基礎知識。
+程序(進程)、執行緒(線程)
+進程 ProcessProcess 進程則是指被執行且載入記憶體的 program。Pr,"> 
+    <meta name="author" content="Dandan"> 
+    <link rel="alternative" href="atom.xml" title="Dandan Rhapsody" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Dandan Rhapsody</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://dandanxo.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">倒底如何解釋Event Loop</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">倒底如何解釋Event Loop</h1>
+        <div class="stuff">
+            <span>八月 18, 2021</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Eventloop/" rel="tag">Eventloop</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/js/" rel="tag">js</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="開頭"><a href="#開頭" class="headerlink" title="開頭"></a>開頭</h1><p>首先我們從它的運行機制Event Loop來說起。</p>
+<p>首先科普一些基礎知識。</p>
+<p>程序(進程)、執行緒(線程)</p>
+<h2 id="進程-Process"><a href="#進程-Process" class="headerlink" title="進程 Process"></a>進程 Process</h2><p>Process 進程則是指被執行且載入記憶體的 program。Process 也是 OS 分配資源的最小單位，可以從 OS 得到如 CPU Time、Memory…等資源，意思是這個 process 在運行時會消耗多少 CPU 與記憶體。文章一開始放了一張 MacOS 活動監視器的截圖，相信不管是使用哪種作業系統的讀者都有看過類似的介面，而監視器中列出的是你的電腦正在執行的應用程式，而它們其實就是一個個 process。</p>
+<h2 id="線程-Thread"><a href="#線程-Thread" class="headerlink" title="線程 Thread"></a>線程 Thread</h2><p>線程可以想像成存在於 process 裡面，而一個進程裡至少會有一個線程，前面有說 process 是 OS 分配資源的最小單位，而 thread 則是作業系統能夠進行運算排程的最小單位，也就是說實際執行任務的並不是進程，而是進程中的線程，一個進程有可能有多個線程，其中多個線程可以共用進程的系統資源。</p>
+<h1 id="一個問題"><a href="#一個問題" class="headerlink" title="一個問題"></a>一個問題</h1><ul>
+<li>在多線程操作下實現應用的並行處理，能夠以更高的CPU擴展提高整個程序的性能和語言處理能力都特別是現在，但JavaScript卻以單線程執行，為什麼呢？</li>
+</ul>
+<ul>
+<li>答：JavaScript作為腳本語言，最初是為了避免複雜的同步問題（做人嘛，還是簡單點好，也一樣），如果JavaScript同時有兩個線程，一個線程中執行在某個DOM節點上添加，另一個線程執行刪除這個節點，瀏覽器會……</li>
+</ul>
+<p><img src="https://i.imgur.com/WcF9KrH.png" alt="一臉矇逼"></p>
+<p>所以 JavaScript 的單線程是這門語言的核心，未來也不會改變。</p>
+<p>事情說，那HTML5的新特性Web Worker，可以創建多線程呀～</p>
+<p>是的，為了解決鸚鵡的這個操作（多重循環、複雜的這個操作操作），HTML5提出Web Worker，它會在當前的js執行主線程中開闢出一個額外的線程來運行js文件新的線程和js主線程之間不會互相影響，同時提供了數據交換的接口：postMessage和onMessage。</p>
+<p>語言的設計和生活中的現實情況很像，IO設備（輸入輸出）很慢（比如Ajax），那麼語言的設計者鬧這一點，就在主線程中掛起等待中的任務，先運行沒有的任務，等IO設備有了結果，再把掛起的任務執行下去。</p>
+<hr/>
+
+<p><img src="https://i.imgur.com/eJHNSmK.png" alt="event loop"></p>
+<p>從上到下可以看到，在主線程運行時，會產生堆（堆）和棧（棧）。</p>
+<p>堆中存的是我們聲明的對像類型的數據，棧中存的是基本數據類型以及函數執行時的運行空間。</p>
+<p>棧中的代碼會調用各種外部API，它們在任務中加入各種事件(onClick,onLoad,onDone)，只要棧中的代碼執行完畢(js引擎存在監控流程進程，會持續不斷的檢查主線程)執行棧是否為空），主線程就返回讀取任務，在按順序執行這些響應的響應函數。</p>
+<p>到主線程從任務這個任務中讀取事件，所以這個過程是循環不斷的，所以這種運行機制又成為事件循環（事件循環）。</p>
+<h1 id="步任務和異步任務"><a href="#步任務和異步任務" class="headerlink" title="步任務和異步任務"></a>步任務和異步任務</h1><p>我們將任務分為同步任務和異步任務。</p>
+<p>同步任務就是在主線程上執行的任務，可以執行一個再執行下一個。</p>
+<p>異步任務則不進入主線程，可能先在事件表中註冊函數，當滿足觸發條件後，可以進入任務召喚來執行。此任務將進入主線程執行。</p>
+<ul>
+<li>舉例</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(</span><br><span class="line">  <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(b);</span><br><span class="line">  &#125;,<span class="number">1000</span>)</span><br><span class="line">  </span><br><span class="line"><span class="built_in">console</span>.log(c)  </span><br><span class="line"></span><br><span class="line"><span class="comment">// a</span></span><br><span class="line"><span class="comment">// c</span></span><br><span class="line"><span class="comment">// b</span></span><br></pre></td></tr></table></figure>
+
+<p>1.console.log(a)是同步任務，進入主線程執行，印出a。</p>
+<p>2.setTimeout是異步任務，先被動態事件表中註冊，1000ms後進入任務探測。</p>
+<p>3.console.log(c)是同步任務，進入主線程執行，印出c。</p>
+<p>當a，c被印出後，主線程去事件中找到setTimeout裡的函數，並執行，印出b。</p>
+<h1 id="宏任務和微任務"><a href="#宏任務和微任務" class="headerlink" title="宏任務和微任務"></a>宏任務和微任務</h1><p>同步任務和異步任務的劃分細節宏觀，具體的分類方式是任務（Macrotask）和微任務（Microtask）。</p>
+<p>宏任務包括：script(整體代碼)，I/O，setTimeout，setInterval，requestAnimationFrame，setImmediate。</p>
+<p>設置立即只存在於節點中，requestAnimationFrame 只存在於瀏覽器中。</p>
+<p>微任務包括： Promise，Object.observe(已廢棄)，MutationObserver(html5新特性)，process.nextTick。</p>
+<p>還有process.nextTick只存在於Node中，MutationObserver只存在於瀏覽器中。</p>
+<pre><code>UI Rendering不屬於宏任務，也不屬於微任務，它是一個與微任務類似的一個操作步驟。
+    https://html.spec.whatwg.org/multipage/webappapis.html#event-loop-processing-model
+</code></pre>
+<p>這些分類的執行，執行一個宏任務，過程中遇到的微任務時，將其現在微當前的事件捕捉，執行完後任務中的任務，具體可以查看詳細任務的細節，具體執行內容的微任務。如果還有宏任務的話，再重新開啟宏任務……</p>
+<p><img src="https://i.imgur.com/ioUuMHH.png" alt="task"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&#x27;b&#x27;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i =<span class="number">0</span>; i &lt;<span class="number">10000</span>; i++) &#123;</span><br><span class="line">		i ==<span class="number">99</span> &amp;&amp; resolve();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&#x27;c&#x27;</span>)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;d&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// b</span></span><br><span class="line"><span class="comment">// d</span></span><br><span class="line"><span class="comment">// c</span></span><br><span class="line"><span class="comment">// a</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>再舉例</li>
+</ul>
+<p>1.首先執行腳本下的宏任務，遇到setTimeout，將其原生宏任務的召喚裡。</p>
+<ol start="2">
+<li>遇到Promise，new Promise直接執行，印出b。</li>
+</ol>
+<p>3.遇到然後方法，是微任務將其可以微任務的里。</p>
+<p>4.遇到console.log(‘d’)，直接印出。</p>
+<p>5.本輪宏任務發現執行完畢，查看微任務，然後方法裡的函數，印出c。</p>
+<p>6.本輪事件循環全部完成。</p>
+<p>7.下引發循環，先執行宏任務，宏任務產生一個，印出一個setTimeout。</p>
+<h2 id="瘋狂的"><a href="#瘋狂的" class="headerlink" title="瘋狂的"></a>瘋狂的</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;b&#x27;</span>);</span><br><span class="line">    process.nextTick(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;c&#x27;</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;d&#x27;</span>);</span><br><span class="line">        resolve();</span><br><span class="line">    &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;e&#x27;</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line">process.nextTick(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;f&#x27;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;g&#x27;</span>);</span><br><span class="line">    resolve();</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;h&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;i&#x27;</span>);</span><br><span class="line">    process.nextTick(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;j&#x27;</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;k&#x27;</span>);</span><br><span class="line">        resolve();</span><br><span class="line">    &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;l&#x27;</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>好，我們來逐步分析。</p>
+<h3 id="第一輪事件循環："><a href="#第一輪事件循環：" class="headerlink" title="第一輪事件循環："></a>第一輪事件循環：</h3><ol>
+<li><p>第一個宏任務(整體腳本)進入主線程，console.log(‘a’)，印出a。</p>
+</li>
+<li><p>遇到setTimeout，其觸發功能進入宏任務，暫定義為setTimeout1。</p>
+</li>
+<li><p>遇到process.nextTick()，其原因函數被傳到微任務請求，暫定義為process1。</p>
+</li>
+<li><p>遇到Promise，new Promise直接執行，印出g。 then進入微任務，暫定義為then1。</p>
+</li>
+<li><p>遇到setTimeout，其觸發功能進入宏任務，暫定義為setTimeout2。</p>
+</li>
+</ol>
+<p>這時候我們看一下兩個任務中的情況</p>
+<p>宏任務請求：setTimeout1、Timeout2</p>
+<p>微任務請求：process1、then1</p>
+<p>第一輪宏任務執行完畢，印出出a和g。</p>
+<p>全部執行，印出f和h。</p>
+<p>第一輪事件循環完畢，印出出a、g、f和h。</p>
+<h3 id="第二輪事件循環："><a href="#第二輪事件循環：" class="headerlink" title="第二輪事件循環："></a>第二輪事件循環：</h3><ol>
+<li><p>從setTimeout1宏任務開始，首先是console.lob(‘b’)，印出b。</p>
+</li>
+<li><p>遇到process.nextTick()，進入微任務，暫定義為process2。</p>
+</li>
+<li><p>Promise直接執行，然後進入微任務輸出，暫定義為then2。</p>
+</li>
+</ol>
+<p>這兩個任務中</p>
+<p>宏任務請求：setTimeout2</p>
+<p>微任務請求：process2、 then2</p>
+<p>第二輪宏任務執行完畢，印出出b和d。</p>
+<p>全部執行，印出和e。</p>
+<p>第二輪事件循環完畢，印出出b、d、c和e。</p>
+<h3 id="第三輪事件循環"><a href="#第三輪事件循環" class="headerlink" title="第三輪事件循環"></a>第三輪事件循環</h3><ol>
+<li><p>執行setTimeout2，遇到console.log(‘i’)，印出i。</p>
+</li>
+<li><p>遇到process.nextTick()，進入微任務，暫定義為process3。</p>
+</li>
+<li><p>new Promise直接執行，印出k。</p>
+</li>
+<li><p>then進入微任務，暫定義為then3。</p>
+</li>
+</ol>
+<p>這兩個任務中</p>
+<p>宏任務請求：空</p>
+<p>微任務請求：process3、then3</p>
+<p>第三輪宏任務執行完畢，印出出i和k。</p>
+<p>全部執行，印出j和l。</p>
+<p>第三輪事件循環完畢，印出出i、k、j和l。</p>
+<p>到此為止，三輪事件循環結束，最終輸出結果為：</p>
+<p>a、g、f、h、b、d、c、e、i、k、j、l</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://drive.google.com/uc?id=1W1l7f8cKS2KOk3gYgMC_khkA5svwYxIn&export=download'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

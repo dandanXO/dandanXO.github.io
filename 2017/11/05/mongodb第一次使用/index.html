@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mongodb第一次使用設定紀錄 - Dandan Rhapsody</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="Dandan&#39;s Blog,
+安裝Mongodb官網下載安裝即可
+初始化
+解開 MongoDB下載好後就直接把他解開，比如放到 C:\MongoDB 下面。
+建立資料目錄預設的安裝檔案中並沒有預設存放資料的目錄，所以要自己建立,"> 
+    <meta name="author" content="Dandan"> 
+    <link rel="alternative" href="atom.xml" title="Dandan Rhapsody" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Dandan Rhapsody</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://dandanxo.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">Mongodb第一次使用設定紀錄</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Mongodb第一次使用設定紀錄</h1>
+        <div class="stuff">
+            <span>十一月 05, 2017</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/author/" rel="tag">author</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/first/" rel="tag">first</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/mongodb/" rel="tag">mongodb</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/mongodb-author/" rel="tag">mongodb author</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/mongodb-first/" rel="tag">mongodb first</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p><img src="https://i.imgur.com/FyqcKvj.png" alt="Imgur"></p>
+<h1 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h1><p><a target="_blank" rel="noopener" href="https://www.mongodb.com/">Mongodb</a>官網下載安裝即可</p>
+<h1 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h1><ul>
+<li>解開 MongoDB<BR><br>下載好後就直接把他解開，比如放到 C:\MongoDB 下面。</li>
+<li>建立資料目錄<BR><br>預設的安裝檔案中並沒有預設存放資料的目錄，所以要自己建立（多建一個 Logs 存放 Log 檔)：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd \mongodb</span><br><span class="line">mkdir data</span><br><span class="line">mkdir logs</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="啟動服務"><a href="#啟動服務" class="headerlink" title="啟動服務"></a>啟動服務</h2><h3 id="第一次"><a href="#第一次" class="headerlink" title="第一次"></a>第一次</h3><p><code>mongod --dbpath=C:\mongodbData --logpath=C:\mongodbLog\log\mongod.log</code></p>
+<h3 id="第一次之後"><a href="#第一次之後" class="headerlink" title="第一次之後"></a>第一次之後</h3><p><code>mongod --dbpath=C:\mongodbData --logpath=C:\mongodbLog\log\mongod.log --auth</code></p>
+<p>後面會說明<code>--auth</code>的差異</p>
+<h1 id="建立-‘admin’-or-‘root’"><a href="#建立-‘admin’-or-‘root’" class="headerlink" title="建立 ‘admin’ or ‘root’"></a>建立 ‘admin’ or ‘root’</h1><p><a target="_blank" rel="noopener" href="https://www.mongodb.com/">Mongodb</a>很有趣(奇怪)的地方在於第一次進入可用允許任何進入，去做角色與使用者的設定。<BR><br>所以一開始就先進去建立你的腳色分配</p>
+<p>切換到 admin Collection</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use admin</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">db.createUser(&#123;</span><br><span class="line">  user: &quot;admin&quot;,</span><br><span class="line">  pwd: &quot;mypassword&quot;,</span><br><span class="line">    roles: [&#123;</span><br><span class="line">    &quot;role&quot;: &quot;userAdminAnyDatabase&quot;,</span><br><span class="line">    &quot;db&quot;: &quot;admin&quot;</span><br><span class="line">  &#125;]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>如果成功的話，畫面上會顯示類似下面的訊息:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Successfully added user: &#123;</span><br><span class="line">    &quot;user&quot; : &quot;admin&quot;,</span><br><span class="line">    &quot;roles&quot; : [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;role&quot; : &quot;userAdminAnyDatabase&quot;,</span><br><span class="line">            &quot;db&quot; : &quot;admin&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但如果你想要最完整權限的話可以在role加入這兩個</p>
+<ul>
+<li>“dbAdminAnyDatabase”</li>
+<li>“readWriteAnyDatabase”</li>
+</ul>
+<p>參考<a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/reference/built-in-roles/">mongodbRole</a></p>
+<h1 id="重啟"><a href="#重啟" class="headerlink" title="重啟"></a>重啟</h1><p>用上方提到的<code>mongod --dbpath=C:\mongodbData --logpath=C:\mongodbLog\log\mongod.log --auth</code><br>重新啟動</p>
+<h2 id="登入-admin-帳號"><a href="#登入-admin-帳號" class="headerlink" title="登入 admin 帳號"></a>登入 admin 帳號</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">use admin</span><br><span class="line">db.auth(&quot;admin&quot;, &quot;mypassword&quot;)</span><br></pre></td></tr></table></figure>
+<p>如果回傳 1 的話，即代表登入成功</p>
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><p>至此，成功開啟 MongoDB 登入認證功能</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://drive.google.com/uc?id=1W1l7f8cKS2KOk3gYgMC_khkA5svwYxIn&export=download'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

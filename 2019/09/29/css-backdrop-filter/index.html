@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Css Backdrop-filter - Dandan Rhapsody</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="Dandan&#39;s Blog,CSS Backdrop-filter 與 filter差異通常要製造毛玻璃背景效果，會很麻煩的去使用偽元素before來去修飾單一圖層，達到毛玻璃的高斯模糊效果。
+Filter
+  See the,"> 
+    <meta name="author" content="Dandan"> 
+    <link rel="alternative" href="atom.xml" title="Dandan Rhapsody" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Dandan Rhapsody</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://dandanxo.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">Css Backdrop-filter</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Css Backdrop-filter</h1>
+        <div class="stuff">
+            <span>九月 29, 2019</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/css/" rel="tag">css</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="CSS-Backdrop-filter-與-filter差異"><a href="#CSS-Backdrop-filter-與-filter差異" class="headerlink" title="CSS Backdrop-filter 與 filter差異"></a>CSS Backdrop-filter 與 filter差異</h1><p>通常要製造毛玻璃背景效果，會很麻煩的去使用偽元素<code>before</code>來去修飾單一圖層，達到毛玻璃的高斯模糊效果。</p>
+<h2 id="Filter"><a href="#Filter" class="headerlink" title="Filter"></a>Filter</h2><iframe height="600" style="width: 100%;" scrolling="no" title="How to Create a Frosted Glass Effect in CSS - Method 1" src="https://codepen.io/dandanXO/embed/YzKbLbG?height=265&theme-id=dark&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href='https://codepen.io/dandanXO/pen/YzKbLbG'>How to Create a Frosted Glass Effect in CSS - Method 1</a> by Dandan
+  (<a target="_blank" rel="noopener" href='https://codepen.io/dandanXO'>@dandanXO</a>) on <a target="_blank" rel="noopener" href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+
+<p>會發現，它其實就只是修飾這個元素下面底層元素其實是沒有關係的，如果要做到移動就會非常麻煩。</p>
+<h2 id="Backdrop-filter"><a href="#Backdrop-filter" class="headerlink" title="Backdrop-filter"></a>Backdrop-filter</h2><p>但 <code>backdrop-filter</code> 則剛好相反，是對添加此濾鏡的元素的下層元素的快照添加濾鏡</p>
+<iframe height="600" style="width: 100%;" scrolling="no" title="How to Create a Frosted Glass Effect in CSS - Method 2" src="https://codepen.io/dandanXO/embed/aborKzz?height=265&theme-id=dark&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href='https://codepen.io/dandanXO/pen/aborKzz'>How to Create a Frosted Glass Effect in CSS - Method 2</a> by Dandan
+  (<a target="_blank" rel="noopener" href='https://codepen.io/dandanXO'>@dandanXO</a>) on <a target="_blank" rel="noopener" href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+<h3 id="Backdrop-filter-應用"><a href="#Backdrop-filter-應用" class="headerlink" title="Backdrop-filter 應用"></a>Backdrop-filter 應用</h3><p>這樣只要一張背景圖就可以做到各種上層濾淨效果</p>
+<iframe height="600" style="width: 100%;" scrolling="no" title="backdrop-filter demo" src="https://codepen.io/dandanXO/embed/YzKbvNQ?height=265&theme-id=dark&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href='https://codepen.io/dandanXO/pen/YzKbvNQ'>backdrop-filter demo</a> by Dandan
+  (<a target="_blank" rel="noopener" href='https://codepen.io/dandanXO'>@dandanXO</a>) on <a target="_blank" rel="noopener" href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+
+<h2 id="進一步研究"><a href="#進一步研究" class="headerlink" title="進一步研究"></a>進一步研究</h2><p>其實會發現 <code>Backdrop-filter</code>並不會對本身的元素做出濾淨效果，下面可以清楚看到，圖片下方下層元素被濾鏡而原始的圖片卻沒有。</p>
+<iframe height="500" style="width: 100%;" scrolling="no" title="Apply Filter to Psuedo Element" src="https://codepen.io/dandanXO/embed/RwbmJgj?height=265&theme-id=dark&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href='https://codepen.io/dandanXO/pen/RwbmJgj'>Apply Filter to Psuedo Element</a> by Dandan
+  (<a target="_blank" rel="noopener" href='https://codepen.io/dandanXO'>@dandanXO</a>) on <a target="_blank" rel="noopener" href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+
+<h1 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h1><p>總結來說，還不錯省了很多麻煩事，不然以前只能仰賴 <code>JS</code> 去做這件事情。<br>另外這個css 功能很早就發布了，同事無意間看到最近瀏覽器開始支援了就分享給出來。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://drive.google.com/uc?id=1W1l7f8cKS2KOk3gYgMC_khkA5svwYxIn&export=download'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

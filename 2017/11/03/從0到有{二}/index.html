@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>hexo從0到有{二} - Dandan Rhapsody</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="Dandan&#39;s Blog,步驟第{二}部分
+綁定域名
+更換主題
+初識MarkDown語法
+發布文章
+個性化設置
+其他
+附錄
+
+綁定域名雖然在Internet上可以訪問我們的網站，但是網址是GitHub提供的: http://,"> 
+    <meta name="author" content="Dandan"> 
+    <link rel="alternative" href="atom.xml" title="Dandan Rhapsody" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Dandan Rhapsody</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://dandanxo.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">hexo從0到有{二}</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">hexo從0到有{二}</h1>
+        <div class="stuff">
+            <span>十一月 03, 2017</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/DNS/" rel="tag">DNS</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/NodeJs/" rel="tag">NodeJs</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/git/" rel="tag">git</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/github/" rel="tag">github</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="步驟"><a href="#步驟" class="headerlink" title="步驟"></a>步驟</h1><h2 id="第-二-部分"><a href="#第-二-部分" class="headerlink" title="第{二}部分"></a>第{二}部分</h2><ul>
+<li>綁定域名</li>
+<li>更換主題</li>
+<li>初識MarkDown語法</li>
+<li>發布文章</li>
+<li>個性化設置</li>
+<li>其他</li>
+<li>附錄</li>
+</ul>
+<h1 id="綁定域名"><a href="#綁定域名" class="headerlink" title="綁定域名"></a>綁定域名</h1><p>雖然在Internet上可以訪問我們的網站，但是網址是GitHub提供的: <a target="_blank" rel="noopener" href="http://xxxx.github.io/">http://xxxx.github.io</a> 而我們想使用我們自己的個性化域名，這就需要綁定我們自己的域名。這裡使用的是在<a href="www.cloudflare.com">cloudflare</a>的域名綁定，選用這家DNS主要要原因後面會提到，如何使用他們的免費SSL加密服務(俗稱綠頭)。登錄<a href="www.cloudflare.com">cloudflare</a>，進入管理控制台的DNS，加入這一串CNAME。</p>
+<p><img src="https://i.imgur.com/tXbTwFe.jpg" alt="Imgur"><br>CNAME的記錄值是：你的用戶名.github.io</p>
+<p><del>第二步，登錄GitHub，進入之前創建的倉庫，點擊settings，設置Custom domain，輸入你的域名</del> (好像不用了?)</p>
+<p>第三步，進入本基blog文件夾，進入blog/source目錄下，創建一個記事本文件，輸入你的域名，對，只要寫進你自己的域名即可(不要有任何符號不然會無法解析)。如果帶有blog(上面那張圖片)，那麼以後訪問的時候必須帶有blog完整的域名才可以訪問，但如果不帶有blog，以後訪問的時候帶不帶blog都可以訪問。看各人所需要:</p>
+<p><img src="https://i.imgur.com/ZaA7NPU.png" alt="Imgur"></p>
+<p>完成這三步，進入blog目錄中，按住shift鍵右擊打開命令行，依序輸入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>這時候打開瀏覽器在地址欄輸入你的域名將會直接進入你自己搭建的網站。</p>
+<h1 id="更換主題"><a href="#更換主題" class="headerlink" title="更換主題"></a>更換主題</h1><p>如果你不喜歡Hexo預設的主題，可以更換不同的主題，主題傳送門：Themes我自己使用的是Next主題，可以在blog目錄中的themes文件夾中看你自己主題是什麼。現在把預設主題更改成Next主題，在blog目錄中（就是命令行的位置處於blog目錄）打開命令行輸入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+
+<p>這是將Next主題下載到blog目錄的themes主題下的next文件夾中。打開站點的_config.yml配置文件，修改主題為next。就可以了。</p>
+<h1 id="初識Markdown語法"><a href="#初識Markdown語法" class="headerlink" title="初識Markdown語法"></a>初識Markdown語法</h1><p>Markdown是一種可以使用普通文本編輯器編寫的標記語言，通過簡單的標記語法，它可以使普通文本內容具有一定的格式。Markdown語法簡潔明了、容易掌握，而且功能比純文本更強，因此寫博客使用它，可以讓用戶更加專注的寫文章，而不需要費盡心力的考慮樣式，相對於html已經算是輕量級語言。並且Markdown完全與html相容，也就是可以在文章裡直接插入html代碼。比如給文章添加音樂，就可以直接把音樂的外鏈html代碼插入文章中。具體語法參看：Markdown語法說明(簡體中文版)可以說十分鐘就可以入門。當然，工欲善其事必先利其器，選擇一個好的Markdown編輯器也是非常重要的，這裡推薦MarkPad和The Markdown Editor for Windows與ATOM也是不錯的選擇 ，這是帶有預覽效果的編輯器，也可以使用本地的文本編輯器，更多的Markdown的語法與編輯器自己可以搜索了解。</p>
+<h1 id="開始寫作"><a href="#開始寫作" class="headerlink" title="開始寫作"></a>開始寫作</h1><p>我們開始正式發布上線博客文章，在命令行中輸入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo n &quot;新文章名字&quot;</span><br></pre></td></tr></table></figure>
+<p>我們會發現在blog根目錄下的source文件夾中的_post文件夾中多了一個博客名字.md文件，使用Markdown編輯器打開，就可以開始你的個人博客之旅了，Markdown常用的樣式也就十來種，完全能夠滿足一般文章的樣式要求，這是我的一篇文章內容示例(ATOM編輯器)：<br><img src="https://i.imgur.com/0ziQhX6.png" alt="Imgur"></p>
+<p>通過帶有預覽樣式的Markdown編輯器實時預覽書寫的文章樣式，也可以通過命令<code>hexo s --debug</code> 在本地瀏覽器的 localhost:4000 預覽文章效果。寫好文章並且樣式無誤後，通過<code>hexo g、hexo d</code> 生成、部署網頁。隨後可以在瀏覽器中輸入域名瀏覽。</p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>  終於寫到這裡了，也算是基本圓滿完成了我的寫作初衷，總結自己的一些經驗，分享一些有趣的東西，不過脖子也是僵硬的受不了。我知道很多人想要建立自己的個人網站卻一直沒有行動，希望這篇文章能給你一點點靈感與想法，just do it。本文是windows平台的搭建過程，其他平台可以參看相關資料，也有很多其他優秀的博客框架值得學習。如果有任何建議或想法、或疑問歡迎在評論區交流，讓大家一起學習。</p>
+<h1 id="附錄"><a href="#附錄" class="headerlink" title="附錄"></a>附錄</h1><p>分享一些有趣有有質感的HEXO blog</p>
+<p><a href="http://link.zhihu.com/?target=https://www.dandyweng.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">翁天信· Dandy Weng</font></font></a> <a href="http://link.zhihu.com/?target=http://chaoxuprime.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">chaoxuprim</font></font></a> <a href="http://link.zhihu.com/?target=http://kenjiendo.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">KENJI ENDO</font></font></a> <a href="http://link.zhihu.com/?target=http://shenzekun.cn/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Moorez</font></font></a> <a href="http://link.zhihu.com/?target=https://codesky.me/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CodeSky 代碼之空</font></font></a> <a href="http://link.zhihu.com/?target=http://www.helloshawn.cn/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">大江東去</font></font></a> <a href="http://link.zhihu.com/?target=http://iconmoon.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">UI Design Portfolio of JJ Ying</font></font></a> <a href="http://link.zhihu.com/?target=http://www.jeyzhang.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">JeyZhang</font></font></a> <a href="http://link.zhihu.com/?target=http://blog.lightina.cn/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">jacklightChen | 得到的都是僥倖</font></font></a> <a href="http://link.zhihu.com/?target=https://qingpei.me/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">edwardtoday</font></font></a> <a href="http://link.zhihu.com/?target=http://rafaltomal.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Rafal Tomal - Web Designer and Genesis Developer</font></font></a> <a href="http://link.zhihu.com/?target=http://strml.net/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Projects and Work</font></font></a> <a href="http://link.zhihu.com/?target=http://miaoxiaoer.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">繪畫愛好者</font></font></a> <a href="http://link.zhihu.com/?target=http://ursocute.github.io/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">萬世奇的博客</font></font></a> <a href="http://link.zhihu.com/?target=https://rauchg.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Guillermo Rauch</font></font></a></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://drive.google.com/uc?id=1W1l7f8cKS2KOk3gYgMC_khkA5svwYxIn&export=download'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
